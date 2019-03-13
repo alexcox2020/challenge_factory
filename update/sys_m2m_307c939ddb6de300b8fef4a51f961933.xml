@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_m2m">
+    <sys_m2m action="INSERT_OR_UPDATE">
+        <from_table>x_snc_cfac_game_configuration</from_table>
+        <m2m_from_field>game_configuration</m2m_from_field>
+        <m2m_from_label>Obstacle Templates</m2m_from_label>
+        <m2m_table>x_snc_cfac_m2m_obstacle_game_config</m2m_table>
+        <m2m_to_field>obstacle_template</m2m_to_field>
+        <m2m_to_label>Game Configurations</m2m_to_label>
+        <sys_class_name>sys_m2m</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-11-02 21:27:43</sys_created_on>
+        <sys_id>307c939ddb6de300b8fef4a51f961933</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_cfac_m2m_obstacle_game_config</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_m2m_307c939ddb6de300b8fef4a51f961933</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-11-02 21:27:43</sys_updated_on>
+        <to_table>x_snc_cfac_obstacle_template</to_table>
+    </sys_m2m>
+</record_update>

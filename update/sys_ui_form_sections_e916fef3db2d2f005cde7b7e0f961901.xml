@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="e916fef3db2d2f005cde7b7e0f961901" sys_domain="global" table="x_snc_cfac_players" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-10 13:03:06</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6d167237db2d2f005cde7b7e0f96198a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_snc_cfac_players" name="x_snc_cfac_players" sys_domain="global" view="Default view">e916fef3db2d2f005cde7b7e0f961901</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_players" sys_domain="global" view="Default view">696536f3db2d2f005cde7b7e0f961931</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-10 13:03:06</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-10 13:03:06</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>29167237db2d2f005cde7b7e0f96198b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_snc_cfac_players" name="x_snc_cfac_players" sys_domain="global" view="Default view">e916fef3db2d2f005cde7b7e0f961901</sys_ui_form>
+            <sys_ui_section caption="Advanced" display_value="Advanced" name="x_snc_cfac_players" sys_domain="global" view="Default view">ed16fef3db2d2f005cde7b7e0f961900</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-10 13:03:06</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_snc_cfac_players</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-10 13:03:06</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e916fef3db2d2f005cde7b7e0f961901</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_cfac_players</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_ui_form_sections_e916fef3db2d2f005cde7b7e0f961901</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-10 13:03:06</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_snc_cfac.resetOptions</event_name>
+        <name>Challenge Factory - Reset Player Options</name>
+        <order>100</order>
+        <script><![CDATA[cfUtil = new x_snc_cfac.ChallengeFactoryUtils();
+cfUtil.resetPlayerOptions(current.sys_id);]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 22:35:41</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>242f8c64dba16300b8fef4a51f9619fd</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Challenge Factory - Reset Player Options</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sysevent_script_action_242f8c64dba16300b8fef4a51f9619fd</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-10 18:41:58</sys_updated_on>
+    </sysevent_script_action>
+</record_update>

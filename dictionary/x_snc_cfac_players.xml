@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Players" max_length="40" name="x_snc_cfac_players" type="collection">
+        <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
+        <element label="Email" max_length="40" name="email" type="string"/>
+        <element label="Game Server" max_length="32" name="game_server" read_only="true" reference="x_snc_cfac_game_server" type="reference"/>
+        <element label="Game Status" max_length="40" name="game_status" type="string"/>
+        <element label="Instance Name" max_length="40" name="instance_name" read_only="true" type="string"/>
+        <element label="JSON Command Pool" max_length="40" name="json_command_pool" read_only="true" type="string"/>
+        <element label="Location" max_length="32" name="location" reference="cmn_location" type="reference"/>
+        <element default="Player Unknown" display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element label="Picture" max_length="40" name="picture" type="user_image"/>
+        <element choice="1" label="Player Status" max_length="40" name="player_status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Registered" sequence="0" value="registered"/>
+                <element inactive_on_update="false" label="Game is running" sequence="1" value="running"/>
+                <element inactive_on_update="false" label="Game is finished" sequence="2" value="finished"/>
+            </choice>
+        </element>
+        <element choice="1" label="Team" max_length="40" name="team" type="choice">
+            <choice/>
+        </element>
+        <element label="UID" max_length="40" name="uid" read_only="true" type="string"/>
+        <index name="index">
+            <element name="country"/>
+        </index>
+        <index name="index2">
+            <element name="game_server"/>
+        </index>
+        <index name="index3">
+            <element name="location"/>
+        </index>
+    </element>
+</database>

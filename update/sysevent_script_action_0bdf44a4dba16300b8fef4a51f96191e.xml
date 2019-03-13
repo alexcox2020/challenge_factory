@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_snc_cfac.createObstacle</event_name>
+        <name>Challenge Factory - Create an Obstacle</name>
+        <order>100</order>
+        <script><![CDATA[var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+playerStatus.get(event.parm2);
+if (playerStatus.status!='finished'){
+	gs.info('[CFAC] Launching Obstacle Generator. parm1 (obstacle template id): '+ event.parm1 +' - parm2: (game id)'+ event.parm2);
+	
+	cfIG = new ChallengeFactoryObstacleGenerator();
+	cfIG.createObstacle(event.parm1, event.parm2);
+	
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 22:39:31</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0bdf44a4dba16300b8fef4a51f96191e</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Challenge Factory - Create an Obstacle</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sysevent_script_action_0bdf44a4dba16300b8fef4a51f96191e</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-12-29 06:37:15</sys_updated_on>
+    </sysevent_script_action>
+</record_update>

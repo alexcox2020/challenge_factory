@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 22:14:08</sys_created_on>
+        <sys_id>c6ba88a0dba16300b8fef4a51f961981</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_cfac_obstacle_template.x_snc_cfac.admin</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_security_acl display_value="x_snc_cfac_obstacle_template">06ba88a0dba16300b8fef4a51f96197d</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_c6ba88a0dba16300b8fef4a51f961981</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-10-30 22:14:08</sys_updated_on>
+        <sys_user_role display_value="x_snc_cfac.admin" name="x_snc_cfac.admin">53a60cecdb616300b8fef4a51f961931</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="domain_skill" table="x_snc_cfac_score_configuration" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>domain_skill</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Prevention</label>
+            <language>en</language>
+            <name>x_snc_cfac_score_configuration</name>
+            <sequence>0</sequence>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-02 04:56:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>01e2867cdbb26300b8fef4a51f96198b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-02 04:56:07</sys_updated_on>
+            <value>Prevention</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>domain_skill</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Detection</label>
+            <language>en</language>
+            <name>x_snc_cfac_score_configuration</name>
+            <sequence>1</sequence>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-02 04:56:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>45e20a7cdbb26300b8fef4a51f9619c8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-02 04:56:08</sys_updated_on>
+            <value>Detection</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>domain_skill</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Response</label>
+            <language>en</language>
+            <name>x_snc_cfac_score_configuration</name>
+            <sequence>2</sequence>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-02 04:56:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>05e20a7cdbb26300b8fef4a51f9619c9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-02 04:56:08</sys_updated_on>
+            <value>Response</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>domain_skill</element>
+            <name>x_snc_cfac_score_configuration</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-02 04:56:08</sys_created_on>
+            <sys_id>0de20a7cdbb26300b8fef4a51f9619c7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>domain_skill</sys_name>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_choice_x_snc_cfac_score_configuration_domain_skill</sys_update_name>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-02 04:56:08</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

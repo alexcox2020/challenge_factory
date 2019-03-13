@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Game Status" max_length="40" name="x_snc_cfac_game_status" type="collection">
+        <element label="Game Configuration" max_length="32" name="game_configuration" read_only="true" reference="x_snc_cfac_game_configuration" type="reference"/>
+        <element label="Game Duration" max_length="40" name="game_duration" type="integer"/>
+        <element label="Game Name" max_length="40" name="game_name" type="string"/>
+        <element label="Game Start" max_length="40" name="game_start" read_only="true" type="glide_date_time"/>
+        <element choice="1" default="new" label="Game Status" max_length="40" name="game_status" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+                <element inactive_on_update="false" label="Registered" sequence="1" value="registered"/>
+                <element inactive_on_update="false" label="Game is started" sequence="2" value="started"/>
+                <element inactive_on_update="false" label="Game is running" sequence="3" value="running"/>
+                <element inactive_on_update="false" label="Game is finished" sequence="4" value="finished"/>
+            </choice>
+        </element>
+        <element label="Game Stop" max_length="40" name="game_stop" read_only="true" type="glide_date_time"/>
+        <element default="javascript:getNextObjNumberPadded();" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" max_length="40" name="number" read_only="true" type="string" use_dynamic_default="true"/>
+        <element label="Server Game ID" max_length="40" name="server_game_id" type="string"/>
+        <element display="true" label="Server Game Name" max_length="40" name="server_game_name" read_only="true" type="string"/>
+        <element label="Server Pass" max_length="255" name="server_pass" type="password2"/>
+        <element label="Server URL" max_length="1024" name="server_url" type="url"/>
+        <element label="Server User" max_length="40" name="server_user" type="string"/>
+        <element label="Standalone Game" max_length="40" name="standalone_game" type="boolean"/>
+        <element label="Team" max_length="40" name="team" type="string"/>
+        <index name="index">
+            <element name="game_configuration"/>
+        </index>
+    </element>
+</database>

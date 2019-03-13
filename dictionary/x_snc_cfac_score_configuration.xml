@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Score Configuration" max_length="40" name="x_snc_cfac_score_configuration" type="collection">
+        <element choice="1" label="Domain Skill" max_length="40" name="domain_skill" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Prevention" sequence="0" value="Prevention"/>
+                <element inactive_on_update="false" label="Detection" sequence="1" value="Detection"/>
+                <element inactive_on_update="false" label="Response" sequence="2" value="Response"/>
+            </choice>
+        </element>
+        <element label="Message" max_length="1024" name="message" type="string"/>
+        <element label="Obstacle Template" mandatory="true" max_length="32" name="obstacle_template" reference="x_snc_cfac_obstacle_template" type="reference"/>
+        <element label="Score" max_length="40" name="score" type="integer"/>
+        <element display="true" label="Score Event" mandatory="true" max_length="40" name="score_event" type="string"/>
+        <element label="Score Event Name" max_length="40" name="score_event_name" read_only="true" type="string"/>
+        <element choice="1" label="ServiceNow Skill" max_length="40" name="servicenow_skill" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Change Management" sequence="0" value="Change Management"/>
+                <element inactive="true" inactive_on_update="true" label="IT Service Management" sequence="0" value="IT Service Management"/>
+                <element inactive_on_update="false" label="Orchestration" sequence="1" value="Orchestration"/>
+                <element inactive_on_update="false" label="Security Incident Response" sequence="2" value="Security Incident Response"/>
+                <element inactive_on_update="false" label="Threat Intelligence" sequence="3" value="Threat Intelligence"/>
+                <element inactive_on_update="false" label="Vulnerability Response" sequence="4" value="Vulnerability Response"/>
+            </choice>
+        </element>
+        <element label="Task Category" max_length="40" name="task_category" type="string"/>
+        <index name="index">
+            <element name="obstacle_template"/>
+        </index>
+    </element>
+</database>

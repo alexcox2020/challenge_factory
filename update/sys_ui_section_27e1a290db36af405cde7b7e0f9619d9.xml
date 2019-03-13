@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="27e1a290db36af405cde7b7e0f9619d9" sys_domain="global" table="x_snc_cfac_scores" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>08577c1cdb832b005cde7b7e0f96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>1</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>8c577c1cdb832b005cde7b7e0f96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game_server</element>
+            <position>2</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>00577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>client_upload</element>
+            <position>3</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>80577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>message</element>
+            <position>4</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>04577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>5</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>84577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>score</element>
+            <position>6</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>08577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>domain_skill</element>
+            <position>7</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>88577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>servicenow_skill</element>
+            <position>8</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>0c577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>task_category</element>
+            <position>9</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>8c577c1cdb832b005cde7b7e0f96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>remediation_time</element>
+            <position>10</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>00577c1cdb832b005cde7b7e0f96196c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>11</position>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-12 20:24:39</sys_created_on>
+            <sys_id>80577c1cdb832b005cde7b7e0f96196c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_scores" sys_domain="global" view="Default view">27e1a290db36af405cde7b7e0f9619d9</sys_ui_section>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-12 20:24:39</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_cfac_scores</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-31 17:54:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>27e1a290db36af405cde7b7e0f9619d9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_cfac_scores</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_ui_section_27e1a290db36af405cde7b7e0f9619d9</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-31 17:54:47</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

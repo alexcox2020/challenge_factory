@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="workflow" label="Workflow" language="en" table="x_snc_cfac_obstacle_template">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>workflow</element>
+            <help/>
+            <hint/>
+            <label>Workflow</label>
+            <language>en</language>
+            <name>x_snc_cfac_obstacle_template</name>
+            <plural>Workflows</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2018-10-30 22:14:09</sys_created_on>
+            <sys_id>9aba88a0dba16300b8fef4a51f9619cc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Workflow</sys_name>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_cfac_obstacle_template_workflow_en</sys_update_name>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2018-10-30 22:14:09</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

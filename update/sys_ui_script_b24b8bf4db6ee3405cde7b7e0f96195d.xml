@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_snc_cfac.ChallengeTimer</name>
+        <script><![CDATA[var x_snc_cfac = x_snc_cfac || {};
+	
+	x_snc_cfac.ChallengeTimer = (function() {
+		"use strict";
+		
+		/* set your private variables and functions here. For example:
+		var privateVar = 0;
+		function private_function() {
+			return ++privateVar;
+		}
+ 		*/
+		
+		/* Share variables between multiple UI scripts by adding them to your scope object. For example:
+		x_snc_cfac.sharedVar = 0;
+		
+		Then access them in your scripts the same way. For example:
+		function get_shared() {
+			return x_snc_cfac.sharedVar;
+		}
+ 		*/
+		
+		// Set the date we're counting down to
+		var countDownDate = new Date("Dec 20, 2018 15:50:00").getTime();
+		
+		//table to query x_snc_cfac_game_status
+		//need to add logic for WHICH game to get the end timer from; for now doing it on mine
+		//var gameStatusRecord = new GlideRecord("x_snc_cfac_game_status");
+		//gameStatusRecord.get('d095beb4db2ee3405cde7b7e0f961922');
+		//var countDownDate = new GlideDateTime(gameStatusRecord.game_stop).getNumericValue();
+		
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+			
+			// Get todays date and time
+			var now = new Date().getTime();
+			
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+			
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			
+			// Display the result in the element with id="ChallengeTimer"
+			document.getElementById("ChallengeTimer").innerHTML = days + "d " + hours + "h "
+			+ minutes + "m " + seconds + "s";
+			
+			//code for mission impossible music; TODO for the actual resource location
+			if (distance < 60000) {
+				document.getElementById("ChallengeAudioContainer").play();
+			}
+			
+			// If the count down is finished, write some text
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementById("ChallengeTimer").innerHTML = "GAME OVER";
+			}
+		}, 1000);
+		
+		return {
+			
+			/* set your public API here. For example:
+			incrementAndReturnPrivateVar: function() {
+				return private_function();
+			},
+ 			*/
+			type:  "ChallengeTimer"
+		};
+	})();
+	]]></script>
+        <script_name>ChallengeTimer</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>erich.dobroth</sys_created_by>
+        <sys_created_on>2018-12-20 23:58:33</sys_created_on>
+        <sys_id>b24b8bf4db6ee3405cde7b7e0f96195d</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>x_snc_cfac.ChallengeTimer</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_script_b24b8bf4db6ee3405cde7b7e0f96195d</sys_update_name>
+        <sys_updated_by>erich.dobroth</sys_updated_by>
+        <sys_updated_on>2018-12-21 01:38:45</sys_updated_on>
+        <ui_type>10</ui_type>
+        <use_scoped_format>true</use_scoped_format>
+    </sys_ui_script>
+</record_update>

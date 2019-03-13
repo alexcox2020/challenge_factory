@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="game_name" label="Game Name  - deprecated" language="en" table="x_snc_cfac_player_status">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>game_name</element>
+            <help/>
+            <hint/>
+            <label>Game Name  - deprecated</label>
+            <language>en</language>
+            <name>x_snc_cfac_player_status</name>
+            <plural>Game Name  - deprecated</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2018-10-30 23:28:25</sys_created_on>
+            <sys_id>e6bb5cecdba16300b8fef4a51f96197e</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Game Name  - deprecated</sys_name>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_cfac_player_status_game_name_en</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-30 10:48:33</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

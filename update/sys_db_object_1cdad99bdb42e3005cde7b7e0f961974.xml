@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>false</actions_access>
+        <alter_access>false</alter_access>
+        <caller_access/>
+        <client_scripts_access>false</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>false</create_access>
+        <create_access_controls>true</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>Game Status</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_snc_cfac_game_status</name>
+        <number_ref display_value="GameStatus">33894a23db0227005cde7b7e0f961932</number_ref>
+        <provider_class/>
+        <read_access>true</read_access>
+        <super_class/>
+        <sys_class_code/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_class_path/>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-03 13:39:03</sys_created_on>
+        <sys_id>1cdad99bdb42e3005cde7b7e0f961974</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Game Status</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_db_object_1cdad99bdb42e3005cde7b7e0f961974</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 11:42:57</sys_updated_on>
+        <update_access>false</update_access>
+        <user_role display_value="x_snc_cfac.player" name="x_snc_cfac.player">d2174020dba16300b8fef4a51f9619e9</user_role>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+</record_update>

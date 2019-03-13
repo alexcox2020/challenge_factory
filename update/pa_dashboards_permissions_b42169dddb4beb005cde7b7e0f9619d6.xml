@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="pa_dashboards_permissions">
+    <pa_dashboards_permissions action="INSERT_OR_UPDATE">
+        <dashboard display_value="Challenge Scoreboard">423dc55ddb0beb005cde7b7e0f96195c</dashboard>
+        <delete>false</delete>
+        <group display_value="Security Ninjas" name="Security Ninjas">19423b6bdbb2a7005cde7b7e0f9619fc</group>
+        <identity>19423b6bdbb2a7005cde7b7e0f9619fc</identity>
+        <read>true</read>
+        <role/>
+        <sys_class_name>pa_dashboards_permissions</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2019-01-16 02:01:18</sys_created_on>
+        <sys_id>b42169dddb4beb005cde7b7e0f9619d6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>19423b6bdbb2a7005cde7b7e0f9619fc</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>pa_dashboards_permissions_b42169dddb4beb005cde7b7e0f9619d6</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-16 02:01:18</sys_updated_on>
+        <type>2</type>
+        <user/>
+        <write>false</write>
+    </pa_dashboards_permissions>
+</record_update>

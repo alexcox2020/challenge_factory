@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_cfac.ChallengeFactoryGameProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Game Processor - main class</description>
+        <name>ChallengeFactoryGameProcessor</name>
+        <script><![CDATA[var ChallengeFactoryGameProcessor = Class.create();
+ChallengeFactoryGameProcessor.prototype = {
+	initialize: function() {
+	},
+	
+	// The main method manages all parts of the Challenge Factory; its main purpose is to plan events in challenge_factory queue
+	main: function(){
+		
+		//Read playerStatus Records
+	//	var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+	//	playerStatus.addQuery('game_status','!=','finished');
+	//	playerStatus.query();
+		
+		//Read gameStatus Records
+		var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+		gameStatus.addQuery('game_status','!=','finished');
+		gameStatus.query();
+		
+		while(gameStatus.next()){
+			
+			var cfCS = new ChallengeFactoryClientServer(gameStatus.sys_id);
+			
+			if (gameStatus.game_status!="finished"){
+				if (gameStatus.game_status=="registered"){
+					cfCS.checkGameStart(gameStatus);
+				}
+				
+				
+				if (gameStatus.game_status=="started"){
+					//reset client game
+					var cfacUtil = new x_snc_cfac.ChallengeFactoryUtils();
+					cfacUtil.clearIncidents();
+					cfacUtil.clearScoreBoardClient();
+					cfacUtil.clearConnectMessages();
+					cfacUtil.clearVulnerabilityGroup();
+					
+					cfacUtil.deleteGameData({game_status: gameStatus.sys_id});
+					
+					//read game configuration (giv me all obstacle templates realted to single game configuration which is assinged in playerstatus)
+					var obsRecords = new GlideRecord("x_snc_cfac_m2m_obstacle_game_config");
+					obsRecords.addQuery("game_configuration",gameStatus.game_configuration);
+					obsRecords.query();
+					
+					if (obsRecords.getRowCount()==0){
+						gs.error("[CFAC] Error: Game configuration specified in game status was not found.");
+						return -1;
+					}
+					
+					//setup enviroment - give me all obstacle templates from specified game confuguration remove duplicates.
+					//I need to go through all setup env scripts and run them one by one
+					//possibly not important in the main loop
+					var setEnv = new GlideAggregate('x_snc_cfac_m2m_obstacle_game_config');
+					setEnv.addQuery("game_configuration",gameStatus.game_configuration);
+					//setEnv.groupBy('obstacle_template'); // This method wasnt working - Alex
+					setEnv.query();
+					
+					var templatesUsed = {};
+					
+					var evaluator = new GlideScopedEvaluator();
+					while (setEnv.next()) {
+						
+						/*var scenarioTempl = new GlideRecord("x_snc_cfac_obstacle_template");
+						scenarioTempl.get(setEnv.getValue("obstacle_template")); 
+						evaluator.evaluateScript(scenarioTempl, 'environment_setup_script');*/		
+						
+						var templateID = setEnv.obstacle_template;
+						
+						if (templatesUsed[templateID] == true) {
+							continue;
+						}
+						
+						templatesUsed[templateID] = true;
+						
+						var scenarioTempl = new GlideRecord("x_snc_cfac_obstacle_template");
+						scenarioTempl.get(templateID); 
+						evaluator.putVariable('GameStatus', gameStatus);
+						evaluator.putVariable('TemplateID', templateID);
+						evaluator.evaluateScript(scenarioTempl, 'environment_setup_script');
+	
+					}
+					
+					//plan incidents events
+					while(obsRecords.next()){
+						var gdt = new GlideDateTime();
+						gdt.add(obsRecords.starting_minute*60*1000);
+						gs.eventQueueScheduled("x_snc_cfac.createObstacle","",obsRecords.obstacle_template, gameStatus.sys_id, gdt);
+						gs.info("[CFAC] Info: Obstacle "+obsRecords.obstacle_template.scenario_name+" has been scheduled for game: "+gameStatus.number);
+						delete gdt;		
+					}
+					gameStatus.game_status="running";
+					gameStatus.update();
+				}
+				
+				if (gameStatus.game_status=="running" && gameStatus.standalone_game==false){
+					cfCS.checkGameEnd(gameStatus);
+				}
+			}
+		}
+	},
+	type: 'ChallengeFactoryGameProcessor'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 21:21:47</sys_created_on>
+        <sys_id>8c8e7b18db616300b8fef4a51f9619b9</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>ChallengeFactoryGameProcessor</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_script_include_8c8e7b18db616300b8fef4a51f9619b9</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-17 06:29:55</sys_updated_on>
+    </sys_script_include>
+</record_update>

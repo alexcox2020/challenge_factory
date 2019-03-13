@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Game Data" max_length="40" name="x_snc_cfac_game_data" type="collection">
+        <element dependent="data_table" dependent_on_field="data_table" label="Data Record" max_length="32" name="data_record" type="document_id" use_dependent_field="true"/>
+        <element label="Data Table" max_length="40" name="data_table" type="string"/>
+        <element label="Game Status" mandatory="true" max_length="32" name="game_status" reference="x_snc_cfac_game_status" type="reference"/>
+        <element display="true" label="Key" mandatory="true" max_length="40" name="key" type="string"/>
+        <element label="Player Status" max_length="32" name="player_status" reference="x_snc_cfac_player_status" type="reference"/>
+        <element label="Value" mandatory="true" max_length="1024" name="value" type="string"/>
+        <index name="index">
+            <element name="game_status"/>
+        </index>
+        <index name="index2">
+            <element name="data_record"/>
+        </index>
+        <index name="index3">
+            <element name="player_status"/>
+        </index>
+    </element>
+</database>

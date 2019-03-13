@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Game Configuration" max_length="40" name="x_snc_cfac_game_configuration" type="collection">
+        <element label="CFAC Updated On" max_length="40" name="cfac_updated_on" read_only="true" type="glide_date_time"/>
+        <element label="Client Download" max_length="40" name="client_download" read_only="true" type="boolean"/>
+        <element label="Game Duration" max_length="40" name="game_duration" type="integer"/>
+        <element label="Name" max_length="40" name="name" type="string"/>
+        <element label="Server Last Update" max_length="40" name="server_last_update" read_only="true" type="glide_date_time"/>
+        <element label="Server Sys ID" max_length="40" name="server_sys_id" read_only="true" type="string"/>
+        <element label="Short Description" max_length="40" name="short_description" type="string"/>
+    </element>
+</database>

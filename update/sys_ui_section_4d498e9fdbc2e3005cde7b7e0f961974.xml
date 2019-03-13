@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="4d498e9fdbc2e3005cde7b7e0f961974" sys_domain="global" table="x_snc_cfac_game_status" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>dc79c623db0227005cde7b7e0f961947</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>server_game_name</element>
+            <position>1</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>5079c623db0227005cde7b7e0f961948</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game_status</element>
+            <position>2</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>d079c623db0227005cde7b7e0f961948</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>5479c623db0227005cde7b7e0f961948</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game_start</element>
+            <position>4</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>d479c623db0227005cde7b7e0f961948</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game_stop</element>
+            <position>5</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-04 11:40:57</sys_created_on>
+            <sys_id>5879c623db0227005cde7b7e0f961948</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-04 11:40:57</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>team</element>
+            <position>6</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-16 10:22:18</sys_created_on>
+            <sys_id>0d8aeb5bdb96ef005cde7b7e0f9619dd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_game_status" sys_domain="global" view="Default view">4d498e9fdbc2e3005cde7b7e0f961974</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-16 10:22:18</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_cfac_game_status</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-03 17:01:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4d498e9fdbc2e3005cde7b7e0f961974</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_cfac_game_status</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_ui_section_4d498e9fdbc2e3005cde7b7e0f961974</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-03 17:01:42</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_hp_reference">
+    <sys_ui_hp_reference action="INSERT_OR_UPDATE">
+        <publisher_reference display_value="Incident Handler">e4e69595db4beb005cde7b7e0f9619d6</publisher_reference>
+        <reference_field>player</reference_field>
+        <reference_table>x_snc_cfac_scores</reference_table>
+        <sys_class_name>sys_ui_hp_reference</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2019-01-16 01:18:07</sys_created_on>
+        <sys_id>c2275d95db4beb005cde7b7e0f9619ec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>e4e69595db4beb005cde7b7e0f9619d6</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_hp_reference_c2275d95db4beb005cde7b7e0f9619ec</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-16 01:18:07</sys_updated_on>
+    </sys_ui_hp_reference>
+</record_update>

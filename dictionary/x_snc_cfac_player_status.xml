@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Player Status" max_length="40" name="x_snc_cfac_player_status" type="collection">
+        <element label="Advanced" max_length="40" name="advanced" type="boolean"/>
+        <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
+        <element label="Email" max_length="40" name="email" type="string"/>
+        <element label="Game Configuration - deprecated" max_length="32" name="game_configuration" reference="x_snc_cfac_game_configuration" type="reference"/>
+        <element default="Not Registered" label="Game Connection" max_length="40" name="game_connection" type="string"/>
+        <element default="60" label="Game Duration - deprecated" max_length="40" name="game_duration" type="integer"/>
+        <element label="Game Name  - deprecated" max_length="40" name="game_name" type="string"/>
+        <element label="Game Start  - deprecated" max_length="40" name="game_start" read_only="true" type="glide_date_time"/>
+        <element choice="1" default="new" label="Player Status" max_length="40" name="game_status" read_only="true" type="string">
+            <choice>
+                <element inactive="true" inactive_on_update="true" label="Incident planned" sequence="0" value="incident planned"/>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+                <element inactive="true" inactive_on_update="true" label="New game" sequence="0" value="new game"/>
+                <element inactive_on_update="false" label="Registered" sequence="1" value="registered"/>
+                <element inactive="true" inactive_on_update="true" label="Started" sequence="1" value="started"/>
+                <element inactive="true" inactive_on_update="true" label="Game is running" sequence="2" value="obstacles planned"/>
+                <element inactive="true" inactive_on_update="true" label="Finished" sequence="3" value="finished"/>
+            </choice>
+        </element>
+        <element label="Game Status" max_length="32" name="game_status_reference" reference="x_snc_cfac_game_status" type="reference"/>
+        <element label="Game Stop  - deprecated" max_length="40" name="game_stop" read_only="true" type="glide_date_time"/>
+        <element label="Location" max_length="32" name="location" reference="cmn_location" type="reference"/>
+        <element display="true" label="Player Name" max_length="40" name="player_name" type="string"/>
+        <element label="Player User" max_length="32" name="player_user" reference="sys_user" type="reference"/>
+        <element label="Server Game ID" max_length="40" name="server_game_id" read_only="true" type="string"/>
+        <element label="Server Game Name" max_length="40" name="server_game_name" read_only="true" type="string"/>
+        <element label="Server Pass  - deprecated" max_length="255" name="server_pass" type="password2"/>
+        <element label="Server URL  - deprecated" max_length="1024" name="server_url" type="url"/>
+        <element label="Server User" max_length="40" name="server_user" type="string"/>
+        <element label="Standalone Game  - deprecated" max_length="40" name="standalone_game" type="boolean"/>
+        <element label="Team" max_length="40" name="team" type="string"/>
+        <element label="Server Player ID" max_length="40" name="uid" read_only="true" type="string"/>
+        <index name="index">
+            <element name="country"/>
+        </index>
+        <index name="index2">
+            <element name="game_configuration"/>
+        </index>
+        <index name="index3">
+            <element name="location"/>
+        </index>
+        <index name="index4">
+            <element name="player_user"/>
+        </index>
+        <index name="index5">
+            <element name="game_status_reference"/>
+        </index>
+    </element>
+</database>

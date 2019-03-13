@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_cfac.ChallengeFactoryAPIUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>ChallengeFactoryAPIUtils</name>
+        <script><![CDATA[var ChallengeFactoryAPIUtils = Class.create();
+ChallengeFactoryAPIUtils.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+	
+	dateTimeNowMinusTime: function() {
+		var dt = new GlideDateTime();
+		var mt = new GlideTime();
+		mt.setValue(this.getParameter('sysparm_minusTime'));
+		dt.subtract(mt);
+		return dt.getValue();
+	},
+	
+	getScoreDataNowMinusTime: function() {
+		var dt = new GlideDateTime();
+		var mt = new GlideTime();
+		mt.setValue(this.getParameter('sysparm_minusTime'));
+		dt.subtract(mt);
+		
+		var scoreData = {};
+		
+		var scoreGR = new GlideRecord('x_snc_cfac_scores');
+		scoreGR.addQuery('client_upload', true);
+		scoreGR.addQuery('sys_created_on', '>=', dt.getValue());
+		scoreGR.query();
+		
+		while(scoreGR.next()) {
+			var score = scoreGR.score;
+			var description = scoreGR.description;
+			var nowSkill = scoreGR.servicenow_skill;
+		    var secSkill = scoreGR.domain_skill;
+			var player   = 'Anonymous';
+			
+			/* Default Coords - I'll be back someday! */
+			var latitude  = '21.396783'; 
+			var longitude = '-157.735799';
+			
+			if (scoreGR.player_profile) {
+				if (scoreGR.player_profile.name) player = scoreGR.player_profile.name;
+			}			
+			
+			if (scoreGR.location) {
+				if (scoreGR.location.latitude) {
+					latitude = scoreGR.location.latitude;
+				}	
+				if (scoreGR.location.longitude) {
+					longitude = scoreGR.location.longitude;
+				}
+			} else {
+				gs.warn('[CFAC] No Location for '+ scoreGR.number);
+			}
+			
+			var jsonScore = '{"player": "'+ player + '", "score": "'+ score+ '", "description": "'+ description + '", "nowSkill": "'+ nowSkill +'", "secSkill": "'+ secSkill + '",  "longitude": "'+ longitude +'", "latitude": "'+ latitude + '"}';
+			
+			scoreData[scoreGR.sys_id] = jsonScore;
+		}
+		
+		var response = JSON.stringify(scoreData);
+		
+		gs.info('ScoreData: ' + response);
+		return response;
+	},
+	
+    type: 'ChallengeFactoryAPIUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 21:20:17</sys_created_on>
+        <sys_id>02dd7b18db616300b8fef4a51f961982</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>ChallengeFactoryAPIUtils</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_script_include_02dd7b18db616300b8fef4a51f961982</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-10-31 00:27:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

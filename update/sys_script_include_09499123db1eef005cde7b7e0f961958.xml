@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_cfac.ChallengeFactoryAjax</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>ChallengeFactoryAjax</name>
+        <script><![CDATA[var ChallengeFactoryAjax = Class.create();
+ChallengeFactoryAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	checkServerData: function(){
+		var jSonResponse={
+		};
+		var gameSysId=this.getParameter('sysparm_game_status_id');
+		var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+		if (gameSysId!=""){
+			gameStatus.get(gameSysId);
+			jSonResponse.game_status=gameStatus.game_status+"";
+			jSonResponse.team=gameStatus.team+"";
+			jSonResponse.game_status_id=gameStatus.sys_id+"";
+		}
+		else{
+			gameStatus.setLimit(1);
+			gameStatus.orderByDesc('sys_updated_on');
+			gameStatus.query();
+			if (gameStatus.next()){
+				jSonResponse.game_status=gameStatus.game_status+"";
+				jSonResponse.team=gameStatus.team+"";
+				gameSysId=gameStatus.sys_id+"";
+				jSonResponse.game_status_id=gameStatus.sys_id+"";
+			}
+			else{
+				jSonResponse.game_status='new';
+			}
+		}
+		
+		var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+		playerStatus.addQuery('player_user',gs.getUserID());
+		playerStatus.addQuery('game_status_reference',gameSysId);
+		playerStatus.query();
+		if (playerStatus.next()){
+			jSonResponse.player_name=playerStatus.player_name+"";
+			jSonResponse.email=playerStatus.email+"";
+			jSonResponse.location=playerStatus.location+"";
+			jSonResponse.player_status=playerStatus.game_status+"";
+		}
+		else{
+			jSonResponse.player_status='init';
+		}
+		return JSON.stringify(jSonResponse);
+	},
+	
+	stopGame: function(){
+		var gameStatusId=this.getParameter('sysparm_game_status_id');
+		var gr = new GlideRecord('x_snc_cfac_game_status');
+		if (gr.get(gameStatusId)){
+			gr.game_status="finished";
+			gr.update();
+			var clSr = new ChallengeFactoryClientServer(gameStatusId);
+			clSr.updatePlayerStatusBulk(gr,"finished");
+		}
+		else{
+			gs.error("[CFAC] stopGame - no GameStatus record was found.");
+		}
+	},
+	
+	newGame: function(){
+		//var gameStatusId=this.getParameter('sysparm_game_status_id');
+		var gr = new GlideRecord('x_snc_cfac_game_status');
+		gr.insert();
+	},
+	
+	runGame: function(){
+		var response={
+		};
+		var gr = new GlideRecord('x_snc_cfac_game_server');
+		var playerName=this.getParameter('sysparm_player_name');
+		var email=this.getParameter('sysparm_email');
+		var location=this.getParameter('sysparm_location');
+		var gameStatusId=this.getParameter('sysparm_game_status_id');
+		var team=this.getParameter('sysparm_team');
+		var gameConfig=this.getParameter('sysparm_game_config');
+		gr.name=playerName+" - Stand alone game";
+		gr.game_status='ready';
+		gr.game_configuration=gameConfig;
+		gr.insert();
+		var cfUtil = new ChallengeFactoryUtils();
+		var ids=cfUtil.initGame(playerName,email,location,team,gameStatusId);
+		var cfCS = new ChallengeFactoryClientServer(ids[0]);
+		//var ret = cfCS.registerPlayer(ids[0]);
+		var gameData={
+		};
+		gameData.game_configuration={
+			value:gameConfig
+		};
+		gameData.sys_id=gr.sys_id+"";
+		gameData.name=gr.name+"";
+		cfCS.registerGametoServer(ids[1],ids[0],JSON.stringify(gameData));
+		
+		gr.game_status="started";
+		var gdt = new GlideDateTime();
+		gr.game_start=gdt;
+		gdt.add(60000*gr.game_configuration.game_duration);
+		gs.eventQueueScheduled("x_snc_cfac.endGame",gr,gr.sys_id, "Server", gdt);
+		gr.game_stop=gdt;
+		gr.update();
+		
+		response.ret=1;
+		return response;
+	},
+	
+	registerPlayer: function(){
+		var response={
+		};
+		var playerName=this.getParameter('sysparm_player_name');
+		var email=this.getParameter('sysparm_email');
+		var location=this.getParameter('sysparm_location');
+		var team=this.getParameter('sysparm_team');
+		var gameStatusId=this.getParameter('sysparm_game_status_id');
+		
+		var cfUtil = new ChallengeFactoryUtils();
+		var ids=cfUtil.initGame(playerName,email,location,team,gameStatusId);
+		
+		var cfCS = new ChallengeFactoryClientServer(gameStatusId);
+		var ret = cfCS.registerPlayer(ids[0]);
+		if (ret==-1){
+			response.ret=-1;
+			gs.error("[CFAC] Failed to register player.");
+			gs.addErrorMessage("Failed to register player.");
+		}
+		else{
+			response.ret=1;
+			gs.info("[CFAC] Player was successfully registered.");
+			gs.addInfoMessage("Player was successfully registered.");
+		}
+		
+		return reponse;
+	},
+	type: 'ChallengeFactoryAjax'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-16 19:17:02</sys_created_on>
+        <sys_id>09499123db1eef005cde7b7e0f961958</sys_id>
+        <sys_mod_count>28</sys_mod_count>
+        <sys_name>ChallengeFactoryAjax</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_script_include_09499123db1eef005cde7b7e0f961958</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-29 21:58:43</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="7ac1e9dfdbadab005cde7b7e0f9619b4" sys_domain="global" table="x_snc_cfac_m2m_obstacle_game_config" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>7ec1e9dfdbadab005cde7b7e0f9619b8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>obstacle_template</element>
+            <position>1</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>fec1e9dfdbadab005cde7b7e0f9619b8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game_configuration</element>
+            <position>2</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>72c1e9dfdbadab005cde7b7e0f9619b9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>f2c1e9dfdbadab005cde7b7e0f9619b9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>starting_minute</element>
+            <position>4</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>76c1e9dfdbadab005cde7b7e0f9619b9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>5</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_id>f6c1e9dfdbadab005cde7b7e0f9619b9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_m2m_obstacle_game_config" sys_domain="global" view="Default view">7ac1e9dfdbadab005cde7b7e0f9619b4</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_cfac_m2m_obstacle_game_config</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-08 17:37:52</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7ac1e9dfdbadab005cde7b7e0f9619b4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_cfac_m2m_obstacle_game_config</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_ui_section_7ac1e9dfdbadab005cde7b7e0f9619b4</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-08 17:37:52</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

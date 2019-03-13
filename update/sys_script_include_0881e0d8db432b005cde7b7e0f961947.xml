@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_cfac.SecurityChallengeScore</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SecurityChallengeScore</name>
+        <script><![CDATA[var SecurityChallengeScore = Class.create();
+SecurityChallengeScore.prototype = {
+	initialize: function() {
+	},
+	phishingScore: function(sir_id){
+		var cfU = new x_snc_cfac.ChallengeFactoryUtils();
+		var phishDataGR=cfU.getGameData({
+			'data_record': sir_id,
+			'key': 'phishing_data'
+		});
+		//gs.info("[CFAC] game data: "+phishDataGR.value+"");
+		var phishData = JSON.parse(phishDataGR.value+"");
+		var outcome;
+		var incidentReview="";
+		var sR;
+		//gs.info("[CFAC] I do scoring");
+		
+		var incidentGR = new GlideRecord('sn_si_incident');
+		incidentGR.get(sir_id);
+		
+		
+		var score1 = {
+			domain_skill: 'Detection',
+			servicenow_skill: 'Security Incident',
+			task_category: 'Phishing',
+			message: 'Score',
+			score: '0'
+		};
+	
+		var playerStatus = cfU.getPlayerStatusFromUserIDandGameStatus(incidentGR.assigned_to, phishDataGR.game_status);
+	
+		
+		//Verify if the incident contains a malicious url.
+		outcome=this.getOutcomeResult(sir_id,"Does the email contain a malicious URL?");
+		if (outcome=='no'){
+			if (phishData.false_positive==true){
+				//good
+				incidentReview+="URL validation: GOOD\r\nURL was poprerly identified as non-malicious.\r\n\r\n";
+				
+				score1.score =  '300';
+				score1.message = incidentGR.number + " was correctly diagnosed as a false positive.";
+				cfU.saveScore4(playerStatus, score1);
+				
+				return 0;
+			}
+			else{
+				//bad
+				incidentReview+="URL validation: BAD\r\nURL was not properly identified as malicious.\r\n\r\n";
+				
+				score1.score =  '0';
+				score1.message = incidentGR.number + " was incorrectly diagnosed as a false positive.";
+				cfU.saveScore4(playerStatus, score1);
+								
+				return 0;
+			}
+		}
+		else{//Verify if email contains malicious URL outcome Yes
+			if (phishData.false_positive==true){
+				//bad
+				incidentReview+="URL validation: BAD\r\nURL was improperly identified as malicious.\r\n\r\n";
+				
+				score1.score =  '0';
+				score1.message = incidentGR.number + " was incorrectly diagnosed as a true positive.";
+				cfU.saveScore4(playerStatus, score1);
+				
+				return 0;
+			}
+			else{
+				incidentReview+="URL validation: GOOD\r\nURL was properly identified as malicious.\r\n\r\n";
+							
+				score1.score =  '150';
+				score1.message = incidentGR.number + " was correctly diagnosed as a true positive.";
+				cfU.saveScore4(playerStatus, score1);
+				
+				score1.domain_skill = 'Response';
+				
+				outcome=this.getOutcomeResult(sir_id,"Did other users receive the same message?");
+				sR=this.getEmailSerchResults(sir_id);
+				if (outcome=='no'){
+					if (phishData.affected_users.length==0){
+						if (sR==-1){
+							incidentReview+="Email search: GOOD\r\nThere no other affected users but you have not performed an email search. You are just guessing!\r\n\r\n";
+						}
+						if (sR==""){
+							incidentReview+="Email search: GOOD\r\nThere no other affected users.\r\n\r\n";
+						}
+						else{
+							incidentReview+="Email search: GOOD\r\nThere no other affected users.Your search found something not related.\r\n\r\n";
+						}
+						
+						score1.score =  '150';
+						score1.message = incidentGR.number + " employee impact was correctly assessed.";
+						cfU.saveScore4(playerStatus, score1);
+						
+					}
+					else{//there are affected users
+						if (sR==-1){
+							incidentReview+="Email search: BAD\r\nThere are other affected users. You did not perform an email search.\r\n\r\n";
+						}
+						if (sR==""){
+							incidentReview+="Email search: BAD\r\nThere are other affected users but you were searching for something else.\r\n\r\n";
+						}
+						else{
+							incidentReview+="Email search: BAD\r\nThere are other affected users.\r\n\r\n";
+							//wrong you found users and you are still saying no?
+						}
+						
+						score1.score =  '0';
+						score1.message = incidentGR.number + " employee impact was not correctly assessed.";
+						cfU.saveScore4(playerStatus, score1);
+						
+					}
+				}
+				else{// Investigate whether other users recieved same message outcome is yes
+					if (phishData.affected_users.length==0){
+						if (sR==-1){
+							incidentReview+="Email search: BAD\r\nThere are no other affected users. You did not perform an email search.\r\n\r\n";
+						}
+						if (sR==""){
+							incidentReview+="Email search: BAD\r\nThere are no other affected users. Your search found nothing and you marked that there was one!\r\n\r\n";
+						}
+						else{
+							incidentReview+="Email search: BAD\r\nThere are no other affected users. Your search found something not related.\r\n\r\n";
+						}
+						
+						score1.score =  '0';
+						score1.message = incidentGR.number + " employee impact was not correctly assessed.";
+						cfU.saveScore4(playerStatus, score1);
+						
+					}
+					else{//there are affected users
+						if (sR==-1){
+							incidentReview+="Email search: GOOD\r\nThere are other affected users but you did not perform an email search. You are just guessing!\r\n\r\n";
+						}
+						if (sR==""){
+							incidentReview+="Email search: GOOD\r\nThere are other affected users but you found nothing. How do you know that?You are just guessing!\r\n\r\n";
+						}
+						else{
+							incidentReview+="Email search: GOOD\r\nThere are other affected users and you have found them.\r\n\r\n";
+						}
+						
+						
+						score1.score =  '150';
+						score1.message = incidentGR.number + " employee impact was correctly assessed.";
+						cfU.saveScore4(playerStatus, score1);
+						
+					}
+					outcome=this.getOutcomeResult(sir_id,"Did anyone read the email?");
+					sR=this.getEmailSerchResults(sir_id,true);
+					if (outcome=="no"){
+						if (phishData.read==0){
+							if (sR==-1){
+								incidentReview+="Opened emails: GOOD\r\nThere are no opened emails but you did not perform an email search. You are just guessing!\r\n\r\n";
+							}
+							if (sR==""){
+								incidentReview+="Opened emails: GOOD\r\nThere are no opened emails.\r\n\r\n";
+							}
+							else{
+								incidentReview+="Opened emails: GOOD\r\nThere are no opened emails. Your search found something that wasn't related.\r\n\r\n";
+							}
+							
+							score1.score =  '150';
+							score1.message = incidentGR.number + " employee infection was correctly assessed.";
+							cfU.saveScore4(playerStatus, score1);	
+							
+						}
+						else{//there are opened mails
+							if (sR==-1){
+								incidentReview+="Opened emails: BAD\r\nThere are opened emails. You did not perform an email search.\r\n\r\n";
+							}
+							if (sR==""){
+								incidentReview+="Opened emails: BAD\r\nThere are opened emails but you were searching for something else.\r\n\r\n";
+							}
+							else{
+								incidentReview+="Opened emails: BAD\r\nThere are opened emails. You found them and still telling me that there none...?!?\r\n\r\n";
+							}
+							
+							score1.score =  '0';
+							score1.message = incidentGR.number + " employee infection was not correctly assessed.";
+							cfU.saveScore4(playerStatus, score1);
+						}
+					}
+					else{//Did anyone open it? outcome is yes
+						if (phishData.read==0){
+							if (sR==-1){
+								incidentReview+="Opened emails: BAD\r\nThere are no opened emails. You did not perform an email search.\r\n\r\n";
+							}
+							if (sR==""){
+								incidentReview+="Opened emails: BAD\r\nThere are no opened emails. You have not found them and are still telling me that there some...?!?.\r\n\r\n";
+							}
+							else{
+								incidentReview+="Opened emails: BAD\r\nThere are no opened emails. Your search found something unrelated.\r\n\r\n";
+	
+							}
+	
+							score1.score =  '0';
+							score1.message = incidentGR.number + " employee infection was not correctly assessed.";
+							cfU.saveScore4(playerStatus, score1);
+							
+						}
+						else{//there are opened emails
+							if (sR==-1){
+								incidentReview+="Opened emails: GOOD\r\nThere are opened emails but you did not perform an email search. You are just guessing!\r\n\r\n";
+							}
+							if (sR==""){
+								incidentReview+="Opened emails: GOOD\r\nThere are opened emails but you found nothing. How do you know that? You are just guessing!\r\n\r\n";
+							}
+							else{
+								incidentReview+="Opened emails: GOOD\r\nThere are opened emails and you have found them.\r\n\r\n";
+							}
+								
+							score1.score =  '150';
+							score1.message = incidentGR.number + " employee infection was correctly assessed.";
+							cfU.saveScore4(playerStatus, score1);
+							
+						}
+						//check if affected user were correctly added
+						sR=this.getAffectedUsers(sir_id);
+						var match = this.compareArrays(sR.split(","),phishData.affected_users.slice(0,phishData.read));
+						if (match==phishData.read){
+							if (sR>phishData.read+1){
+								incidentReview+="Reset password: MIXED\r\nYou added more users than neccessary. Their passwords were reset.\r\n\r\n";
+									
+								score1.score =  '50';
+								score1.message = incidentGR.number + " passwords were reset, with overkill.";
+								cfU.saveScore4(playerStatus, score1);
+								
+							}
+							else{
+								incidentReview+="Reset password: GOOD\r\nPassword reset was setup for correct users.\r\n\r\n";
+								score1.score =  '150';
+								score1.message = incidentGR.number + " passwords were reset precisely.";
+								cfU.saveScore4(playerStatus, score1);
+								
+							}
+						}
+						else{
+							incidentReview+="Reset password: BAD\r\nNot all users password were reset.\r\n\r\n";
+							
+							score1.score =  '0';
+							score1.message = incidentGR.number + " some passwords were not reset.";
+							cfU.saveScore4(playerStatus, score1);
+							
+						}
+						outcome=this.getOutcomeResult(sir_id,"Investigate threat intel results. Are there any other related observables?");
+						if (outcome=='no'){
+							if (phishData.malicious_urls.length==1){
+								incidentReview+="Other malicious URLs: GOOD\r\nThere are no other malicious URLs\r\n\r\n";
+								score1.score =  '150';
+								score1.servicenow_skill =  'Threat Intelligence';
+								score1.message = incidentGR.number + " threat intel research was accurate.";
+								cfU.saveScore4(playerStatus, score1);
+							
+							}
+							else{
+								incidentReview+="Other malicious URLs: BAD\r\nThere are other malicious URLs\r\n\r\n";
+								
+								score1.score =  '0';
+								score1.servicenow_skill =  'Threat Intelligence';
+								score1.message = incidentGR.number + " threat intel research was incorrect.";
+								cfU.saveScore4(playerStatus, score1);
+							}
+						}
+						else{//Investigate threat intel results Are there any other related observables ? outcome yes
+							if (phishData.malicious_urls.length==1){
+								incidentReview+="Other malicious URLs: BAD\r\nThere are no other malicious URLs\r\n\r\n";
+								//wrong there is nothing else
+											
+								score1.score =  '0';
+								score1.servicenow_skill =  'Threat Intelligence';
+								score1.message = incidentGR.number + " threat intel research was incorrect.";
+								cfU.saveScore4(playerStatus, score1);
+							}
+							else{
+								incidentReview+="Other malicious URLs: GOOD\r\nThere are other malicious URLs\r\n\r\n";
+								sR=this.getObservables(sir_id);
+								match = this.compareArrays(sR.split(","),phishData.malicious_urls);
+								if (match==phishData.malicious_urls.length){
+									if (sR>phishData.read+1){
+										incidentReview+="Add malicious URLs: GOOD\r\nYou added all of them but you add even more. Where they are coming from...?\r\n\r\n";
+									}
+									else{
+										incidentReview+="Add malicious URLs: GOOD\r\nYou added all of them.\r\n\r\n";
+									}
+									
+									score1.score =  '150';
+									score1.servicenow_skill =  'Threat Intelligence';
+									score1.message = incidentGR.number + " threat intel research was accurate.";
+									cfU.saveScore4(playerStatus, score1);
+									
+								}
+								else{
+									incidentReview+="Add malicious URLs: BAD\r\nNot all malicious URL were added.\r\n\r\n";			
+												
+									score1.score =  '0';
+									score1.servicenow_skill =  'Threat Intelligence';
+									score1.message = incidentGR.number + " threat intel research was incorrect.";
+									cfU.saveScore4(playerStatus, score1);
+								}
+								
+							}
+						}
+					}
+				}
+			}
+			//verify email deletion
+			sR=this.getEmailSerchResults(sir_id,false,true);
+			if (sR == "-1"){
+				incidentReview+="Email deletion: BAD\r\nEmails were not deleted. You did not request it.\r\n\r\n";						
+				score1.domain_skill = 'Response';
+				score1.score =  '0';
+				score1.message = incidentGR.number + " emails were not deleted.";
+				cfU.saveScore4(playerStatus, score1);
+			} else if (sR == ""){
+				incidentReview+="Email deletion: BAD\r\nEmails were not deleted. Your request did not include a deletion.\r\n\r\n";
+				score1.domain_skill = 'Response';	
+				score1.score =  '0';
+				score1.message = incidentGR.number + " emails were not deleted.";
+				cfU.saveScore4(playerStatus, score1);
+			} else{
+				incidentReview+="Email deletion: GOOD\r\nEmails were deleted.\r\n\r\n";
+				score1.domain_skill = 'Response';	
+				score1.score =  '250';
+				score1.message = incidentGR.number + " emails were properly deleted.";
+				cfU.saveScore4(playerStatus, score1);
+				
+			}
+			
+		}
+		
+		var gU = new global.SecurityChallengeGlobalUtils();
+		gU.queueWorkNote(incidentGR, "546a3cc0db47e7005cde7b7e0f96192a", incidentReview); 
+	},
+	
+	getObservables: function(sir_id){
+		var gr = new GlideRecord("sn_ti_m2m_task_observable");
+		var result="";
+		gr.addQuery("task",sir_id);
+		gr.query();
+		while(gr.next()){
+			if (result!=""){
+				result+=",";
+			}
+			result+=gr.observable.value+"";
+		}
+		return result;
+	},
+	
+	getAffectedUsers: function (sir_id){
+		var gr = new GlideRecord("sn_si_m2m_task_affected_user");
+		var result="";
+		gr.addQuery("task",sir_id);
+		gr.query();
+		while(gr.next()){
+			if (result!=""){
+				result+=",";
+			}
+			result+=gr.user.email+"";
+		}
+		return result;
+	},
+	
+	compareArrays: function (arr1,arr2){
+		gs.info("[CFAC] arrays "+arr1+"   "+arr2);
+		var numberOfMatches=0;
+		for (var i in arr1){
+			for(var j in arr2){
+				if (arr1[i]==arr2[j]){
+					numberOfMatches++;
+				}
+			}
+		}
+		return numberOfMatches;
+	},
+	
+	getEmailSerchResults: function (sir_id,read,deleted){
+		var grIn2Ms = new GlideRecord('sn_si_m2m_incident_email_search');
+		var result="";
+		grIn2Ms.addQuery('sn_si_incident',sir_id);
+		grIn2Ms.query();
+		if (grIn2Ms.getRowCount()==0){
+			//no search has been performed
+			return -1;
+		}
+		else
+			{
+			//has been performed
+			var resultSets="";
+			while(grIn2Ms.next()){
+				var grSRS = new GlideRecord('sn_sec_cmn_email_search_result');
+				grSRS.addQuery('email_search',grIn2Ms.sn_sec_cmn_email_search+"");
+				grSRS.query();
+				if (grSRS.getRowCount()!=0){
+					gs.info("[CFAC] EMAIL search all results found");
+					while(grSRS.next()){
+						if (resultSets!=""){
+							resultSets+=",";
+						}
+						resultSets+=grSRS.sys_id+"";
+					}
+				}
+				delete grSRS;
+			}
+			var grSR = new GlideRecord('sn_sec_cmn_email_search_result_entry');
+			grSR.addQuery('email_search_result', 'IN', resultSets);
+			if (read){
+				grSR.addQuery('read_status','Yes');
+			}
+			if(deleted){
+				grSR.addQuery('deleted','true');
+			}
+			grSR.query();
+			while(grSR.next()){
+				if (result.search(grSR.recipients+"")==-1){
+					if (result!=""){
+						result+=",";
+					}
+					result+=grSR.recipients+"";
+				}
+			}
+			return result;
+		}
+	},
+	
+	getOutcomeResult: function(sir_id,description){
+		var gr = new GlideRecord('sn_si_task');
+		gr.addQuery('parent',sir_id);
+		gr.addQuery('short_description',description);
+		gr.query();
+		if (gr.next()){
+			return gr.outcome+"";
+		}
+		else{
+			gs.warn("[CFAC] Phishing scoring - cannot find SIT outcome. ("+sir_id+","+description+")");
+			return -1;
+		}
+	},
+	
+	type: 'SecurityChallengeScore'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2019-01-12 18:53:45</sys_created_on>
+        <sys_id>0881e0d8db432b005cde7b7e0f961947</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>SecurityChallengeScore</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_script_include_0881e0d8db432b005cde7b7e0f961947</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-15 22:24:51</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_cfac.ChallengeFactoryObstacleGenerator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>ChallengeFactoryObstacleGenerator</name>
+        <script><![CDATA[var ChallengeFactoryObstacleGenerator = Class.create();
+ChallengeFactoryObstacleGenerator.prototype = {
+	initialize: function() {
+	},
+	
+	// createIncident method creates obstacle based on Scenario Template
+	// paramter templateID is sys_id of the record in x_snc_cfac_obstacle_template
+	createObstacle: function(templateId, gameStatusSysId){
+		
+		if (! gameStatusSysId){
+			gs.error("[CFAC] Error: Creating obstacle failed. No gameStatusSysId provided");
+			return 0;
+		}
+		
+		if (! templateId){
+			gs.error("[CFAC] Error: Creating obstacle failed. No templateId provided");
+			return 0;
+		}
+		
+		var rec = new GlideRecord('x_snc_cfac_obstacle_template');
+		var retValue=rec.get(templateId);
+		if (!retValue){
+			gs.error("[CFAC] Error: Obstacle creation failed. Cannot find obstacle template with ID: " + templateId);
+			return 0;
+		}
+		
+	
+		var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+		retValue = gameStatus.get(gameStatusSysId);
+		if (! retValue){
+			gs.error("[CFAC] Error: Obstacle creation failed. Cannot find game status record with ID: " + gameStatusSysId);
+			return 0;
+		}
+		
+		gs.info("[CFAC] Info: Attempting to create obstacle with template: " + rec.scenario_name);
+		
+		var Prevented = false; // This may be set to true by eval scripts below
+		var VulnItem;          // May be populated/used by eval scripts below
+		var CI;                // May be populated/used by eval scripts below
+		var Misc;              // May be populated/used by eval scripts below
+		
+		var evaluator = new GlideScopedEvaluator(); 
+		evaluator.putVariable('GameStatus', gameStatus);
+		evaluator.putVariable('TemplateID', templateId);
+		evaluator.putVariable('Prevented', Prevented);
+		evaluator.putVariable('VulnItem', VulnItem);
+		evaluator.putVariable('Misc', Misc);
+		evaluator.putVariable('CI', CI);
+		
+		evaluator.evaluateScript(rec, 'obstacle_prevention_script');
+		
+		Prevented = evaluator.getVariable('Prevented');
+		VulnItem = evaluator.getVariable('VulnItem');
+		Misc = evaluator.getVariable('Misc');
+		CI = evaluator.getVariable('CI');
+		
+		if (Prevented == true){
+			//Obstacle creation has been prevented!
+			gs.info("[CFAC] Info: Creation of incident "+rec.scenario_name+" has been PREVENTED.");		
+		} else {
+			evaluator = new GlideScopedEvaluator(); 
+			evaluator.putVariable('GameStatus', gameStatus);
+			evaluator.putVariable('TemplateID', templateId);
+			evaluator.putVariable('VulnItem', VulnItem);
+			evaluator.putVariable('WorkflowID', rec.workflow);
+			evaluator.putVariable('Misc',   Misc);
+			evaluator.putVariable('CI',   CI);
+			
+			evaluator.evaluateScript(rec, 'obstacle_creation_script');
+					
+			VulnItem = evaluator.getVariable('VulnItem');
+			Misc = evaluator.getVariable('Misc');
+			CI = evaluator.getVariable('CI');
+		}
+	},
+	
+	
+	type: 'ChallengeFactoryObstacleGenerator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-10-30 21:16:49</sys_created_on>
+        <sys_id>b13df318db616300b8fef4a51f961939</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>ChallengeFactoryObstacleGenerator</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_script_include_b13df318db616300b8fef4a51f961939</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2019-01-06 10:51:38</sys_updated_on>
+    </sys_script_include>
+</record_update>

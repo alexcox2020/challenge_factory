@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Game Server" max_length="40" name="x_snc_cfac_game_server" type="collection">
+        <element label="Continuous Game" max_length="40" name="continuous_game" type="boolean"/>
+        <element label="Game Configuration" mandatory="true" max_length="32" name="game_configuration" reference="x_snc_cfac_game_configuration" reference_qual="client_download=false^EQ" reference_qual_condition="client_download=false^EQ" type="reference"/>
+        <element label="Continuous Game Length" max_length="40" name="game_length" type="integer"/>
+        <element label="Game Start" max_length="40" name="game_start" read_only="true" type="glide_date_time"/>
+        <element choice="1" default="new" label="Game Status" max_length="40" name="game_status" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+                <element inactive_on_update="false" label="Ready" sequence="1" value="ready"/>
+                <element inactive_on_update="false" label="Started" sequence="2" value="started"/>
+                <element inactive_on_update="false" label="Finished" sequence="3" value="finished"/>
+            </choice>
+        </element>
+        <element label="Game Stop" max_length="40" name="game_stop" read_only="true" type="glide_date_time"/>
+        <element label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+        <element label="Reset After" max_length="40" name="reset_after" type="integer"/>
+        <element label="Reset Player Options" max_length="40" name="reset_player_options" type="boolean"/>
+        <index name="index">
+            <element name="game_configuration"/>
+        </index>
+    </element>
+</database>

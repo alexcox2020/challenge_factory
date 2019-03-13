@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Scores" max_length="40" name="x_snc_cfac_scores" type="collection">
+        <element label="Client Upload" max_length="40" name="client_upload" type="boolean"/>
+        <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
+        <element label="Domain Skill" max_length="60" name="domain_skill" type="string"/>
+        <element label="Game Server" max_length="32" name="game_server" reference="x_snc_cfac_game_server" type="reference"/>
+        <element label="Game Status" max_length="32" name="game_status" reference="x_snc_cfac_game_status" type="reference"/>
+        <element label="Location" max_length="32" name="location" reference="cmn_location" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Message" max_length="100" name="message" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Player" max_length="32" name="player" reference="x_snc_cfac_players" type="reference"/>
+        <element label="Player Status" max_length="32" name="player_status" reference="x_snc_cfac_player_status" type="reference"/>
+        <element label="Remediation Time" max_length="40" name="remediation_time" type="glide_duration"/>
+        <element default="0" label="Score" max_length="40" name="score" type="integer"/>
+        <element label="ServiceNow Skill" max_length="60" name="servicenow_skill" type="string"/>
+        <element label="Task Category" max_length="40" name="task_category" type="string"/>
+        <element label="Team" max_length="40" name="team" type="string"/>
+        <index name="index">
+            <element name="game_status"/>
+        </index>
+        <index name="index2">
+            <element name="country"/>
+        </index>
+        <index name="index3">
+            <element name="game_server"/>
+        </index>
+        <index name="index4">
+            <element name="player_status"/>
+        </index>
+        <index name="index5">
+            <element name="location"/>
+        </index>
+        <index name="index6">
+            <element name="player"/>
+        </index>
+    </element>
+</database>
