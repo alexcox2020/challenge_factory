@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>e587d3740fa2230095d741fce1050ee6</documentkey>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_snc_universal_dg_email_search"&gt;
+    &lt;x_snc_universal_dg_email_search action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;chance_read&gt;0&lt;/chance_read&gt;
+        &lt;name&gt;Example 3: Scripted JSON&lt;/name&gt;
+        &lt;number_of_recipients&gt;5&lt;/number_of_recipients&gt;
+        &lt;query_trigger_string&gt;subject=Email Search Scripted JSON Results&lt;/query_trigger_string&gt;
+        &lt;recipient_domain/&gt;
+        &lt;response_json&gt;{&amp;#13;
+	"result":[&amp;#13;
+			{&amp;#13;
+				"delivered_date":"",&amp;#13;
+				"message_id":"ae57df24b9ab4e9cb8c5466753fd6f05@exchange.secops.local",&amp;#13;
+				"read_status":"",&amp;#13;
+				"recipient_address":"suzzane.baker@secops.local",&amp;#13;
+				"sender":"Administrator@secops.local",&amp;#13;
+				"trackedEvents":"receive, submit"&amp;#13;
+			},&amp;#13;
+			{&amp;#13;
+				"delivered_date":"",&amp;#13;
+				"message_id":"bd2791d56c474871b72a3aef38f9396e@exchange.secops.local",&amp;#13;
+				"read_status":"",&amp;#13;
+				"recipient_address":"suzzane.baker@secops.local",&amp;#13;
+				"sender":"Administrator@secops.local",&amp;#13;
+				"trackedEvents":"receive, submit"&amp;#13;
+			}&amp;#13;
+		]&amp;#13;
+}&lt;/response_json&gt;
+        &lt;response_script&gt;&lt;![CDATA[var dateTimeRecieved = new GlideDateTime();
+dateTimeRecieved.add(-1000000);
+dateTimeRecieved = dateTimeRecieved.toString();
+
+// The ResponseJSON object will be passed back as the search result.
+ResponseJSON = {};
+ResponseJSON.result = [];
+
+// It can be populated dynamically in this script field. Here is an example:
+ResponseJSON.result[0] = 
+	{
+		delivered_date: dateTimeRecieved,
+		message_id: "ae57df24b9ab4e9cb8c5466753fd6f05@exchange.secops.local",
+		read_status: "No",
+		recipient_address: "tom.mot@secops.local",
+	    sender: "evilguy@evilsite.com",
+	    trackedEvents: "receive, submit"
+	};
+
+ResponseJSON.result[1] = 
+	{
+		delivered_date: dateTimeRecieved,
+		message_id: "bd2791d56c474871b72a3aef38f9396e@exchange.secops.local",
+		read_status: "No",
+		recipient_address: "foo.bar@secops.local",
+	    sender: "evilguy@evilsite.com",
+	    trackedEvents: "receive, submit"
+	};
+]]&gt;&lt;/response_script&gt;
+        &lt;response_type&gt;Scripted JSON&lt;/response_type&gt;
+        &lt;sender_domains/&gt;
+        &lt;sender_usernames/&gt;
+        &lt;sys_created_by&gt;alex.cox&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2018-12-21 00:50:12&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;e587d3740fa2230095d741fce1050ee6&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;11&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;alex.cox&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2018-12-27 20:59:53&lt;/sys_updated_on&gt;
+        &lt;trigger_is_regex&gt;false&lt;/trigger_is_regex&gt;
+    &lt;/x_snc_universal_dg_email_search&gt;
+&lt;/record_update&gt;
+</payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2019-03-13 15:10:39</sys_created_on>
+        <sys_id>11de2cabdb483b0078685414dc961917</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Example 3: Scripted JSON</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_metadata_link_11de2cabdb483b0078685414dc961917</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2019-03-13 15:10:39</sys_updated_on>
+        <tablename>x_snc_universal_dg_email_search</tablename>
+    </sys_metadata_link>
+</record_update>
