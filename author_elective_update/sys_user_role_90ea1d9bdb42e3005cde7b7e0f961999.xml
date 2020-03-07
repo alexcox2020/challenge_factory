@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <encryption_context/>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_snc_cfac.game_status_user</name>
+        <requires_subscription>-1</requires_subscription>
+        <scoped_admin>false</scoped_admin>
+        <suffix>game_status_user</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-03 13:39:02</sys_created_on>
+        <sys_id>90ea1d9bdb42e3005cde7b7e0f961999</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_cfac.game_status_user</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_user_role_90ea1d9bdb42e3005cde7b7e0f961999</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-03 13:39:02</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_user_role_90ea1d9bdb42e3005cde7b7e0f961999</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><encryption_context/><grantable>true</grantable><includes_roles/><name>x_snc_cfac.game_status_user</name><requires_subscription>-1</requires_subscription><scoped_admin>false</scoped_admin><suffix>game_status_user</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-12-03 13:39:02</sys_created_on><sys_id>90ea1d9bdb42e3005cde7b7e0f961999</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_snc_cfac.game_status_user</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_user_role_90ea1d9bdb42e3005cde7b7e0f961999</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-12-03 13:39:02</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>-1077152947</payload_hash>
+        <record_name>x_snc_cfac.game_status_user</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-03 13:39:03</sys_created_on>
+        <sys_id>e0ea1d9bdb42e3005cde7b7e0f9619aa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>167744b2d2f0000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-03 13:39:03</sys_updated_on>
+        <type>Role</type>
+        <update_guid>24ea1d9b2b42e30090c6e07acf2d0d9d</update_guid>
+        <update_guid_history>24ea1d9b2b42e30090c6e07acf2d0d9d:-1077152947</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">99deb1a7dbcee3005cde7b7e0f9619b0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:54:36</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>049836841a2d427080c8a0fc7826a100</sys_id>
+        <sys_metadata>90ea1d9bdb42e3005cde7b7e0f961999</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_cfac.game_status_user</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_user_role_90ea1d9bdb42e3005cde7b7e0f961999</sys_update_name>
+        <sys_update_version display_value="sys_user_role_90ea1d9bdb42e3005cde7b7e0f961999">e0ea1d9bdb42e3005cde7b7e0f9619aa</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:54:36</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

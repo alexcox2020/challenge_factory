@@ -4,6 +4,7 @@
         <client_script><![CDATA[addLoadEvent( function(){
 	checkServerData();
 	poll();
+	//runTimer();
 });
 
 function poll(){
@@ -12,6 +13,8 @@ function poll(){
 		poll();
 	}, 10000);
 }
+
+
 
 function stopGame(){
 	var ga = new GlideAjax('ChallengeFactoryAjax');
@@ -47,37 +50,44 @@ function runGame(){
 }
 
 function registerGame(){
-	if (!gameStatus.value){
-		//var sysId = g_form.getUniqueValue();
-		var title = getMessage("Register to game server.");
-		var dialogClass = GlideModal ? GlideModal : GlideDialogWindow;
-		var dd = new dialogClass("x_snc_cfac_register");
-		dd.setTitle(title);
-		dd.setPreference('sysparm_name', playerName.value);
-		dd.setPreference('sysparm_email', playerEmail.value);
-		dd.setPreference('sysparm_location', playerLocation.value);
-		dd.setPreference('sysparm_team', playerTeam.value);
-		dd.setPreference('sysparm_game_status_id', gameStatusId.value);
-		dd.setWidth(600);
-		dd.render();
+	var errorMessage=verifyInput();
+	if (errorMessage==1){
+		destroyErrorBar();
+		if (!gameStatus.value){
+			//var sysId = g_form.getUniqueValue();
+			var title = getMessage("Register to game server.");
+			var dialogClass = GlideModal ? GlideModal : GlideDialogWindow;
+			var dd = new dialogClass("x_snc_cfac_register");
+			dd.setTitle(title);
+			dd.setPreference('sysparm_name', playerName.value);
+			dd.setPreference('sysparm_email', playerEmail.value);
+			dd.setPreference('sysparm_location', playerLocation.value);
+			dd.setPreference('sysparm_team', playerTeam.value);
+			dd.setPreference('sysparm_game_status_id', gameStatusId.value);
+			dd.setWidth(600);
+			dd.render();
+		}
+		else{
+			overlay.style.display="block";
+			loading.style.display="block";
+			var ga = new GlideAjax('ChallengeFactoryAjax');
+			ga.addParam('sysparm_name', 'registerPlayer');
+			ga.addParam('sysparm_player_name', playerName.value);
+			ga.addParam('sysparm_email', playerEmail.value);
+			ga.addParam('sysparm_location', playerLocation.value);
+			ga.addParam('sysparm_team', playerTeam.value);
+			ga.addParam('sysparm_game_status_id', gameStatusId.value);
+			ga.getXMLAnswer(function(answer){
+				registerResponse(JSON.parse(answer));
+				checkServerData();
+				overlay.style.display="none";
+				loading.style.display="none";
+			});
+			
+		}
 	}
 	else{
-		overlay.style.display="block";
-		loading.style.display="block";
-		var ga = new GlideAjax('ChallengeFactoryAjax');
-		ga.addParam('sysparm_name', 'registerPlayer');
-		ga.addParam('sysparm_player_name', playerName.value);
-		ga.addParam('sysparm_email', playerEmail.value);
-		ga.addParam('sysparm_location', playerLocation.value);
-		ga.addParam('sysparm_team', playerTeam.value);
-		ga.addParam('sysparm_game_status_id', gameStatusId.value);
-		ga.getXMLAnswer(function(answer){
-			registerResponse(JSON.parse(answer));
-			checkServerData();
-			overlay.style.display="none";
-			loading.style.display="none";
-		});
-		
+		addErrorMessage(errorMessage);
 	}
 }
 
@@ -101,15 +111,17 @@ function ajaxResponse(response) {
 		gameStatusId.value=response.game_status_id;
 	}
 	if (response.game_status=='new'){
-		gameStatus.style.color="#cd104a";
-		gameStatus.innerHTML="Game is not registered";
+		//gameStatus.style.color="#cd104a";
+		gameStatus.innerHTML="";
+		playerStatus.style.display="block";
 		playerTeam.readOnly="";
 		setPlayer('new',response);
 		setButtons('new');
 	}
 	if (response.game_status=='registered'){
-		gameStatus.innerHTML="Game is registered";
-		gameStatus.style.color="#008F2F";
+		gameStatus.innerHTML="";
+		//gameStatus.style.color="#008F2F";
+		playerStatus.style.display="block";
 		playerTeam.value=response.team;
 		playerTeam.readOnly="true";
 		gel('sys_display.gameConfig').readOnly="true";
@@ -125,8 +137,11 @@ function ajaxResponse(response) {
 	}
 	
 	if (response.game_status=='running'){
+		gameStop.value=response.game_stop;
+		playerStatus.style.display="none";
 		gameStatus.innerHTML="Game is running";
 		gameStatus.style.color="#008F2F";
+		
 		playerTeam.value=response.team;
 		playerTeam.readOnly="true";
 		gel('sys_display.gameConfig').readOnly="true";
@@ -143,7 +158,8 @@ function ajaxResponse(response) {
 	
 	if (response.game_status=='finished'){
 		gameStatus.innerHTML="Game is finished";
-		gameStatus.style.color="#008F2F";
+		gameStatus.style.color="#636363";
+	    playerStatus.style.display="none";
 		playerTeam.value=response.team;
 		playerTeam.readOnly="true";
 		gel('sys_display.gameConfig').readOnly="true";
@@ -182,10 +198,13 @@ function setButtons(status){
 }
 
 function setPlayer(status,response){
+	
 	if (status=='new'){
 		playerName.readOnly="";
 		playerEmail.readOnly="";
 		playerStatus.style.color="#cd104a";
+		
+		//playerStatus.style.color="#ffffff";
 		playerStatus.innerHTML="Player is not registered";
 	}
 	if (status=='registered'){
@@ -193,8 +212,12 @@ function setPlayer(status,response){
 		playerName.readOnly="true";
 		playerEmail.value=response.email;
 		playerEmail.readOnly="true";
-		gel('sys_display.playerLocation').value=response.location;
-		gel('sys_display.playerLocation').readOnly="true";
+		
+		playerLocation.value=response.location;
+		$('display_hidden.playerLocation').value = $('sys_display.playerLocation').value=response.locationDisplay;
+		$('sys_display.playerLocation').readOnly="true";
+		$('lookup.playerLocation').style.visibility="hidden";
+		
 		playerStatus.style.color="#008F2F";
 		playerStatus.innerHTML="Player is registered";
 	}
@@ -203,8 +226,11 @@ function setPlayer(status,response){
 		playerName.readOnly="true";
 		playerEmail.value=response.email;
 		playerEmail.readOnly="true";
-		gel('sys_display.playerLocation').value=response.location;
-		gel('sys_display.playerLocation').readOnly="true";
+		
+		playerLocation.value=response.location;
+		$('display_hidden.playerLocation').value = $('sys_display.playerLocation').value=response.locationDisplay;
+		$('sys_display.playerLocation').readOnly="true";
+		
 		playerStatus.style.color="#008F2F";
 		playerStatus.innerHTML="";
 	}
@@ -252,15 +278,78 @@ function standaloneGame(){
 			rungameBtn.style.display="none";
 		}
 	}
+}
+
+function changeLabelColor(inputObj){
+	var labelObj=document.getElementById(inputObj.id+"Label");
+	if (inputObj.value==""){
+		labelObj.classList.add("red");
+	}
+	else{
+		labelObj.classList.remove("red");
+	}
+}
+
+function verifyInput(){
+	var output="The following mandatory fields are not filled in:";
+	if (document.getElementById("playerName").value==""){
+		output+=" Player name";
+	}
+	
+	if (document.getElementById("playerEmail").value==""){
+		output+=" Player e-mail";
+	}
+	
+	if (output=="The following mandatory fields are not filled in:"){
+		output=1;
+	}
+	return output;
+}
+
+function addErrorMessage(errorMessage){
+	//	var errorBarHtml='<div class="outputmsg outputmsg_error notification notification-error" ><span class="notification-icon icon-cross-circle"><span class="sr-only">Error Message</span></span><span class="outputmsg_text">'+errorMessage+'</span><button aria-label="Close Messages" id="close-messages-btn" class="btn btn-icon close icon-cross" onclick="GlideUI.get().clearOutputMessages(this); return false;"></button></div>';
+	var errorBarHtml='<div id="output_messages" class="outputmsg_container" style=""><h2 class="sr-only">Notifications</h2><button aria-label="Close Messages" id="close-messages-btn" class="btn btn-icon close icon-cross" onclick="GlideUI.get().clearOutputMessages(this); return false;"></button><div class="outputmsg_div" aria-live="polite" role="region"><div role="alert" class="outputmsg outputmsg_error notification notification-error"><span class="notification-icon icon-cross-circle"><span class="sr-only">Error Message</span></span><span class="outputmsg_text">'+errorMessage+'</span></div></div></div>';
+	
+	var errorBar=document.createElement("DIV");
+	
+	
+	errorBar.id="errorBar";
+	errorBar.innerHTML=errorBarHtml;
+	document.body.appendChild(errorBar);
+}
+
+function destroyErrorBar(){
+	if (document.getElementById("errorBar")){
+		document.body.removeChild(document.getElementById("errorBar"));
+	}
+}
+
+function runTimer(){
+	setTimeout(function(){
+		calculateTime();
+		runTimer();
+	}, 1000);
+}
+
+function calculateTime() {
+	console.log("GameStop"+gameStop.value);
+	var countDownDate = new Date(gameStop.value);
+	var now = new Date().getUTCDate();
+	var distance = countDownDate - now;
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	document.getElementById("timer").innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+/*	if (distance < 0) {
+		clearInterval(x);
+		document.getElementById("timer").innerHTML = "EXPIRED";
+	}*/
 }]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_snc_cfac_Player Registration.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
-<script>
-	
-</script>
+
 <style>
 	DIV.cfacmain{
 	position:relative;
@@ -291,19 +380,20 @@ function standaloneGame(){
 	DIV.cfaccontent{
 	position:absolute;
 	margin-top:50px;
-	padding-top:20px;
+	padding-top:80px;
 	padding-left:20px;
 	left:50%;
 	margin-left:-400px;
 	width:800px;
-	height:500px;
+	/*height:500px;*/
+	height:430px;
 	border:1px solid #bdc0c4
 	}
 	
 	IMG.factory{
 	position:absolute;
 	right:0px;
-	top:15px;
+	top:80px;
 	widht:150px;
 	height:150px;
 	}
@@ -345,51 +435,86 @@ function standaloneGame(){
 	
 	DIV.status{
 	position:absolute;
-	left:665px;
-	widht:130px;
-	height:25px;
-    color:#cd104a
+   /* color:#cd104a*/
+	
 	}
 	
 	DIV.game {
-	top:175px;
+	right:0px;
+	top:0px;
+	font-size:14pt;
+	font-weight:bold;
+	padding:5px;
+	padding-right:10px;
+	width:225px;
+	text-align:right;
 	}
 	
 	DIV.player {
-	top:195px;
-
+	right:0px;
+	top:0px;
+	font-size:14pt;
+	font-weight:bold;
+	padding:5px;
+	padding-right:10px;
+	width:225px;
+	text-align:right;
 	}
+	
+	.red{
+		color:#f95050;
+	}
+	
+	DIV.timer{
+	top:200px;
+	}
+	
+	DIV.topbar{
+	position:absolute;
+	right:0px;
+	top:0px;
+	font-size:14pt;
+	font-weight:bold;
+	background-color:#E6E8EA;
+	border-bottom:1px solid #bdc0c4;
+	width:100%;
+	height:37px;
+	}
+	
 	
 </style>
 	
 	
 	
 	<div class="cfacmain">
-		<div class="cfaccontent">
+		<div class="cfaccontent"> 
 			<input type="hidden" id="gameStatusId" name="gameStatusId" value=""/>
+			<input type="hidden" id="gameStop" name="gameStop" value=""/>
+			<div class="topbar">
+				<div class="game status" id="gameStatus"></div>
+				<div class="player status" id="playerStatus"></div>
+			</div>
 			
-			<div class="game status" id="gameStatus"></div>
-			<div class="player status" id="playerStatus"></div>
-			
+			<div class="timer status" id="timer"></div>
 				<div class="row form-group">
-					<label class="col-xs-12 control-label">Player name: </label>
+					<label class="col-xs-12 control-label red" id="playerNameLabel">Player name: </label>
 					<div class="col-sm-7 form-field" style="margin-bottom:25px;">
-							<input id="playerName" class="form-control" type="text" name="playerName"  />		
+							<input id="playerName" class="form-control" type="text" name="playerName" onkeyup="changeLabelColor(this)" />		
 					</div>
 				</div>
 				<div class="row form-group">
-					<label class="col-xs-12 control-label">E-mail: </label>
+					<label class="col-xs-12 control-label red" id="playerEmailLabel">E-mail: </label>
 					<div class="col-sm-7 form-field" style="margin-bottom:25px;">
-							<input id="playerEmail" class="form-control" type="text" name="playerEmail"  />
+							<input id="playerEmail" class="form-control" type="text" name="playerEmail"  onkeyup="changeLabelColor(this)"/>
 					</div>
 				</div>
-				<div class="row form-section">
+				<div class="row form-section" style="display:none">
 					<label class="col-xs-12 control-label">Location: </label>
 					<div class="col-sm-7 form-field" style="margin-bottom:25px;z-index:50;">
 						<g:ui_reference name="playerLocation" id="playerLocation" query="" table="cmn_location" show_popup="true" />
 					</div>
 				</div>
-				<div class="row form-section">
+				<div class="row form-section" style="display:none">
 					<label class="col-xs-12 control-label">Team: </label>
 					<div class="col-sm-7 form-field" style="margin-bottom:25px;">
 							<input id="playerTeam" class="form-control" type="text" name="playerTeam" />
@@ -398,7 +523,7 @@ function standaloneGame(){
 				<div class="row form-section" id="standalone" style="display:none">
 					<label class="col-xs-12 control-label">Game Configuration: </label>
 					<div class="col-sm-7 form-field" style="margin-bottom:25px;">
-							<g:ui_reference  id="gameConfig" class="form-control" type="text" name="gameConfig" query="client_download=false" table="x_snc_cfac_game_configuration" show_popup="true"/>
+							<g:ui_reference  id="gameConfig" class="form-control disabled" type="text" name="gameConfig" query="client_download=false" table="x_snc_cfac_game_configuration" show_popup="true"/>
 					</div>
 				</div>
 				<button class="btn bb register" onclick="registerGame();" name="registerBtn" id="registerBtn" style="min-width: 5em">Register</button>
@@ -408,7 +533,7 @@ function standaloneGame(){
 			<img src="factory.png" class="factory" id="factory" onclick="standaloneGame()"/>
 		</div>
 		<div class="overlay" id="overlay"></div>
-		
+		<br/>
 		<img src="loading.gif" class="loading" id="loading" width="16" height="11"/>
 	</div>
 </j:jelly>]]></html>
@@ -418,13 +543,13 @@ function standaloneGame(){
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-04 12:27:49</sys_created_on>
         <sys_id>f814de2bdb0227005cde7b7e0f961922</sys_id>
-        <sys_mod_count>206</sys_mod_count>
+        <sys_mod_count>366</sys_mod_count>
         <sys_name>Player Registration</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_ui_page_f814de2bdb0227005cde7b7e0f961922</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2019-01-01 16:12:29</sys_updated_on>
+        <sys_updated_on>2019-04-28 09:17:57</sys_updated_on>
     </sys_ui_page>
 </record_update>

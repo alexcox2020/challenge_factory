@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application>
+        <filter/>
+        <name>Challenge defaults</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_snc_cfac.challenge_defaults_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:36:09</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>039a75a3dbcee3005cde7b7e0f9619fa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Challenge defaults</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_module_039a75a3dbcee3005cde7b7e0f9619fa</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:36:09</sys_updated_on>
+        <table>x_snc_cfac_challenge_defaults</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_module_039a75a3dbcee3005cde7b7e0f9619fa</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application><filter/><name>Challenge defaults</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>x_snc_cfac.challenge_defaults_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-12-04 10:36:09</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>039a75a3dbcee3005cde7b7e0f9619fa</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Challenge defaults</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_ui_module_039a75a3dbcee3005cde7b7e0f9619fa</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-12-04 10:36:09</sys_updated_on><table>x_snc_cfac_challenge_defaults</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+        <payload_hash>281711603</payload_hash>
+        <record_name>Challenge defaults</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:36:09</sys_created_on>
+        <sys_id>439ab5a3dbcee3005cde7b7e0f961908</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16778ca17d00000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:36:09</sys_updated_on>
+        <type>Module</type>
+        <update_guid>8b9ab5a36acee300afad659422f1f907</update_guid>
+        <update_guid_history>8b9ab5a36acee300afad659422f1f907:281711603</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:55:53</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>4de630a4b6a44f80890eb27b3e004000</sys_id>
+        <sys_metadata>039a75a3dbcee3005cde7b7e0f9619fa</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Challenge defaults</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_module_039a75a3dbcee3005cde7b7e0f9619fa</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_039a75a3dbcee3005cde7b7e0f9619fa">439ab5a3dbcee3005cde7b7e0f961908</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:55:53</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

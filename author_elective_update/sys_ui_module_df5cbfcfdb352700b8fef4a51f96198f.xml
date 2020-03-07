@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application>
+        <filter/>
+        <name>Game Data</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_snc_cfac.game_data_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-11-20 20:30:23</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>df5cbfcfdb352700b8fef4a51f96198f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Game Data</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_module_df5cbfcfdb352700b8fef4a51f96198f</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-11-20 20:30:23</sys_updated_on>
+        <table>x_snc_cfac_game_data</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_module_df5cbfcfdb352700b8fef4a51f96198f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application><filter/><name>Game Data</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>x_snc_cfac.game_data_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>alex.cox</sys_created_by><sys_created_on>2018-11-20 20:30:23</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>df5cbfcfdb352700b8fef4a51f96198f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Game Data</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_ui_module_df5cbfcfdb352700b8fef4a51f96198f</sys_update_name><sys_updated_by>alex.cox</sys_updated_by><sys_updated_on>2018-11-20 20:30:23</sys_updated_on><table>x_snc_cfac_game_data</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+        <payload_hash>79986271</payload_hash>
+        <record_name>Game Data</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2018-11-20 20:30:24</sys_created_on>
+        <sys_id>df5cbfcfdb352700b8fef4a51f961991</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16732d11b390000001</sys_recorded_at>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2018-11-20 20:30:24</sys_updated_on>
+        <type>Module</type>
+        <update_guid>1b5cbfcf53352700385ba545802e9991</update_guid>
+        <update_guid_history>1b5cbfcf53352700385ba545802e9991:79986271</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:55:46</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>6e8d0f37482e40808e751335d867e400</sys_id>
+        <sys_metadata>df5cbfcfdb352700b8fef4a51f96198f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Game Data</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_module_df5cbfcfdb352700b8fef4a51f96198f</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_df5cbfcfdb352700b8fef4a51f96198f">df5cbfcfdb352700b8fef4a51f961991</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:55:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="DELETE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>standalone_game</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-10 19:43:41</sys_created_on>
+        <sys_id>a3a19c4cdb316f005cde7b7e0f9619d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>standalone_game</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_policy_action_a3a19c4cdb316f005cde7b7e0f9619d8</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-10 19:43:41</sys_updated_on>
+        <table>x_snc_cfac_player_status</table>
+        <ui_policy display_value="Statis: Registered">aec6c844db316f005cde7b7e0f9619d2</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_policy_action_a3a19c4cdb316f005cde7b7e0f9619d8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action"><sys_ui_policy_action action="INSERT_OR_UPDATE"><cleared>false</cleared><disabled>true</disabled><field>standalone_game</field><mandatory>ignore</mandatory><sys_class_name>sys_ui_policy_action</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-11-10 19:43:41</sys_created_on><sys_id>a3a19c4cdb316f005cde7b7e0f9619d8</sys_id><sys_mod_count>0</sys_mod_count><sys_name>standalone_game</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_ui_policy_action_a3a19c4cdb316f005cde7b7e0f9619d8</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-11-10 19:43:41</sys_updated_on><table>x_snc_cfac_player_status</table><ui_policy display_value="Statis: Registered">aec6c844db316f005cde7b7e0f9619d2</ui_policy><visible>ignore</visible></sys_ui_policy_action></record_update>]]></payload>
+        <payload_hash>1953576864</payload_hash>
+        <record_name>standalone_game</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-10 19:43:41</sys_created_on>
+        <sys_id>69c19c4cdb316f005cde7b7e0f9619eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>166ff26c0040000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-10 19:43:41</sys_updated_on>
+        <type>UI Policy Action</type>
+        <update_guid>a1c19c4c9d316f0004e69683f467c8eb</update_guid>
+        <update_guid_history>a1c19c4c9d316f0004e69683f467c8eb:1953576864</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-29 16:54:26</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_policy_action">sys_ui_policy_action</sys_db_object>
+        <sys_id>357b64e50a344160a7700b960574a400</sys_id>
+        <sys_metadata>a3a19c4cdb316f005cde7b7e0f9619d8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>standalone_game</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_policy_action_a3a19c4cdb316f005cde7b7e0f9619d8</sys_update_name>
+        <sys_update_version display_value="sys_ui_policy_action_a3a19c4cdb316f005cde7b7e0f9619d8">69c19c4cdb316f005cde7b7e0f9619eb</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-29 16:54:26</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

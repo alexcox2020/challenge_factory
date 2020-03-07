@@ -29,17 +29,18 @@
         <content_type>image/gif</content_type>
         <encryption_context/>
         <file_name>image</file_name>
+        <hash/>
         <image_height>11</image_height>
         <image_width>16</image_width>
         <size_bytes>723</size_bytes>
         <size_compressed>559</size_compressed>
-        <state/>
+        <state>available</state>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-18 14:03:26</sys_created_on>
         <sys_id>0c503240db2a63405cde7b7e0f961980</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2018-12-18 14:03:27</sys_updated_on>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>guest</sys_updated_by>
+        <sys_updated_on>2020-03-07 13:34:45</sys_updated_on>
         <table_name>ZZ_YYdb_image</table_name>
         <table_sys_id>2a307640db2a63405cde7b7e0f961977</table_sys_id>
     </sys_attachment>

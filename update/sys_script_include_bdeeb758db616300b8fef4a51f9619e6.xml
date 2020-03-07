@@ -68,8 +68,7 @@ ChallengeFactoryClientServer.prototype = {
 					gs.info("[CFAC] Info: Server controlled game started.");
 					gs.addInfoMessage("Starting your Challenge - Good luck! :-)");
 					var gdt = new GlideDateTime();
-					//this is wrong this is a BUG!!! the end time should be download from server not calculated on client
-					gdt.add(60000*gameStatus.game_configuration.game_duration);
+					gdt.setValue(jSonResponse.result[0].game_stop);	
 					gameStatus.game_stop=gdt;
 					gs.eventQueueScheduled("x_snc_cfac.endGame",gameStatus,gameStatus.sys_id, "Client", gdt);
 					//create reset event
@@ -78,6 +77,7 @@ ChallengeFactoryClientServer.prototype = {
 						gs.eventQueueScheduled("SecurityChallenge.resetOptions",gameStatus,gameStatus.sys_id, "Client", gdt);
 					}
 					var gdtCur = new GlideDateTime();
+					gdtCur.setValue(jSonResponse.result[0].game_start);
 					gameStatus.game_start=gdtCur;
 					gameStatus.game_status="started";
 					gameStatus.update();
@@ -102,7 +102,7 @@ ChallengeFactoryClientServer.prototype = {
 				if (jSonResponse.result.length>0){
 					gs.info("[CFAC] Info: Server controled game ended.");
 					var gdt = new GlideDateTime();
-					gameStatus.game_stop=gdt;
+					//gameStatus.game_stop=gdt;
 					gameStatus.game_status="finished";
 					gameStatus.update();
 					this.updatePlayerStatusBulk(gameStatus,"finished");
@@ -442,13 +442,13 @@ ChallengeFactoryClientServer.prototype = {
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:23:17</sys_created_on>
         <sys_id>bdeeb758db616300b8fef4a51f9619e6</sys_id>
-        <sys_mod_count>141</sys_mod_count>
+        <sys_mod_count>143</sys_mod_count>
         <sys_name>ChallengeFactoryClientServer</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_bdeeb758db616300b8fef4a51f9619e6</sys_update_name>
-        <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2019-01-17 20:38:16</sys_updated_on>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2019-04-01 19:59:04</sys_updated_on>
     </sys_script_include>
 </record_update>

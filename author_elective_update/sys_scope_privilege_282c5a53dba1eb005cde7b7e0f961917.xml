@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="DELETE">
+        <operation>delete</operation>
+        <source_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-08 21:53:48</sys_created_on>
+        <sys_id>282c5a53dba1eb005cde7b7e0f961917</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>sysevent</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_scope_privilege_282c5a53dba1eb005cde7b7e0f961917</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-08 22:00:48</sys_updated_on>
+        <target_name>sysevent</target_name>
+        <target_scope display_value="Global">global</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_scope_privilege_282c5a53dba1eb005cde7b7e0f961917</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege"><sys_scope_privilege action="INSERT_OR_UPDATE"><operation>delete</operation><source_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</source_scope><status>allowed</status><sys_class_name>sys_scope_privilege</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-11-08 21:53:48</sys_created_on><sys_id>282c5a53dba1eb005cde7b7e0f961917</sys_id><sys_mod_count>3</sys_mod_count><sys_name>sysevent</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_scope_privilege_282c5a53dba1eb005cde7b7e0f961917</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-11-08 22:00:48</sys_updated_on><target_name>sysevent</target_name><target_scope display_value="Global">global</target_scope><target_type>sys_db_object</target_type></sys_scope_privilege></record_update>]]></payload>
+        <payload_hash>1198709992</payload_hash>
+        <record_name>sysevent</record_name>
+        <reverted_from/>
+        <source>08c13b81db07ab00b8fef4a51f961999</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-08 22:00:48</sys_created_on>
+        <sys_id>6afd52d3dba1eb005cde7b7e0f9619e9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_recorded_at>166f55791650000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-01-15 17:56:18</sys_updated_on>
+        <type>Cross scope privilege</type>
+        <update_guid>e2fd52d30aa1eb00a0687fcc74c9c1e9</update_guid>
+        <update_guid_history>e2fd52d30aa1eb00a0687fcc74c9c1e9:1198709992,c3ed9e9385a1eb00ddadc69559fb71dd:2119296738,86cd9e9398a1eb0060c686cc355e45f4:1877778004,3b5c1a5311a1eb00e78384701312af5a:1198709992</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-08 22:19:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_scope_privilege">sys_scope_privilege</sys_db_object>
+        <sys_id>90653100720a4b10ba6b48f61f9b0240</sys_id>
+        <sys_metadata>282c5a53dba1eb005cde7b7e0f961917</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sysevent</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_scope_privilege_282c5a53dba1eb005cde7b7e0f961917</sys_update_name>
+        <sys_update_version display_value="sys_scope_privilege_282c5a53dba1eb005cde7b7e0f961917">6afd52d3dba1eb005cde7b7e0f9619e9</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-08 22:19:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

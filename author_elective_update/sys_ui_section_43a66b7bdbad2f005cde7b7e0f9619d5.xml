@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="Advanced" section_id="43a66b7bdbad2f005cde7b7e0f9619d5" sys_domain="global" table="x_snc_cfac_player_status" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>uid</element>
+            <position>0</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-16 10:40:15</sys_created_on>
+            <sys_id>94aea35fdb96ef005cde7b7e0f9619ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Advanced" display_value="Advanced" name="x_snc_cfac_player_status" sys_domain="global" view="Default view">43a66b7bdbad2f005cde7b7e0f9619d5</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-16 10:40:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>1</position>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-12-16 10:40:15</sys_created_on>
+            <sys_id>18aea35fdb96ef005cde7b7e0f9619ff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Advanced" display_value="Advanced" name="x_snc_cfac_player_status" sys_domain="global" view="Default view">43a66b7bdbad2f005cde7b7e0f9619d5</sys_ui_section>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-12-16 10:40:15</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption>Advanced</caption>
+            <header>false</header>
+            <name>x_snc_cfac_player_status</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>martin.meduna</sys_created_by>
+            <sys_created_on>2018-11-10 16:35:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>43a66b7bdbad2f005cde7b7e0f9619d5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Advanced</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_ui_section_43a66b7bdbad2f005cde7b7e0f9619d5</sys_update_name>
+            <sys_updated_by>martin.meduna</sys_updated_by>
+            <sys_updated_on>2018-11-10 16:35:23</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_section_43a66b7bdbad2f005cde7b7e0f9619d5</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="Advanced" section_id="43a66b7bdbad2f005cde7b7e0f9619d5" sys_domain="global" table="x_snc_cfac_player_status" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>uid</element><position>0</position><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-12-16 10:40:15</sys_created_on><sys_id>94aea35fdb96ef005cde7b7e0f9619ff</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Advanced" display_value="Advanced" name="x_snc_cfac_player_status" sys_domain="global" view="Default view">43a66b7bdbad2f005cde7b7e0f9619d5</sys_ui_section><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-12-16 10:40:15</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.split</element><position>1</position><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-12-16 10:40:15</sys_created_on><sys_id>18aea35fdb96ef005cde7b7e0f9619ff</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Advanced" display_value="Advanced" name="x_snc_cfac_player_status" sys_domain="global" view="Default view">43a66b7bdbad2f005cde7b7e0f9619d5</sys_ui_section><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-12-16 10:40:15</sys_updated_on><sys_user/><type>.split</type></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption>Advanced</caption><header>false</header><name>x_snc_cfac_player_status</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-11-10 16:35:23</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>43a66b7bdbad2f005cde7b7e0f9619d5</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Advanced</sys_name><sys_overrides/><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_ui_section_43a66b7bdbad2f005cde7b7e0f9619d5</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-11-10 16:35:23</sys_updated_on><sys_user/><title>false</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+        <payload_hash>-919991776</payload_hash>
+        <record_name>Player Status</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-16 10:40:15</sys_created_on>
+        <sys_id>dcaee35fdb96ef005cde7b7e0f961900</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>167b69a29bb0000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-16 10:40:15</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>58aee35f8096ef00e8206cf89fee3400</update_guid>
+        <update_guid_history>58aee35f8096ef00e8206cf89fee3400:-919991776,5fa6ab7be7ad2f004c59e573599676a5:2098095609</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-16 10:40:35</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>0a1ab402833649f58ac11bda82c7df59</sys_id>
+        <sys_metadata>43a66b7bdbad2f005cde7b7e0f9619d5</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Advanced</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent display_value="Player Status">3369dc6cdba16300b8fef4a51f9619c7</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_section_43a66b7bdbad2f005cde7b7e0f9619d5</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_43a66b7bdbad2f005cde7b7e0f9619d5">dcaee35fdb96ef005cde7b7e0f961900</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-16 10:40:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

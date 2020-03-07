@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="DELETE">
+        <active>true</active>
+        <conditions table="x_snc_cfac_player_status">game_status=registered^EQ<item endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="registered"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <isolate_script>true</isolate_script>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>false</reverse_if_false>
+        <run_scripts>true</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+// 	var register='b7af462fdb6deb005cde7b7e0f961914';
+// 	var start='3995d6dbdb61eb005cde7b7e0f96193e';
+// 	var newgame='1b9f33bfdbed2f005cde7b7e0f961978';
+// 	var stop='c8289e5fdb61eb005cde7b7e0f9619a1';
+	
+// 	g_form.getElement(register).hide();
+// 	g_form.getElement(start).hide();
+// 	g_form.getElement(newgame).hide();
+// 	g_form.getElement(stop).hide();
+	
+	var items = $$('BUTTON').each(function(item){
+		if(item.innerHTML == 'Register...'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Start game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'New game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Stop game'){
+			item.hide();
+			return;
+		}
+	});
+}]]></script_true>
+        <set_values/>
+        <short_description>Status: Registered</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-10 18:57:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>aec6c844db316f005cde7b7e0f9619d2</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Status: Registered</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_policy_aec6c844db316f005cde7b7e0f9619d2</sys_update_name>
+        <sys_updated_by>erich.dobroth</sys_updated_by>
+        <sys_updated_on>2018-11-12 22:13:47</sys_updated_on>
+        <table>x_snc_cfac_player_status</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_policy_aec6c844db316f005cde7b7e0f9619d2</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_policy"&gt;&lt;sys_ui_policy action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;conditions table="x_snc_cfac_player_status"&gt;game_status=registered^EQ&lt;item endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="registered"/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/conditions&gt;&lt;description/&gt;&lt;global&gt;true&lt;/global&gt;&lt;inherit&gt;false&lt;/inherit&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;model_id/&gt;&lt;model_table/&gt;&lt;on_load&gt;true&lt;/on_load&gt;&lt;order&gt;100&lt;/order&gt;&lt;reverse_if_false&gt;false&lt;/reverse_if_false&gt;&lt;run_scripts&gt;true&lt;/run_scripts&gt;&lt;script_false&gt;&lt;![CDATA[function onCondition() {
+
+}]]&gt;&lt;/script_false&gt;&lt;script_true&gt;&lt;![CDATA[function onCondition() {
+// 	var register='b7af462fdb6deb005cde7b7e0f961914';
+// 	var start='3995d6dbdb61eb005cde7b7e0f96193e';
+// 	var newgame='1b9f33bfdbed2f005cde7b7e0f961978';
+// 	var stop='c8289e5fdb61eb005cde7b7e0f9619a1';
+	
+// 	g_form.getElement(register).hide();
+// 	g_form.getElement(start).hide();
+// 	g_form.getElement(newgame).hide();
+// 	g_form.getElement(stop).hide();
+	
+	var items = $$('BUTTON').each(function(item){
+		if(item.innerHTML == 'Register...'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Start game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'New game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Stop game'){
+			item.hide();
+			return;
+		}
+	});
+}]]&gt;&lt;/script_true&gt;&lt;set_values/&gt;&lt;short_description&gt;Status: Registered&lt;/short_description&gt;&lt;sys_class_name&gt;sys_ui_policy&lt;/sys_class_name&gt;&lt;sys_created_by&gt;martin.meduna&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-11-10 18:57:13&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;aec6c844db316f005cde7b7e0f9619d2&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Status: Registered&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Challenge Factory" source="x_snc_cfac"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Challenge Factory"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_policy_aec6c844db316f005cde7b7e0f9619d2&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erich.dobroth&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-11-12 22:13:47&lt;/sys_updated_on&gt;&lt;table&gt;x_snc_cfac_player_status&lt;/table&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_ui_policy&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1532946819</payload_hash>
+        <record_name>Status: Registered</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erich.dobroth</sys_created_by>
+        <sys_created_on>2018-11-12 22:13:47</sys_created_on>
+        <sys_id>3b47036cdb752700b8fef4a51f9619ab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16709fce5080000001</sys_recorded_at>
+        <sys_updated_by>erich.dobroth</sys_updated_by>
+        <sys_updated_on>2018-11-12 22:13:47</sys_updated_on>
+        <type>UI Policy</type>
+        <update_guid>b347036ced752700aaa37103d8f39eab</update_guid>
+        <update_guid_history>b347036ced752700aaa37103d8f39eab:-1532946819,d91702688cb12700c77162dfed4013f9:-1623427423,2cb85c0466716f00e692e5242053ac4f:1265075489,b027c84434316f00b5aab26cc97b5ddc:242622676</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-29 16:54:26</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_policy">sys_ui_policy</sys_db_object>
+        <sys_id>02970a07eacb47a2818fcdbc5c567e99</sys_id>
+        <sys_metadata>aec6c844db316f005cde7b7e0f9619d2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Status: Registered</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent display_value="Player Status">3369dc6cdba16300b8fef4a51f9619c7</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_policy_aec6c844db316f005cde7b7e0f9619d2</sys_update_name>
+        <sys_update_version display_value="sys_ui_policy_aec6c844db316f005cde7b7e0f9619d2">3b47036cdb752700b8fef4a51f9619ab</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-29 16:54:26</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

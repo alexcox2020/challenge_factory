@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="DELETE">
+        <active>true</active>
+        <conditions table="x_snc_cfac_player_status">game_status=new game^EQ<item endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="new game"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <global>true</global>
+        <inherit>false</inherit>
+        <isolate_script>true</isolate_script>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>100</order>
+        <reverse_if_false>false</reverse_if_false>
+        <run_scripts>true</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+	
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+// 	var register='b7af462fdb6deb005cde7b7e0f961914';
+// 	var start='3995d6dbdb61eb005cde7b7e0f96193e';
+// 	var newgame='1b9f33bfdbed2f005cde7b7e0f961978';
+// 	var stop='c8289e5fdb61eb005cde7b7e0f9619a1';
+// 	g_form.getElement(newgame).hide();
+// 	g_form.getElement(stop).hide();
+
+	var items = $$('BUTTON').each(function(item){
+		if(item.innerHTML == 'New game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Stop game'){
+			item.hide();
+			return;
+		}
+	});	
+
+}]]></script_true>
+        <set_values/>
+        <short_description>Status: New game</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-10 18:31:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>75a0c0ccdbfd2f005cde7b7e0f961901</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Status: New game</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_policy_75a0c0ccdbfd2f005cde7b7e0f961901</sys_update_name>
+        <sys_updated_by>erich.dobroth</sys_updated_by>
+        <sys_updated_on>2018-11-12 22:12:26</sys_updated_on>
+        <table>x_snc_cfac_player_status</table>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_ui_policy>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_policy_75a0c0ccdbfd2f005cde7b7e0f961901</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_policy"&gt;&lt;sys_ui_policy action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;conditions table="x_snc_cfac_player_status"&gt;game_status=new game^EQ&lt;item endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="new game"/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/conditions&gt;&lt;description/&gt;&lt;global&gt;true&lt;/global&gt;&lt;inherit&gt;false&lt;/inherit&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;model_id/&gt;&lt;model_table/&gt;&lt;on_load&gt;true&lt;/on_load&gt;&lt;order&gt;100&lt;/order&gt;&lt;reverse_if_false&gt;false&lt;/reverse_if_false&gt;&lt;run_scripts&gt;true&lt;/run_scripts&gt;&lt;script_false&gt;&lt;![CDATA[function onCondition() {
+	
+}]]&gt;&lt;/script_false&gt;&lt;script_true&gt;&lt;![CDATA[function onCondition() {
+// 	var register='b7af462fdb6deb005cde7b7e0f961914';
+// 	var start='3995d6dbdb61eb005cde7b7e0f96193e';
+// 	var newgame='1b9f33bfdbed2f005cde7b7e0f961978';
+// 	var stop='c8289e5fdb61eb005cde7b7e0f9619a1';
+// 	g_form.getElement(newgame).hide();
+// 	g_form.getElement(stop).hide();
+
+	var items = $$('BUTTON').each(function(item){
+		if(item.innerHTML == 'New game'){
+			item.hide();
+			return;
+		}
+		if(item.innerHTML == 'Stop game'){
+			item.hide();
+			return;
+		}
+	});	
+
+}]]&gt;&lt;/script_true&gt;&lt;set_values/&gt;&lt;short_description&gt;Status: New game&lt;/short_description&gt;&lt;sys_class_name&gt;sys_ui_policy&lt;/sys_class_name&gt;&lt;sys_created_by&gt;martin.meduna&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-11-10 18:31:13&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;75a0c0ccdbfd2f005cde7b7e0f961901&lt;/sys_id&gt;&lt;sys_mod_count&gt;18&lt;/sys_mod_count&gt;&lt;sys_name&gt;Status: New game&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Challenge Factory" source="x_snc_cfac"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Challenge Factory"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_policy_75a0c0ccdbfd2f005cde7b7e0f961901&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;erich.dobroth&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-11-12 22:12:26&lt;/sys_updated_on&gt;&lt;table&gt;x_snc_cfac_player_status&lt;/table&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_ui_policy&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-952434221</payload_hash>
+        <record_name>Status: New game</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>erich.dobroth</sys_created_by>
+        <sys_created_on>2018-11-12 22:12:26</sys_created_on>
+        <sys_id>fff6036cdb752700b8fef4a51f96197c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>16709fba74d0000001</sys_recorded_at>
+        <sys_updated_by>erich.dobroth</sys_updated_by>
+        <sys_updated_on>2018-11-12 22:12:26</sys_updated_on>
+        <type>UI Policy</type>
+        <update_guid>7bf6036c3c752700b6461ede6235b17c</update_guid>
+        <update_guid_history>7bf6036c3c752700b6461ede6235b17c:-952434221,58a85c0441716f00a40dba935304e702:-1339456338,426754c016716f00e8c0be113827bfc1:-1808965157,3437d0c032716f005570d30322d4be8f:1022077910,59171c809b716f003c557115e63488f5:-982793496,8ba61c8071716f005b2500ad07c42c65:1022077910,dd96948039716f00dfc985b9eb9c4b11:-1002698874,c73690804d716f006f699ce77bde982a:-360919287,1b06108009716f00eca03e13723c509f:-2134273863,25f51c4006716f008c4ecdd97cbf0bf8:1078109158,98c5d840c2716f008070254470a752ee:-619297786,1321d04c92316f00f3716f7a0a3b29e6:1493710787,4af0dc0c0f316f00e7b97536164e4f1b:51220645,6a3248001f316f006653d8a396a712c8:-1523351421,76f184008d316f005085f56057e4b341:836117487,1fc1440053316f00cc8f4cd70c354803:-522983585,e0614cccaefd2f00cbbabe81b66f25f0:-583220864,1b5188cc0bfd2f002661e117b72c7aae:-1396393601,c83188cc15fd2f00bdfc9144496ad351:1102269470</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-29 16:54:18</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_policy">sys_ui_policy</sys_db_object>
+        <sys_id>2d6815bf570445ceb8c7a96d354a55b9</sys_id>
+        <sys_metadata>75a0c0ccdbfd2f005cde7b7e0f961901</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Status: New game</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent display_value="Player Status">3369dc6cdba16300b8fef4a51f9619c7</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_policy_75a0c0ccdbfd2f005cde7b7e0f961901</sys_update_name>
+        <sys_update_version display_value="sys_ui_policy_75a0c0ccdbfd2f005cde7b7e0f961901">fff6036cdb752700b8fef4a51f96197c</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-29 16:54:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

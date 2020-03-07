@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_policy">
     <sys_ui_policy action="INSERT_OR_UPDATE">
         <active>true</active>
-        <conditions table="x_snc_cfac_game_server">game_status=started^EQ<item endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="started"/>
+        <conditions table="x_snc_cfac_game_server">game_status=started^EQ<item display_value="Started" endquery="false" field="game_status" goto="false" newquery="false" operator="=" or="false" value="started"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </conditions>
         <description/>

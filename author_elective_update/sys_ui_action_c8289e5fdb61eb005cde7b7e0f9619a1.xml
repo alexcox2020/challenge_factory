@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="DELETE">
+        <action_name/>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2/>
+        <comments>stand alone "STOP"</comments>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <name>Stop game</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[action.setRedirectURL(current);
+var cfU = new ChallengeFactoryUtils();
+cfU.clearEventQueue("x_snc_cfac.endGame","Client");
+cfU.clearEventQueue("x_snc_cfac.createObstacle");
+var gdt = new GlideDateTime();
+current.game_stop=gdt;
+current.game_status="finished";
+current.update();]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-08 21:37:27</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c8289e5fdb61eb005cde7b7e0f9619a1</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Stop game</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_action_c8289e5fdb61eb005cde7b7e0f9619a1</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-10 18:27:13</sys_updated_on>
+        <table>x_snc_cfac_player_status</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_action_c8289e5fdb61eb005cde7b7e0f9619a1</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_action"&gt;&lt;sys_ui_action action="INSERT_OR_UPDATE"&gt;&lt;action_name/&gt;&lt;active&gt;true&lt;/active&gt;&lt;client&gt;false&lt;/client&gt;&lt;client_script_v2/&gt;&lt;comments&gt;stand alone "STOP"&lt;/comments&gt;&lt;condition/&gt;&lt;form_action&gt;true&lt;/form_action&gt;&lt;form_button&gt;true&lt;/form_button&gt;&lt;form_button_v2&gt;false&lt;/form_button_v2&gt;&lt;form_context_menu&gt;false&lt;/form_context_menu&gt;&lt;form_link&gt;false&lt;/form_link&gt;&lt;form_menu_button_v2&gt;false&lt;/form_menu_button_v2&gt;&lt;form_style/&gt;&lt;hint/&gt;&lt;isolate_script&gt;false&lt;/isolate_script&gt;&lt;list_action&gt;false&lt;/list_action&gt;&lt;list_banner_button&gt;false&lt;/list_banner_button&gt;&lt;list_button&gt;false&lt;/list_button&gt;&lt;list_choice&gt;false&lt;/list_choice&gt;&lt;list_context_menu&gt;false&lt;/list_context_menu&gt;&lt;list_link&gt;false&lt;/list_link&gt;&lt;list_save_with_form_button&gt;false&lt;/list_save_with_form_button&gt;&lt;list_style/&gt;&lt;name&gt;Stop game&lt;/name&gt;&lt;onclick/&gt;&lt;order&gt;100&lt;/order&gt;&lt;script&gt;&lt;![CDATA[action.setRedirectURL(current);
+var cfU = new ChallengeFactoryUtils();
+cfU.clearEventQueue("x_snc_cfac.endGame","Client");
+cfU.clearEventQueue("x_snc_cfac.createObstacle");
+var gdt = new GlideDateTime();
+current.game_stop=gdt;
+current.game_status="finished";
+current.update();]]&gt;&lt;/script&gt;&lt;show_insert&gt;true&lt;/show_insert&gt;&lt;show_multiple_update&gt;false&lt;/show_multiple_update&gt;&lt;show_query&gt;false&lt;/show_query&gt;&lt;show_update&gt;true&lt;/show_update&gt;&lt;sys_class_name&gt;sys_ui_action&lt;/sys_class_name&gt;&lt;sys_created_by&gt;martin.meduna&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2018-11-08 21:37:27&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;c8289e5fdb61eb005cde7b7e0f9619a1&lt;/sys_id&gt;&lt;sys_mod_count&gt;6&lt;/sys_mod_count&gt;&lt;sys_name&gt;Stop game&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Challenge Factory" source="x_snc_cfac"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Challenge Factory"&gt;23163d33db512f4070bc54b4ce96199f&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_action_c8289e5fdb61eb005cde7b7e0f9619a1&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;martin.meduna&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2018-11-10 18:27:13&lt;/sys_updated_on&gt;&lt;table&gt;x_snc_cfac_player_status&lt;/table&gt;&lt;ui11_compatible&gt;true&lt;/ui11_compatible&gt;&lt;ui16_compatible&gt;false&lt;/ui16_compatible&gt;&lt;/sys_ui_action&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>665499562</payload_hash>
+        <record_name>Stop game</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-11-10 18:27:13</sys_created_on>
+        <sys_id>d940888cdbfd2f005cde7b7e0f96197f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>166fee0bcca0000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-11-10 18:27:13</sys_updated_on>
+        <type>UI Action</type>
+        <update_guid>5540888c00fd2f003f51b6241edb6e7f</update_guid>
+        <update_guid_history>5540888c00fd2f003f51b6241edb6e7f:665499562,e64a7f7b38ed2f00264e253a21da8a4a:-35179846,5c81f6532ae1eb005fbe38e3238ba2ad:665499562,d6736ed74ea1eb002565f7494d1c6080:1403581312,ee395e9f6a61eb00fbeb3bd8e93692db:665499562,66a8969f0761eb00be647374b3a8c1eb:-550746886,aca8129f9061eb0015f25f799bf3e731:1850176686</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-29 16:53:07</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_action">sys_ui_action</sys_db_object>
+        <sys_id>21dea6ce43024152bf442e29ea9ffba4</sys_id>
+        <sys_metadata>c8289e5fdb61eb005cde7b7e0f9619a1</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Stop game</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent display_value="Player Status">3369dc6cdba16300b8fef4a51f9619c7</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_action_c8289e5fdb61eb005cde7b7e0f9619a1</sys_update_name>
+        <sys_update_version display_value="sys_ui_action_c8289e5fdb61eb005cde7b7e0f9619a1">d940888cdbfd2f005cde7b7e0f96197f</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-29 16:53:07</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

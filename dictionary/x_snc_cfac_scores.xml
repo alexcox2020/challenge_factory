@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Scores" max_length="40" name="x_snc_cfac_scores" type="collection">
+    <element label="Scores" max_length="40" name="x_snc_cfac_scores" sizeclass="24596" type="collection">
         <element label="Client Upload" max_length="40" name="client_upload" type="boolean"/>
         <element label="Country" max_length="32" name="country" reference="core_country" type="reference"/>
         <element label="Domain Skill" max_length="60" name="domain_skill" type="string"/>

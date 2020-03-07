@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>sys_popup,my_ideas</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2019-03-31 17:03:45</sys_created_on>
+        <sys_id>a155f91ddba4ff007d0754dadc96195b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Sys_popup,my_ideas</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_view_a155f91ddba4ff007d0754dadc96195b</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2019-03-31 17:03:45</sys_updated_on>
+        <title>Sys_popup,my_ideas</title>
+        <user/>
+    </sys_ui_view>
+</record_update>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application>
+        <filter/>
+        <name>Game Status</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_snc_cfac.game_status_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-03 13:39:03</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>acea1d9bdb42e3005cde7b7e0f9619b0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Game Status</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_ui_module_acea1d9bdb42e3005cde7b7e0f9619b0</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-03 13:39:03</sys_updated_on>
+        <table>x_snc_cfac_game_status</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_ui_module_acea1d9bdb42e3005cde7b7e0f9619b0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Challenge Factory">975cbfcfdb352700b8fef4a51f96198d</application><filter/><name>Game Status</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>x_snc_cfac.game_status_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>martin.meduna</sys_created_by><sys_created_on>2018-12-03 13:39:03</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>acea1d9bdb42e3005cde7b7e0f9619b0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Game Status</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_ui_module_acea1d9bdb42e3005cde7b7e0f9619b0</sys_update_name><sys_updated_by>martin.meduna</sys_updated_by><sys_updated_on>2018-12-03 13:39:03</sys_updated_on><table>x_snc_cfac_game_status</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+        <payload_hash>407291567</payload_hash>
+        <record_name>Game Status</record_name>
+        <reverted_from/>
+        <source>91961b18dbed2300b8fef4a51f9619ea</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-03 13:39:03</sys_created_on>
+        <sys_id>ecea1d9bdb42e3005cde7b7e0f9619b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>167744b2fb20000001</sys_recorded_at>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-03 13:39:03</sys_updated_on>
+        <type>Module</type>
+        <update_guid>28ea1d9bbe42e300bfd3c13290b786b2</update_guid>
+        <update_guid_history>28ea1d9bbe42e300bfd3c13290b786b2:407291567</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2018-12-04 10:55:32</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>05f09766f1ec46728ab270ec97f4b659</sys_id>
+        <sys_metadata>acea1d9bdb42e3005cde7b7e0f9619b0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Game Status</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_ui_module_acea1d9bdb42e3005cde7b7e0f9619b0</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_acea1d9bdb42e3005cde7b7e0f9619b0">ecea1d9bdb42e3005cde7b7e0f9619b2</sys_update_version>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2018-12-04 10:55:32</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

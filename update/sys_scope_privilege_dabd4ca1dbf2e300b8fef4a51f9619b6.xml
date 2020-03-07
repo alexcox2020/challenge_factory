@@ -16,7 +16,7 @@
         <sys_updated_by>martin.meduna</sys_updated_by>
         <sys_updated_on>2019-01-04 04:19:39</sys_updated_on>
         <target_name>sn_vul_entry</target_name>
-        <target_scope display_value="Vulnerability">054cdcc2ff200200158bffffffffff94</target_scope>
+        <target_scope display_value="Vulnerability Response">054cdcc2ff200200158bffffffffff94</target_scope>
         <target_type>sys_db_object</target_type>
     </sys_scope_privilege>
 </record_update>

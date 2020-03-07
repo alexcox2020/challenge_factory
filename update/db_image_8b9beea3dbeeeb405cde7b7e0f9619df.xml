@@ -29,6 +29,7 @@
         <content_type>image/png</content_type>
         <encryption_context/>
         <file_name>image</file_name>
+        <hash/>
         <image_height>590</image_height>
         <image_width>590</image_width>
         <size_bytes>24056</size_bytes>

@@ -19,6 +19,7 @@ ChallengeFactoryAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			jSonResponse.game_status=gameStatus.game_status+"";
 			jSonResponse.team=gameStatus.team+"";
 			jSonResponse.game_status_id=gameStatus.sys_id+"";
+			jSonResponse.game_stop=gameStatus.game_stop+"";
 		}
 		else{
 			gameStatus.setLimit(1);
@@ -43,7 +44,9 @@ ChallengeFactoryAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			jSonResponse.player_name=playerStatus.player_name+"";
 			jSonResponse.email=playerStatus.email+"";
 			jSonResponse.location=playerStatus.location+"";
+			jSonResponse.locationDisplay=playerStatus.getDisplayValue("location");
 			jSonResponse.player_status=playerStatus.game_status+"";
+			
 		}
 		else{
 			jSonResponse.player_status='init';
@@ -143,13 +146,13 @@ ChallengeFactoryAjax.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-16 19:17:02</sys_created_on>
         <sys_id>09499123db1eef005cde7b7e0f961958</sys_id>
-        <sys_mod_count>28</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>ChallengeFactoryAjax</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_09499123db1eef005cde7b7e0f961958</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2018-12-29 21:58:43</sys_updated_on>
+        <sys_updated_on>2019-04-01 21:01:06</sys_updated_on>
     </sys_script_include>
 </record_update>

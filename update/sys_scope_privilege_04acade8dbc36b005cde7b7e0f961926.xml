@@ -16,7 +16,7 @@
         <sys_updated_by>martin.meduna</sys_updated_by>
         <sys_updated_on>2019-01-13 18:56:03</sys_updated_on>
         <target_name>sn_si_m2m_task_affected_user</target_name>
-        <target_scope display_value="Security Incident">82878663ff123100158bffffffffff67</target_scope>
+        <target_scope display_value="Security Incident Response">82878663ff123100158bffffffffff67</target_scope>
         <target_type>sys_db_object</target_type>
     </sys_scope_privilege>
 </record_update>

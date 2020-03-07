@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><record_update node_type="sys_portal_page" unload_date="2019-03-13 15:11:00">
+<?xml version="1.0" encoding="UTF-8"?><record_update node_type="sys_portal_page" unload_date="2020-03-07 13:44:51">
     <sys_portal_page action="INSERT_OR_UPDATE">
         <layout/>
         <order/>
@@ -35,28 +35,6 @@
                 <sys_mod_count>1</sys_mod_count>
                 <sys_updated_by>alex.cox</sys_updated_by>
                 <sys_updated_on>2019-01-16 01:42:42</sys_updated_on>
-                <related_items_node>
-                    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
-                        <grid_canvas display_value="PA New Tab 3">a129d519db4beb005cde7b7e0f961917</grid_canvas>
-                        <height>3</height>
-                        <portal_widget display_value="Created 2019-01-16 01:42:42">4cec99d9db4beb005cde7b7e0f9619bf</portal_widget>
-                        <posx>10</posx>
-                        <posy>6</posy>
-                        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
-                        <sys_created_by>alex.cox</sys_created_by>
-                        <sys_created_on>2019-01-16 01:42:42</sys_created_on>
-                        <sys_id>c8ec99d9db4beb005cde7b7e0f9619c1</sys_id>
-                        <sys_mod_count>6</sys_mod_count>
-                        <sys_name>a129d519db4beb005cde7b7e0f961917</sys_name>
-                        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-                        <sys_policy/>
-                        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-                        <sys_update_name>sys_grid_canvas_pane_c8ec99d9db4beb005cde7b7e0f9619c1</sys_update_name>
-                        <sys_updated_by>alex.cox</sys_updated_by>
-                        <sys_updated_on>2019-01-16 01:56:37</sys_updated_on>
-                        <width>2</width>
-                    </sys_grid_canvas_pane>
-                </related_items_node>
                 <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>publisher_widget</name>
@@ -236,28 +214,6 @@
                 <sys_mod_count>1</sys_mod_count>
                 <sys_updated_by>alex.cox</sys_updated_by>
                 <sys_updated_on>2019-01-16 01:26:41</sys_updated_on>
-                <related_items_node>
-                    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
-                        <grid_canvas display_value="PA New Tab 3">a129d519db4beb005cde7b7e0f961917</grid_canvas>
-                        <height>24</height>
-                        <portal_widget display_value="Created 2019-01-16 01:26:41">a9391919db4beb005cde7b7e0f9619d6</portal_widget>
-                        <posx>0</posx>
-                        <posy>0</posy>
-                        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
-                        <sys_created_by>alex.cox</sys_created_by>
-                        <sys_created_on>2019-01-16 01:26:41</sys_created_on>
-                        <sys_id>e5391919db4beb005cde7b7e0f9619d8</sys_id>
-                        <sys_mod_count>11</sys_mod_count>
-                        <sys_name>a129d519db4beb005cde7b7e0f961917</sys_name>
-                        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-                        <sys_policy/>
-                        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-                        <sys_update_name>sys_grid_canvas_pane_e5391919db4beb005cde7b7e0f9619d8</sys_update_name>
-                        <sys_updated_by>alex.cox</sys_updated_by>
-                        <sys_updated_on>2019-01-16 01:56:37</sys_updated_on>
-                        <width>10</width>
-                    </sys_grid_canvas_pane>
-                </related_items_node>
                 <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>report_type</name>
@@ -449,28 +405,6 @@
                 <sys_updated_by>alex.cox</sys_updated_by>
                 <sys_updated_on>2019-01-16 01:55:19</sys_updated_on>
                 <related_items_node>
-                    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
-                        <grid_canvas display_value="PA New Tab 3">a129d519db4beb005cde7b7e0f961917</grid_canvas>
-                        <height>17</height>
-                        <portal_widget display_value="Created 2019-01-16 01:42:39">afdc59d9db4beb005cde7b7e0f96192f</portal_widget>
-                        <posx>10</posx>
-                        <posy>9</posy>
-                        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
-                        <sys_created_by>alex.cox</sys_created_by>
-                        <sys_created_on>2019-01-16 01:42:39</sys_created_on>
-                        <sys_id>6fdc59d9db4beb005cde7b7e0f961931</sys_id>
-                        <sys_mod_count>8</sys_mod_count>
-                        <sys_name>a129d519db4beb005cde7b7e0f961917</sys_name>
-                        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-                        <sys_policy/>
-                        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-                        <sys_update_name>sys_grid_canvas_pane_6fdc59d9db4beb005cde7b7e0f961931</sys_update_name>
-                        <sys_updated_by>alex.cox</sys_updated_by>
-                        <sys_updated_on>2019-01-16 01:56:37</sys_updated_on>
-                        <width>2</width>
-                    </sys_grid_canvas_pane>
-                </related_items_node>
-                <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>title</name>
                         <portal_section display_value="Created 2019-01-16 01:42:39">afdc59d9db4beb005cde7b7e0f96192f</portal_section>
@@ -650,28 +584,6 @@
                 <sys_updated_by>alex.cox</sys_updated_by>
                 <sys_updated_on>2019-01-16 01:56:34</sys_updated_on>
                 <related_items_node>
-                    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
-                        <grid_canvas display_value="PA New Tab 3">a129d519db4beb005cde7b7e0f961917</grid_canvas>
-                        <height>3</height>
-                        <portal_widget display_value="Created 2019-01-16 01:56:34">df00a59ddb4beb005cde7b7e0f961935</portal_widget>
-                        <posx>10</posx>
-                        <posy>3</posy>
-                        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
-                        <sys_created_by>alex.cox</sys_created_by>
-                        <sys_created_on>2019-01-16 01:56:34</sys_created_on>
-                        <sys_id>9f00a59ddb4beb005cde7b7e0f961937</sys_id>
-                        <sys_mod_count>2</sys_mod_count>
-                        <sys_name>a129d519db4beb005cde7b7e0f961917</sys_name>
-                        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-                        <sys_policy/>
-                        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-                        <sys_update_name>sys_grid_canvas_pane_9f00a59ddb4beb005cde7b7e0f961937</sys_update_name>
-                        <sys_updated_by>alex.cox</sys_updated_by>
-                        <sys_updated_on>2019-01-16 01:56:39</sys_updated_on>
-                        <width>2</width>
-                    </sys_grid_canvas_pane>
-                </related_items_node>
-                <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>renderer</name>
                         <portal_section display_value="Created 2019-01-16 01:56:34">df00a59ddb4beb005cde7b7e0f961935</portal_section>
@@ -850,28 +762,6 @@
                 <sys_mod_count>1</sys_mod_count>
                 <sys_updated_by>alex.cox</sys_updated_by>
                 <sys_updated_on>2019-01-16 01:42:36</sys_updated_on>
-                <related_items_node>
-                    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
-                        <grid_canvas display_value="PA New Tab 3">a129d519db4beb005cde7b7e0f961917</grid_canvas>
-                        <height>3</height>
-                        <portal_widget display_value="Created 2019-01-16 01:42:36">e2dc19d9db4beb005cde7b7e0f9619db</portal_widget>
-                        <posx>10</posx>
-                        <posy>0</posy>
-                        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
-                        <sys_created_by>alex.cox</sys_created_by>
-                        <sys_created_on>2019-01-16 01:42:36</sys_created_on>
-                        <sys_id>b2dc19d9db4beb005cde7b7e0f9619dd</sys_id>
-                        <sys_mod_count>9</sys_mod_count>
-                        <sys_name>a129d519db4beb005cde7b7e0f961917</sys_name>
-                        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-                        <sys_policy/>
-                        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-                        <sys_update_name>sys_grid_canvas_pane_b2dc19d9db4beb005cde7b7e0f9619dd</sys_update_name>
-                        <sys_updated_by>alex.cox</sys_updated_by>
-                        <sys_updated_on>2019-01-16 01:56:39</sys_updated_on>
-                        <width>2</width>
-                    </sys_grid_canvas_pane>
-                </related_items_node>
                 <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>title_color</name>

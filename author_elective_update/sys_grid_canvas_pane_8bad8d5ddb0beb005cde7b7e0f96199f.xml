@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_grid_canvas_pane">
+    <sys_grid_canvas_pane action="DELETE">
+        <grid_canvas display_value="PA New Tab">b55d095ddb0beb005cde7b7e0f96198b</grid_canvas>
+        <height>16</height>
+        <portal_widget display_value="Created 2019-01-15 16:36:16">4fad8d5ddb0beb005cde7b7e0f96199d</portal_widget>
+        <posx>5</posx>
+        <posy>9</posy>
+        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2019-01-16 00:36:16</sys_created_on>
+        <sys_id>8bad8d5ddb0beb005cde7b7e0f96199f</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>b55d095ddb0beb005cde7b7e0f96198b</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_grid_canvas_pane_8bad8d5ddb0beb005cde7b7e0f96199f</sys_update_name>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-16 00:59:18</sys_updated_on>
+        <width>6</width>
+    </sys_grid_canvas_pane>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</application>
+        <file_path/>
+        <instance_id>dfc93a36dbadbe40439ef70fbf9619ee</instance_id>
+        <instance_name>secdev4</instance_name>
+        <name>sys_grid_canvas_pane_8bad8d5ddb0beb005cde7b7e0f96199f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_grid_canvas_pane"><sys_grid_canvas_pane action="INSERT_OR_UPDATE"><grid_canvas display_value="PA New Tab">b55d095ddb0beb005cde7b7e0f96198b</grid_canvas><height>16</height><portal_widget display_value="Created 2019-01-15 16:36:16">4fad8d5ddb0beb005cde7b7e0f96199d</portal_widget><posx>5</posx><posy>9</posy><sys_class_name>sys_grid_canvas_pane</sys_class_name><sys_created_by>alex.cox</sys_created_by><sys_created_on>2019-01-16 00:36:16</sys_created_on><sys_id>8bad8d5ddb0beb005cde7b7e0f96199f</sys_id><sys_mod_count>17</sys_mod_count><sys_name>b55d095ddb0beb005cde7b7e0f96198b</sys_name><sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package><sys_policy/><sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope><sys_update_name>sys_grid_canvas_pane_8bad8d5ddb0beb005cde7b7e0f96199f</sys_update_name><sys_updated_by>alex.cox</sys_updated_by><sys_updated_on>2019-01-16 00:59:18</sys_updated_on><width>6</width></sys_grid_canvas_pane></record_update>]]></payload>
+        <payload_hash>-1942611238</payload_hash>
+        <record_name>b55d095ddb0beb005cde7b7e0f96198b</record_name>
+        <reverted_from/>
+        <source>08c13b81db07ab00b8fef4a51f961999</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2019-01-16 00:59:18</sys_created_on>
+        <sys_id>6cf2dd91db4beb005cde7b7e0f961951</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>168542b6c550000001</sys_recorded_at>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-16 00:59:18</sys_updated_on>
+        <type>Grid Canvas Pane</type>
+        <update_guid>24f2dd91314beb00f8bbcd01f0b3fb51</update_guid>
+        <update_guid_history>24f2dd91314beb00f8bbcd01f0b3fb51:-1942611238,3bd2dd91604beb00e41030214d073dec:-822000555,4fd2dd912a4beb00c33c9193f2cdee4d:310283192,02d21d91424beb001b7480dc61858535:410247003,19d2dd91154beb00413c875493398948:-822000555,60b25d91404beb0045e2b603d392de35:765314558,26825991d14beb00969bb1520c569431:1311707199,bd8295915b4beb00f2981e22ea6848ad:765314558,86df8111d44beb00cf260e8d3e5beb4a:-873863365,69df8111984beb0029d23e4bbfc7c585:-1115560678,8bbec1dd2b0beb00bd102610258613ac:-873863365,5ebec1ddb60beb009c04afc28f5c0131:-1115560678,dced059d3e0beb00a2d656c441758e92:-873863365,5bddc19d850beb00197c9f40f1da9388:-327470724,cebd419d170beb00a6bf3ce98ab87418:-1228930920,1cbd419de30beb00563a0ffa468d8f05:1743039384,44bd019dca0beb0040d9ec6902fef2e8:-1535316462,4bad8d5d330beb00e617db0690397ca0:744020187</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>alex.cox</sys_created_by>
+        <sys_created_on>2019-01-16 00:59:27</sys_created_on>
+        <sys_db_object display_value="" name="sys_grid_canvas_pane">sys_grid_canvas_pane</sys_db_object>
+        <sys_id>0f429d691d7c44b8a3ad73d04c2bf640</sys_id>
+        <sys_metadata>8bad8d5ddb0beb005cde7b7e0f96199f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>b55d095ddb0beb005cde7b7e0f96198b</sys_name>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_scope_delete display_value="">8049dcde484943dca0997ed043ac2610</sys_scope_delete>
+        <sys_update_name>sys_grid_canvas_pane_8bad8d5ddb0beb005cde7b7e0f96199f</sys_update_name>
+        <sys_update_version display_value="sys_grid_canvas_pane_8bad8d5ddb0beb005cde7b7e0f96199f">6cf2dd91db4beb005cde7b7e0f961951</sys_update_version>
+        <sys_updated_by>alex.cox</sys_updated_by>
+        <sys_updated_on>2019-01-16 00:59:27</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
