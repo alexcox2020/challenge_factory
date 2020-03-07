@@ -145,13 +145,7 @@ ChallengeFactoryUtils.prototype = {
 		gr.subject=subject;
 		gr.direct=direct;
 		gr.recipients=direct;
-		gr.body='<html><head><meta name="generator" content="ServiceNow-v1"></head><body><div>'+body_text+'</div></body></html>';
-		gr.body_text=body_text;
-		gr.uid='00000011590a997b';
-		gr.weight=0;
-		gr.body_text=body_text;
-		gr.checkpoint=0;
-		gr.insert();
+		//gr.body='<html><head><meta name="generator" content="ServiceNow-v1"></head><body><div>'+body_text+'</div></body></html>';
 		if (sys_attachment){
 			var gsAtt = new GlideSysAttachment();
 			var grAtt = new GlideRecord('sys_attachment');
@@ -160,7 +154,24 @@ ChallengeFactoryUtils.prototype = {
 			emlStr=emlStr.replace(/\[to_email\]/g, from);
 			emlStr=emlStr.replace(/\[name\]/g, name);
 			emlStr=emlStr.replace(/\[url\]/g, url);
-			gs.info("[CFAC] att: "+gsAtt.write(gr,subject+".eml", "message/rfc822",emlStr));
+			var emailHeader=emlStr.substring(0,emlStr.indexOf("\r\n\r\n"));	
+			gr.body_text=emailHeader;	
+			gr.body='<html><head><meta name="generator" content="ServiceNow-v1"></head><body><div>'+emailHeader.replace(/\r?\n/g,"<br>")+'</div></body></html>';
+		}
+		gr.uid='00000011590a997b';
+		gr.weight=0;
+		gr.checkpoint=0;
+		gr.insert();
+		if (sys_attachment){
+		//	var gsAtt = new GlideSysAttachment();
+		//	var grAtt = new GlideRecord('sys_attachment');
+		//	grAtt.get(sys_attachment);
+		//	var emlStr=gsAtt.getContent(grAtt);
+		//	emlStr=emlStr.replace(/\[to_email\]/g, from);
+		//	emlStr=emlStr.replace(/\[name\]/g, name);
+		//	emlStr=emlStr.replace(/\[url\]/g, url);
+			
+			gs.info("[CFAC] att: "+gsAtt.write(gr,subject.substring(24,55)+".eml", "message/rfc822",emlStr));
 		}
 		return gr;
 	},
@@ -273,29 +284,29 @@ ChallengeFactoryUtils.prototype = {
 	saveScore4: function(playerStatusID, scoreData) {
 		
 		if (! playerStatusID) {
-			gs.error('[CFAC] Error: saveScore4 called without a Player Status Sys ID.');
+			gs.error('[CFAC] saveScore4 called without a Player Status Sys ID.');
 			return 0;
 		}
 		
 		if (! scoreData) {
-			gs.error('[CFAC] Error: saveScore4 called without a score data object.');
+			gs.error('[CFAC] saveScore4 called without a score data object.');
 			return 0;
 		}
 		
 		var playerStatus = new GlideRecord('x_snc_cfac_player_status');
 		
 		if (! playerStatus.get(playerStatusID)) {
-			gs.error('[CFAC] Error: saveScore4 failed to find player status by sys_id: '+ playerStatusID);
+			gs.error('[CFAC] saveScore4 failed to find player status by sys_id: '+ playerStatusID);
 			return 0;
 		}
 		
 		if ((! playerStatus.game_status) || (playerStatus.game_status != 'registered')) {
-			gs.error('[CFAC] Info: No registered game for '+ playerStatusID + ' score ignored');
+			gs.error('[CFAC] No registered game for '+ playerStatusID + ' score ignored');
 			return 0;
 		}
 		
 		if ((! playerStatus.game_status_reference.game_status) || (playerStatus.game_status_reference.game_status != 'running')) {
-			gs.error('[CFAC] Info: No running game for '+ playerStatusID + ' score ignored');
+			gs.warn('[CFAC] No running game for '+ playerStatusID + ' score ignored');
 			return 0;
 		}	
 		
@@ -322,57 +333,6 @@ ChallengeFactoryUtils.prototype = {
 		return scoreInserted;
 	},
 	
-	/*	saveScore2: function(obsTempl, scoreEvent, scoreDesc, scoreRemTime ){
-		gs.info("[CFAC] Error: Deprecated method saveScore was used!!!");
-		// Log score locally
-		var gameStatus=this.getActiveGame();
-		if (gameStatus){
-			var scorePoints = new GlideRecord('x_snc_cfac_score_configuration');
-			if (obsTempl!="global"){
-				scorePoints.addQuery('x_snc_cfac_obstacle_template',obsTempl);
-			}
-			scorePoints.addQuery('score_event',scoreEvent);
-			scorePoints.query();
-			if (scorePoints.getRowCount()==0){
-				gs.info("[CFAC] Warning: There is no configuration for Score Event: "+scoreEvent);
-			}
-			if (scorePoints.getRowCount()>1){
-				gs.info("[CFAC] Warning: There is more than one configuration for Score Event: "+scoreEvent);
-			}
-			if (scorePoints.next()) {
-				var newScore = new GlideRecord('x_snc_cfac_scores');
-				newScore.initialize();
-				newScore.description = scoreDesc;
-				newScore.score=scorePoints.score;
-				newScore.domain_skill = scorePoints.domain_skill;
-				newScore.servicenow_skill = scorePoints.servicenow_skill;
-				var grObsTemp = new GlideRecord("x_snc_cfac_obstacle_template");
-				grObsTemp.get(obsTempl);
-				
-				if (scorePoints.task_category) {
-					newScore.task_category = scorePoints.task_category;
-				} else {
-					newScore.task_category = grObsTemp.category;
-				}
-				
-				newScore.player_uid = gameStatus.uid;
-				
-				
-				//Update: Add Remediation Time
-				if (scoreRemTime != '') {
-					newScore.remediation_time = scoreRemTime;
-				}
-				
-				newScore.insert();
-				
-			}
-		}
-		else {
-			gs.info("[CFAC] Warning: trying write score after finished");
-		}
-	},
-	
- 	*/
 	
 	
 	
@@ -469,151 +429,7 @@ ChallengeFactoryUtils.prototype = {
 			}
 		},
 		
-		simulateSightingsSearch: function(incidentId,Sighting,SightingsSearchDetails,SightingsSearch){
-			// Create simulated sighting search, filling in details from arguments in JSON format
-			gs.warn("CFAC: Deprecated function call: simulateSightingsSearch. Use UDG isntead!");
-			var siSearch = new GlideRecord('sn_ti_sighting_search');
-			
-			if (!SightingsSearch){
-				// Create a new parent search record if one is not specified
-				siSearch.initialize();
-				siSearch.task=incidentId;
-				siSearch.insert();
-			} else {
-				// Find specified sighting search record by sys_id
-				siSearch.get(SightingsSearch);
-			}
-			
-			
-			// Create new sighting search detail from JSON passed to us
-			
-			var siSightingDetails = new GlideRecord('sn_ti_sighting_search_detail');
-			var jSon=JSON.parse(SightingsSearchDetails);
-			for (var item in jSon) {
-				if (jSon.hasOwnProperty(item)) {
-					siSightingDetails.setValue(item, jSon[item]);
-				}
-			}
-			siSightingDetails.sighting_search=siSearch.sys_id;
-			siSightingDetails.insert();
-			
-			
-			// Create new sighting record from JSON passed to us
-			
-			var siSighting = new GlideRecord('sn_ti_sighting');
-			jSon=JSON.parse(Sighting);
-			for (item in jSon) {
-				if (jSon.hasOwnProperty(item)) {
-					siSighting.setValue(item, jSon[item]);
-				}
-			}
-			siSighting.sighting_search_detail=siSightingDetails.sys_id;
-			if (siSighting.insert()) {
-				return siSighting;
-			} else {
-				return 0;
-			}
-		},
 		
-		simulateEnrichment:function (incidentID,cmdbCI,jSonData,enrichmentType){
-			gs.warn("CFAC: Deprecated function call: simulateEnrichment. Use UDG isntead!");
-			//create record in sn_sec_cmn_enrichment
-			
-			var enrich = new GlideRecord('sn_sec_cmn_enrichment');
-			enrich.initialize();
-			if (enrichmentType=="processes"){
-				enrich.name = "Retrieve Running Processes";
-				//sys_id to sn_sec_cmn_enrichment_data_mapping Running Processes - WMI Enrichment
-				enrich.enrichment_mapping="572812840b202200263a089b37673ab9";
-			}
-			if (enrichmentType=="netstat"){
-				enrich.name = "Retrieve Network Statistics";
-				//sys_id to sn_sec_cmn_enrichment_data_mapping NetStat Enrichment
-				enrich.enrichment_mapping="66d6de440b202200263a089b37673a7b";
-			}
-			
-			enrich.raw_data=JSON.stringify(jSonData,null,3);
-			//enrich.reference_table = "cmdb_ci";
-			enrich.reference_value = cmdbCI;
-			
-			var recordIDenrichent=enrich.insert();
-			
-			//gs.info("MM: I have create record in sn_sec_cmn_enrichment with  sys_id: "+recordIDenrichent);
-			
-			//create record in sn_si_m2m_incident_enrichment
-			
-			var enrSir = new GlideRecord('sn_si_m2m_incident_enrichment');
-			enrSir.initialize();
-			
-			if (enrichmentType=="processes"){
-				enrich.name = "Retrieve Running Processes";
-			}
-			if (enrichmentType=="netstat"){
-				enrich.name = "Retrieve Network Statistics";
-			}
-			
-			enrSir.sn_sec_cmn_enrichment = recordIDenrichent;
-			enrSir.sn_si_incident = incidentID;
-			var recordID=enrSir.insert();
-			
-			
-			//var arrayOfRecords=JSON.parse(jSonData);
-			var arrayOfRecords=jSonData;
-			var runProc;
-			//creating enrichment data records
-			if (enrichmentType=="processes"){
-				
-				for (var j = 0; j < arrayOfRecords.length; j++){
-					
-					//create reocrd in sn_si_enrichment_running_processes
-					runProc = new GlideRecord('sn_si_enrichment_running_processes');
-					runProc.initialize();
-					runProc.reference_ci=cmdbCI;
-					runProc.source=recordIDenrichent;
-					
-					runProc.command_line=arrayOfRecords[j].command_line;
-					runProc.hash_value=arrayOfRecords[j].hash;
-					runProc.name=arrayOfRecords[j].name;
-					runProc.owner=arrayOfRecords[j].owner;
-					runProc.owner_domain=arrayOfRecords[j].owner_domain;
-					runProc.owner_sid=arrayOfRecords[j].owner_sid;
-					runProc.parent_pid=arrayOfRecords[j].parent_pid;
-					runProc.path=arrayOfRecords[j].path;
-					runProc.pid=arrayOfRecords[j].pid;
-					
-					runProc.insert();
-				}
-			}
-			
-			if (enrichmentType=="netstat"){
-				
-				for (var j = 0; j < arrayOfRecords.length; j++){
-					
-					//create reocrd in sn_si_enrichment_network_statistics
-					runProc = new GlideRecord('sn_si_enrichment_network_statistics');
-					runProc.initialize();
-					runProc.reference_ci=cmdbCI;
-					runProc.source=recordIDenrichent;
-					
-					
-					runProc.hash_value=arrayOfRecords[j].hash;
-					runProc.path=arrayOfRecords[j].path;
-					runProc.name=arrayOfRecords[j].name;
-					
-					runProc.protocol=arrayOfRecords[j].protocol;
-					runProc.state=arrayOfRecords[j].state;
-					runProc.local_address=arrayOfRecords[j].local_address;
-					runProc.remote_address=arrayOfRecords[j].remote_address;
-					runProc.pid=arrayOfRecords[j].pid;
-					runProc.local_port=arrayOfRecords[j].local_port;
-					runProc.remote_port=arrayOfRecords[j].remote_port;
-					
-					if (arrayOfRecords[j].name!="") {//insert nice looking values only
-						runProc.insert();
-					}
-				}
-			}
-		},
 		
 		clearPlayers: function(){
 			var gr= new GlideRecord("x_snc_cfac_players");
@@ -979,13 +795,13 @@ ChallengeFactoryUtils.prototype = {
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:25:44</sys_created_on>
         <sys_id>6c9f3f58db616300b8fef4a51f9619a6</sys_id>
-        <sys_mod_count>58</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>ChallengeFactoryUtils</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_6c9f3f58db616300b8fef4a51f9619a6</sys_update_name>
-        <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2019-03-03 21:55:40</sys_updated_on>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-01 16:39:32</sys_updated_on>
     </sys_script_include>
 </record_update>

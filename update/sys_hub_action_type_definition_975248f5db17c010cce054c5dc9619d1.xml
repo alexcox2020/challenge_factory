@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_template/>
+        <active>true</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Challenge Factory">8222c0f5db17c010cce054c5dc9619e0</category>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <ih_action>false</ih_action>
+        <internal_name>score</internal_name>
+        <label_cache>[{"name":"{{action.score_event}}","label":"action➛Score Event","type":"action","ref":""},{"name":"{{action.obstacle}}","label":"action➛Obstacle","type":"action","ref":""},{"name":"{{action.obstacle_template}}","label":"action➛Obstacle Template","type":"action","ref":""}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <name>Score</name>
+        <natlang/>
+        <outputs/>
+        <state>draft</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:02:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>975248f5db17c010cce054c5dc9619d1</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Score</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_975248f5db17c010cce054c5dc9619d1</sys_update_name>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:07:45</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=975248f5db17c010cce054c5dc9619d1"/>
+    <sys_variable_value action="delete_multiple" query="document_key=975248f5db17c010cce054c5dc9619d1"/>
+    <sys_hub_step_instance action="delete_multiple" query="action=975248f5db17c010cce054c5dc9619d1^sys_idNOT IN77b20439db17c010cce054c5dc961989"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Score">975248f5db17c010cce054c5dc9619d1</action>
+        <cid>aa2d8248-b1cd-4892-b92c-fccedbbf823f</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_class_name>sys_hub_step_instance</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>77b20439db17c010cce054c5dc961989</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=77b20439db17c010cce054c5dc961989"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>77b20439db17c010cce054c5dc961989</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>3fb20439db17c010cce054c5dc9619c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+// ... code ...
+  //do score
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>77b20439db17c010cce054c5dc961989</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>b3b20439db17c010cce054c5dc9619c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_hub_action_input action="delete_multiple" query="model=975248f5db17c010cce054c5dc9619d1^sys_idNOT IN67b288f5db17c010cce054c5dc96194a,90a34879db17c010cce054c5dc9619e3"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=e6ed1fb7-a8cf-4003-9567-2e837d6bd0f4</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>score_event</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Score Event</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Score">975248f5db17c010cce054c5dc9619d1</model>
+        <model_id>975248f5db17c010cce054c5dc9619d1</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="x_snc_cfac_score_configuration">x_snc_cfac_score_configuration</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:52</sys_created_on>
+        <sys_id>67b288f5db17c010cce054c5dc96194a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:52</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=e8099258-95e0-4dad-9f1a-26c25ac490ae</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>obstacle_template</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Obstacle Template</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Score">975248f5db17c010cce054c5dc9619d1</model>
+        <model_id>975248f5db17c010cce054c5dc9619d1</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="x_snc_cfac_obstacle_template">x_snc_cfac_obstacle_template</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:07:44</sys_created_on>
+        <sys_id>90a34879db17c010cce054c5dc9619e3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:07:44</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_step_instance action="delete_multiple" query="action=975248f5db17c010cce054c5dc9619d1^sys_idNOT IN77b20439db17c010cce054c5dc961989"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="Score">975248f5db17c010cce054c5dc9619d1</action>
+        <cid>aa2d8248-b1cd-4892-b92c-fccedbbf823f</cid>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Script step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Script">106afb6647032200b4fad7527c9a71e7</step_type>
+        <sys_class_name>sys_hub_step_instance</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>77b20439db17c010cce054c5dc961989</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=77b20439db17c010cce054c5dc961989"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>77b20439db17c010cce054c5dc961989</document_key>
+        <order>600</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>3fb20439db17c010cce054c5dc9619c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+        <value>(function execute(inputs, outputs) {
+// ... code ...
+  //do score
+})(inputs, outputs);
+</value>
+        <variable display_value="">71aa7f6647032200b4fad7527c9a719b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>77b20439db17c010cce054c5dc961989</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>b3b20439db17c010cce054c5dc9619c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+        <value>35aa573fd7802200bdbaee5b5e610375</value>
+        <variable display_value="">f5e56d79b3101300176b051a16a8dce4</variable>
+    </sys_variable_value>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1^sys_idNOT INdca34879db17c010cce054c5dc9619e7,e3b20439db17c010cce054c5dc961986"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>obstacle_template</element>
+        <help/>
+        <hint/>
+        <label>Obstacle Template</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:07:44</sys_created_on>
+        <sys_id>dca34879db17c010cce054c5dc9619e7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:07:44</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>score_event</element>
+        <help/>
+        <hint/>
+        <label>Score Event</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>martin.meduna</sys_created_by>
+        <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+        <sys_id>e3b20439db17c010cce054c5dc961986</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+</record_update>
