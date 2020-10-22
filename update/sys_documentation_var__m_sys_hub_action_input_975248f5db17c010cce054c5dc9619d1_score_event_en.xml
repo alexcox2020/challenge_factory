@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="server_pass" label="Server Pass" language="en" table="x_snc_cfac_game_status">
+    <sys_documentation element="score_event" label="Score Event" language="en" table="var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>server_pass</element>
+            <element>score_event</element>
             <help/>
             <hint/>
-            <label>Server Pass</label>
+            <label>Score Event</label>
             <language>en</language>
-            <name>x_snc_cfac_game_status</name>
-            <plural>Server Pass</plural>
+            <name>var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1</name>
+            <plural/>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-12-03 16:53:26</sys_created_on>
-            <sys_id>408c59451b8ca0105b1555f82d4bcb1f</sys_id>
+            <sys_created_on>2020-03-02 11:03:53</sys_created_on>
+            <sys_id>e3b20439db17c010cce054c5dc961986</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Server Pass</sys_name>
+            <sys_name>Score Event</sys_name>
             <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
             <sys_policy/>
             <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-            <sys_update_name>sys_documentation_x_snc_cfac_game_status_server_pass_en</sys_update_name>
+            <sys_update_name>sys_documentation_var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1_score_event_en</sys_update_name>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-12-03 16:53:26</sys_updated_on>
+            <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

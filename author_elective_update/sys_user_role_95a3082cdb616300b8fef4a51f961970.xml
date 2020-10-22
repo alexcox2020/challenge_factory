@@ -50,7 +50,7 @@
         <update_guid_history>2da3082cd36163007f8b4f18305fda73:1908553419</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="">5475c46cdb616300b8fef4a51f961980</sys_audit_delete>
+        <sys_audit_delete display_value="x_snc_cfac.game_configuration_user">5475c46cdb616300b8fef4a51f961980</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:51:06</sys_created_on>

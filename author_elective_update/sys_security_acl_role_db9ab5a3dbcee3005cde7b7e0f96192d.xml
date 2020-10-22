@@ -42,7 +42,7 @@
         <update_guid_history>5f9ab5a3aecee300861f280ace36d531:-1238313457</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="">375b75e3dbcee3005cde7b7e0f961900</sys_audit_delete>
+        <sys_audit_delete display_value="x_snc_cfac_challenge_defaults.x_snc_cfac.challenge_defaults_user">375b75e3dbcee3005cde7b7e0f961900</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-04 10:39:29</sys_created_on>

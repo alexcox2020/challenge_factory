@@ -50,7 +50,7 @@
         <update_guid_history>24ea1d9b2b42e30090c6e07acf2d0d9d:-1077152947</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="">99deb1a7dbcee3005cde7b7e0f9619b0</sys_audit_delete>
+        <sys_audit_delete display_value="x_snc_cfac.game_status_user">99deb1a7dbcee3005cde7b7e0f9619b0</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-04 10:54:36</sys_created_on>

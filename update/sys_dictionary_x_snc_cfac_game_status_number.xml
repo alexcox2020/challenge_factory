@@ -53,15 +53,15 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-04 11:37:57</sys_created_on>
-        <sys_id>ef78c6efdbcee3005cde7b7e0f96192c</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_id>488c59451b8ca0105b1555f82d4bcb1b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Number</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_cfac_game_status_number</sys_update_name>
-        <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2019-01-16 00:48:37</sys_updated_on>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-10-22 12:39:29</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

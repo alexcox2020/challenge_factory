@@ -17,9 +17,7 @@
         <column_label>Obstacle Creation Script</column_label>
         <comments/>
         <create_roles/>
-        <default_value>/* This script is used to create an obstacle for the challenger. Typically this involves creating an incident or a setting up a failing indicator of some kind.  If needed,  the PlayerStatus variable contains glide record of the corresponding Player Status record (x_snc_cfac_player_status).  This is useful when creating tasks that require an assigned_to value, using PlayerStatus.player_user. */&#13;
-&#13;
-</default_value>
+        <default_value>/* This script is used to create an obstacle for the challenger. Typically this involves creating an incident or a setting up a failing indicator of some kind.  If needed,  the PlayerStatus variable contains glide record of the corresponding Player Status record (x_snc_cfac_player_status).  This is useful when creating tasks that require an assigned_to value, using PlayerStatus.player_user. */</default_value>
         <defaultsort/>
         <delete_roles/>
         <dependent/>
@@ -55,15 +53,15 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 22:14:07</sys_created_on>
-        <sys_id>13888c20dba16300b8fef4a51f9619bf</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_id>9d7cd5451b8ca0105b1555f82d4bcb42</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Obstacle Creation Script</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_cfac_obstacle_template_obstacle_creation_script</sys_update_name>
-        <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2018-12-28 01:29:03</sys_updated_on>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-10-22 12:39:37</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

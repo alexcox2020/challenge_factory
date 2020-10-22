@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
     <sys_choice action="INSERT_OR_UPDATE" field="servicenow_skill" table="x_snc_cfac_score_configuration" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>servicenow_skill</element>
+            <name>x_snc_cfac_score_configuration</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>alex.cox</sys_created_by>
+            <sys_created_on>2019-01-02 04:55:33</sys_created_on>
+            <sys_id>307c95451b8ca0105b1555f82d4bcbff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>servicenow_skill</sys_name>
+            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
+            <sys_update_name>sys_choice_x_snc_cfac_score_configuration_servicenow_skill</sys_update_name>
+            <sys_updated_by>alex.cox</sys_updated_by>
+            <sys_updated_on>2019-01-02 04:55:33</sys_updated_on>
+        </sys_choice_set>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>servicenow_skill</element>
@@ -114,21 +130,5 @@
             <sys_updated_on>2019-01-02 04:58:17</sys_updated_on>
             <value>Vulnerability Response</value>
         </sys_choice>
-        <sys_choice_set action="INSERT_OR_UPDATE">
-            <element>servicenow_skill</element>
-            <name>x_snc_cfac_score_configuration</name>
-            <sys_class_name>sys_choice_set</sys_class_name>
-            <sys_created_by>alex.cox</sys_created_by>
-            <sys_created_on>2019-01-02 04:55:33</sys_created_on>
-            <sys_id>38c2827cdbb26300b8fef4a51f961931</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>servicenow_skill</sys_name>
-            <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
-            <sys_policy/>
-            <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-            <sys_update_name>sys_choice_x_snc_cfac_score_configuration_servicenow_skill</sys_update_name>
-            <sys_updated_by>alex.cox</sys_updated_by>
-            <sys_updated_on>2019-01-02 04:55:33</sys_updated_on>
-        </sys_choice_set>
     </sys_choice>
 </record_update>

@@ -4,22 +4,22 @@
         <license_condition/>
         <license_model>none</license_model>
         <license_roles/>
-        <name>x_snc_cfac_players</name>
+        <name>x_snc_cfac_score_configuration</name>
         <op_delete>true</op_delete>
         <op_insert>true</op_insert>
         <op_update>true</op_update>
         <owner_condition/>
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
-        <sys_created_on>2018-10-30 23:04:10</sys_created_on>
-        <sys_id>df26d0e8dba16300b8fef4a51f9619b6</sys_id>
+        <sys_created_on>2018-10-30 22:20:38</sys_created_on>
+        <sys_id>247c95451b8ca0105b1555f82d4bcbdf</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>x_snc_cfac_players</sys_name>
+        <sys_name>x_snc_cfac_score_configuration</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-        <sys_update_name>ua_table_licensing_config_df26d0e8dba16300b8fef4a51f9619b6</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_247c95451b8ca0105b1555f82d4bcbdf</sys_update_name>
         <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2018-10-30 23:04:10</sys_updated_on>
+        <sys_updated_on>2018-10-30 22:20:38</sys_updated_on>
     </ua_table_licensing_config>
 </record_update>

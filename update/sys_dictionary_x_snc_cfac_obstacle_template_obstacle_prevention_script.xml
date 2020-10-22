@@ -19,9 +19,7 @@
         <create_roles/>
         <default_value>/* You may optionally add a script here to determine if the obstacle need not be created and/or award points for this prevention.  To indicate prevention, set the Prevented variable to true. */&#13;
 &#13;
-Prevented = false;&#13;
-&#13;
-</default_value>
+Prevented = false;</default_value>
         <defaultsort/>
         <delete_roles/>
         <dependent/>
@@ -57,15 +55,15 @@ Prevented = false;&#13;
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 22:14:07</sys_created_on>
-        <sys_id>9c498c20dba16300b8fef4a51f9619b3</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_id>dd7cd5451b8ca0105b1555f82d4bcb43</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Obstacle Prevention Script</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_cfac_obstacle_template_obstacle_prevention_script</sys_update_name>
-        <sys_updated_by>alex.cox</sys_updated_by>
-        <sys_updated_on>2018-11-10 00:49:07</sys_updated_on>
+        <sys_updated_by>martin.meduna</sys_updated_by>
+        <sys_updated_on>2020-10-22 12:39:37</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

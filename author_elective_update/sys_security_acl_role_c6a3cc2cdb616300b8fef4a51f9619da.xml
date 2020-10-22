@@ -42,7 +42,7 @@
         <update_guid_history>4aa3cc2c65616300b55139a32e7329de:-1126301303</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="">ec75c0acdb616300b8fef4a51f9619bd</sys_audit_delete>
+        <sys_audit_delete display_value="x_snc_cfac_game_configuration.x_snc_cfac.game_configuration_user">ec75c0acdb616300b8fef4a51f9619bd</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:51:05</sys_created_on>

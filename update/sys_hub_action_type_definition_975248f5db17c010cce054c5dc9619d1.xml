@@ -333,11 +333,11 @@
         <sys_created_on>2020-03-02 11:07:44</sys_created_on>
         <sys_id>dca34879db17c010cce054c5dc9619e7</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Obstacle Template</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1_obstacle_template_en</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
         <sys_updated_on>2020-03-02 11:07:44</sys_updated_on>
         <url/>
@@ -356,11 +356,11 @@
         <sys_created_on>2020-03-02 11:03:53</sys_created_on>
         <sys_id>e3b20439db17c010cce054c5dc961986</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Score Event</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
-        <sys_update_name/>
+        <sys_update_name>sys_documentation_var__m_sys_hub_action_input_975248f5db17c010cce054c5dc9619d1_score_event_en</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
         <sys_updated_on>2020-03-02 11:03:53</sys_updated_on>
         <url/>

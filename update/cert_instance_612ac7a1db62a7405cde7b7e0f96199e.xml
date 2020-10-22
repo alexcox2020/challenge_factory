@@ -50,7 +50,7 @@
         <sys_id>612ac7a1db62a7405cde7b7e0f96199e</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>Business Application Certification Quarterly</sys_name>
-        <sys_package display_value="Application Portfolio Management" source="sn_apm">65c1ca2cdbb2120091285411cf961963</sys_package>
+        <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>cert_instance_612ac7a1db62a7405cde7b7e0f96199e</sys_update_name>

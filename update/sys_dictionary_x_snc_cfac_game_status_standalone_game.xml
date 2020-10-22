@@ -53,7 +53,7 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-03 17:05:40</sys_created_on>
-        <sys_id>b02a4213db06e3005cde7b7e0f96196b</sys_id>
+        <sys_id>848c59451b8ca0105b1555f82d4bcb47</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Standalone Game</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
@@ -61,7 +61,7 @@
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_cfac_game_status_standalone_game</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2018-12-03 17:05:40</sys_updated_on>
+        <sys_updated_on>2020-10-22 12:39:33</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
