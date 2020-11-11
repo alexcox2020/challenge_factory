@@ -110,7 +110,7 @@
             <sys_domain_path>/</sys_domain_path>
             <sys_id>d8711037db36a7005cde7b7e0f961986</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Player Details</sys_name>
+            <sys_name>x_snc_cfac_player_status</sys_name>
             <sys_overrides/>
             <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
             <sys_policy/>

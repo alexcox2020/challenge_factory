@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Score Configuration" max_length="40" name="x_snc_cfac_score_configuration" type="collection">
+    <element label="Score Configuration" max_length="40" name="x_snc_cfac_score_configuration" sizeclass="0" type="collection">
         <element choice="1" label="Domain Skill" max_length="40" name="domain_skill" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Prevention" sequence="0" value="Prevention"/>

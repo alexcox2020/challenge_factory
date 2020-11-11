@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Obstacle Template" max_length="40" name="x_snc_cfac_obstacle_template" type="collection">
+    <element label="Obstacle Template" max_length="40" name="x_snc_cfac_obstacle_template" sizeclass="0" type="collection">
         <element label="Active" max_length="40" name="active" type="boolean"/>
         <element label="Category" max_length="40" name="category" type="string"/>
         <element default="/* This optional script is run at the beginning of a challenge. It is useful when you need to prepare an environment before the challenger begins their work. */" label="Environment Setup Script" max_length="8000" name="environment_setup_script" type="script"/>
@@ -9,7 +9,7 @@
         <element default="/* You may optionally add a script here to determine if the obstacle need not be created and/or award points for this prevention.  To indicate prevention, set the Prevented variable to true. */&#13;&#10;&#13;&#10;Prevented = false;" label="Obstacle Prevention Script" max_length="8000" name="obstacle_prevention_script" type="script"/>
         <element display="true" label="Scenario Name" max_length="40" name="scenario_name" type="string"/>
         <element label="Subcategory" max_length="40" name="subcategory" type="string"/>
-        <element label="Workflow" max_length="32" name="workflow" reference="wf_workflow" type="reference"/>
+        <element label="Workflow -Deprecated" max_length="32" name="workflow" reference="wf_workflow" type="reference"/>
         <index name="index">
             <element name="workflow"/>
         </index>

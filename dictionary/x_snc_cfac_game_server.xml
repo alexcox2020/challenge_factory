@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Game Server" max_length="40" name="x_snc_cfac_game_server" type="collection">
+    <element label="Game Server" max_length="40" name="x_snc_cfac_game_server" sizeclass="0" type="collection">
         <element label="Continuous Game" max_length="40" name="continuous_game" type="boolean"/>
         <element label="Game Configuration" mandatory="true" max_length="32" name="game_configuration" reference="x_snc_cfac_game_configuration" reference_qual="client_download=false^EQ" reference_qual_condition="client_download=false^EQ" type="reference"/>
         <element label="Continuous Game Length" max_length="40" name="game_length" type="integer"/>

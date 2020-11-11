@@ -16,7 +16,7 @@
         <sys_updated_by>alex.cox</sys_updated_by>
         <sys_updated_on>2019-01-18 21:28:55</sys_updated_on>
         <target_name>sn_ti_m2m_task_observable</target_name>
-        <target_scope display_value="Threat Core">8b068223eb120200cb3aa9bcf106fe82</target_scope>
+        <target_scope display_value="Threat Intelligence Support Common">8b068223eb120200cb3aa9bcf106fe82</target_scope>
         <target_type>sys_db_object</target_type>
     </sys_scope_privilege>
 </record_update>

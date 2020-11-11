@@ -4,13 +4,13 @@
             <element>scenario_name</element>
             <position>0</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>87d0fc5bdb2dab005cde7b7e0f9619d0</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>5ff4c0e71bd0a0905b1555f82d4bcbc7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>category</element>
             <position>1</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>0bd0fc5bdb2dab005cde7b7e0f9619d0</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>17f4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>subcategory</element>
             <position>2</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>8bd0fc5bdb2dab005cde7b7e0f9619d0</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>97f4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,13 +46,13 @@
             <element>.split</element>
             <position>3</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>0fd0fc5bdb2dab005cde7b7e0f9619d0</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>1bf4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
@@ -60,13 +60,13 @@
             <element>number</element>
             <position>4</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>8fd0fc5bdb2dab005cde7b7e0f9619d0</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>9bf4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -74,41 +74,27 @@
             <element>max_points</element>
             <position>5</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>03d0fc5bdb2dab005cde7b7e0f9619d1</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>1ff4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>workflow</element>
-            <position>6</position>
-            <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>83d0fc5bdb2dab005cde7b7e0f9619d1</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
-            <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>active</element>
-            <position>7</position>
+            <position>6</position>
             <sys_created_by>martin.meduna</sys_created_by>
-            <sys_created_on>2018-11-08 14:04:04</sys_created_on>
-            <sys_id>07d0fc5bdb2dab005cde7b7e0f9619d1</sys_id>
+            <sys_created_on>2020-11-11 10:56:59</sys_created_on>
+            <sys_id>9ff4c0e71bd0a0905b1555f82d4bcbc8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_cfac_obstacle_template" sys_domain="global" view="Default view">58df2457db2dab005cde7b7e0f961931</sys_ui_section>
             <sys_updated_by>martin.meduna</sys_updated_by>
-            <sys_updated_on>2018-11-08 14:04:04</sys_updated_on>
+            <sys_updated_on>2020-11-11 10:56:59</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
