@@ -9,799 +9,638 @@
         <name>ChallengeFactoryUtils</name>
         <script><![CDATA[var ChallengeFactoryUtils = Class.create();
 ChallengeFactoryUtils.prototype = {
-	initialize: function() {
-	},
-	// getRandomRecord choose random record and returns value of selected field
-	// parameter columnName choose the value from record
-	// parameter recordTable is choose the table in The Platform
-	// example: this.getRandomRecord('sys_id','sys_user'); return sys_id of random record (user) form sys_user table
-	getRandomRecord: function(columnName, recordTable){
-		var rec = new GlideRecord(recordTable);
-		var randomRec=Math.floor(Math.random() * rec.getRowCount()) + 1;
-		rec.chooseWindow(randomRec,randomRec+1);
-		rec.query();
-		rec.next();
-		return rec.getValue(columnName);
-	},
-	
-	createEmail: function (direct,from,subject,body_text,sys_attachment,name,url){
-		var gr = new GlideRecord('sys_email');
-		var user="";
-		gr.mailbox='inbox';
-		gr.user=from;
-		gr.content_type='multipart/mixed; boundary="_002_386B92122A2A40638ECA9B6058EFD2E8servicenowcom_"';
-		gr.headers='Return-Path:<'+from+'>\r\n'+
-		'Delivered-To:<'+direct+'>\r\n'+
-		'Received:from mda01.lhr0.service-now.com\r\n'+
-		'	by mda01.lhr0.service-now.com (Dovecot) with LMTP id ToPdDigdMVw9IwAAgmkaCA\r\n'+
-		'	for <'+direct+'>; Sat, 05 Jan 2019 13:10:54 -0800\r\n'+
-		'Received:from mx22.service-now.com (unknown [10.239.201.63])\r\n'+
-		'	by mda01.lhr0.service-now.com (Postfix) with ESMTPS id 5439E109445E\r\n'+
-		'	for <'+direct+'>; Sat,  5 Jan 2019 13:10:53 -0800 (PST)\r\n'+
-		'Received:from localhost (localhost [127.0.0.1])\r\n'+
-		'	by mx22.service-now.com (Postfix) with ESMTP id 0F7E31F8C0B6\r\n'+
-		'	for <'+direct+'>; Sat,  5 Jan 2019 13:10:52 -0800 (PST)\r\n'+
-		'X-ServiceNow-Spam-Flag:NO\r\n'+
-		'X-ServiceNow-Spam-Score:-1.659\r\n'+
-		'X-ServiceNow-Spam-Level:\r\n'+
-		'X-ServiceNow-Spam-Status:No, score=-1.659 tagged_above=-999 required=6.2\r\n'+
-		'	tests=[BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.372, DKIM_SIGNED=0.1,\r\n'+
-		'	DKIM_VALID=-1.1, DKIM_VALID_AU=-0.1, HTML_IMAGE_RATIO_04=0.556,\r\n'+
-		'	HTML_MESSAGE=0.001, HTML_TAG_BALANCE_BODY=1.157,\r\n'+
-		'	HTTP_EXCESSIVE_ESCAPES=1.572, MIME_HTML_MOSTLY=0.428, SPF_PASS=-0.001]\r\n'+
-		'	autolearn=no autolearn_force=no\r\n'+
-		'Authentication-Results:mta02.sjc0.service-now.com (amavisd-new);\r\n'+
-		'	dkim=pass (2048-bit key) header.d=servicenow.com\r\n'+
-		'Received:from mx22.service-now.com ([10.242.26.26])\r\n'+
-		'	by localhost (mta02.sjc0.service-now.com [127.0.0.1]) (amavisd-new, port 10024)\r\n'+
-		'	with ESMTP id RZdMOB400fVc for <'+direct+'>;\r\n'+
-		'	Sat,  5 Jan 2019 13:10:50 -0800 (PST)\r\n'+
-		'Received:from mx0a-0017dd01.pphosted.com (mx0b-0017dd01.pphosted.com [67.231.157.3])\r\n'+
-		'	by mx22.service-now.com (Postfix) with ESMTPS id 848F21F8C0B5\r\n'+
-		'	for <'+direct+'>; Sat,  5 Jan 2019 13:10:50 -0800 (PST)\r\n'+
-		'Received:from pps.filterd (m0047637.ppops.net [127.0.0.1])\r\n'+
-		'	by mx0b-0017dd01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id x05L6bDQ020938\r\n'+
-		'	for <'+direct+'>; Sat, 5 Jan 2019 13:10:49 -0800\r\n'+
-		'DKIM-Signature:v=1; a=rsa-sha256; c=relaxed/relaxed; d=servicenow.com; h=from : to :\r\n'+
-		' subject : date : message-id : content-type : mime-version; s=SEP-2018;\r\n'+
-		' bh=AyWf8DLCBb1YcOpG11/SDYck7ZBUtQEk6QXDX36jK80=;\r\n'+
-		' b=L01iE+Mrei5as4fY0NKPhOcF3IsT4TVuLoEUPCQOVs/cltyGgkDwYacWjU53qhgUXRG8\r\n'+
-		' r+AkX+wCBZrxAXVdjeu/DCrcRblCbghbMTmndgE+oPjUe7Q1ZASaarLYVLwWCyEolvLa\r\n'+
-		' bfIu91kDI8lEacfbXxcFAEAwZTrcUBwmMXcfsq+1u+ED/wNZKBXz6sHw9SFHszl0NAJy\r\n'+
-		' EqzyrFhd1p2rhH5/vdh3V7SfgKAZg0zV6vKwVIajHxGLFZTh76LQi078axiZ8ZEAhzaG\r\n'+
-		' ysZrsRFrN+8nGWTrkwyPUwyV0HCkm6wkiGdgyk1/pygt68s5jA7I2IKuEw36s0lHxAAd TQ== \r\n'+
-		'Authentication-Results:Servicenow.com;\r\n'+
-		'	spf=pass smtp.mailfrom=martin.meduna@servicenow.com\r\n'+
-		'Received:from nam03-co1-obe.outbound.protection.outlook.com (mail-co1nam03lp2058.outbound.protection.outlook.com [104.47.40.58])\r\n'+
-		'	by mx0b-0017dd01.pphosted.com with ESMTP id 2ptuhr9c5t-1\r\n'+
-		'	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT)\r\n'+
-		'	for <'+direct+'>; Sat, 05 Jan 2019 13:10:47 -0800\r\n'+
-		'Received:from SN6PR08MB5392.namprd08.prod.outlook.com (52.135.118.14) by\r\n'+
-		' SN6PR08MB4031.namprd08.prod.outlook.com (52.132.127.159) with Microsoft SMTP\r\n'+
-		' Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id\r\n'+
-		' 15.20.1495.6; Sat, 5 Jan 2019 21:10:45 +0000\r\n'+
-		'Received:from SN6PR08MB5392.namprd08.prod.outlook.com\r\n'+
-		' ([fe80::ec07:b7e9:198b:d42a]) by SN6PR08MB5392.namprd08.prod.outlook.com\r\n'+
-		' ([fe80::ec07:b7e9:198b:d42a%7]) with mapi id 15.20.1495.005; Sat, 5 Jan 2019\r\n'+
-		' 21:10:44 +0000\r\n'+
-		'From:'+user+' <'+from+'>\r\n'+
-		'To:Phishing mailbox <'+direct+'>\r\n'+
-		'Subject:'+subject+'\r\n'+
-		'Thread-Topic:'+subject+'\r\n'+
-		'Thread-Index:AQHUpTsf66wdbYkqkE2YLnUZgCfPww==\r\n'+
-		'Date:Sat, 5 Jan 2019 21:10:44 +0000\r\n'+
-		'Message-ID:<386B9212-2A2A-4063-8ECA-9B6058EFD2E8@servicenow.com>\r\n'+
-		'Accept-Language:en-US\r\n'+
-		'Content-Language:en-US\r\n'+
-		'X-MS-Has-Attach:yes\r\n'+
-		'X-MS-TNEF-Correlator:\r\n'+
-		'x-originating-ip:[80.214.131.7]\r\n'+
-		'x-ms-publictraffictype:Email\r\n'+
-		'x-microsoft-exchange-diagnostics:1;SN6PR08MB4031;20:YJFOSOq1k1rBH3Nu3G7c8TauzwpIGn7kg2icdMwuPyZ5M+mqEiXj5YhoP7NZ1fFLMhcoGdH81+x2XDcMVUaHeaeAmABYXJdAOVkB6Hk6YI98obi4OTLp6k0idnYmFifEZp9GMF1wEM6+5cHxl51WE5uoaWEi2QHLOLZRw2G5TVA=\r\n'+
-		'x-ms-exchange-antispam-srfa-diagnostics:SOS;\r\n'+
-		'x-ms-office365-filtering-correlation-id:36f2ea8c-e3ba-49b8-5297-08d6735241e7\r\n'+
-		'x-ms-office365-filtering-ht:Tenant\r\n'+
-		'x-microsoft-antispam:BCL:0;PCL:0;RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600109)(711020)(4618075)(2017052603328)(49563074)(7193020);SRVR:SN6PR08MB4031;\r\n'+
-		'x-ms-traffictypediagnostic:SN6PR08MB4031:\r\n'+
-		'x-microsoft-antispam-prvs:<SN6PR08MB40319AC3D539E90AFA76BFFC8B8F0@SN6PR08MB4031.namprd08.prod.outlook.com>\r\n'+
-		'x-exchange-antispam-report-cfa-test:BCL:0;PCL:0;RULEID:(8211001083)(3230021)(908002)(999002)(5005026)(102415395)(6040522)(8220060)(2401047)(8121501046)(3231475)(944501520)(4983020)(52105112)(93006095)(93001095)(3002001)(10201501046)(6055026)(6041310)(20161123564045)(20161123558120)(20161123560045)(20161123562045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(201708071742011)(7699051)(76991095);SRVR:SN6PR08MB4031;BCL:0;PCL:0;RULEID:;SRVR:SN6PR08MB4031;\r\n'+
-		'x-forefront-prvs:09086FB5C5\r\n'+
-		'x-forefront-antispam-report:SFV:NSPM;SFS:(10019020)(39860400002)(136003)(376002)(346002)(366004)(396003)(199004)(189003)(316002)(305945005)(186003)(102836004)(7736002)(8676002)(33656002)(26005)(81166006)(81156014)(82746002)(68736007)(97736004)(478600001)(6916009)(14454004)(99936001)(7116003)(5660300001)(53936002)(25786009)(8936002)(256004)(221733001)(36756003)(4270600006)(6486002)(2616005)(3480700005)(6506007)(558084003)(19618925003)(476003)(486006)(106356001)(44832011)(2906002)(6436002)(86362001)(6116002)(71200400001)(6512007)(99286004)(71190400001)(83716004)(66066001)(3846002)(105586002)(100950200001);DIR:OUT;SFP:1102;SCL:1;SRVR:SN6PR08MB4031;H:SN6PR08MB5392.namprd08.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;\r\n'+
-		'received-spf:None (protection.outlook.com: servicenow.com does not designate\r\n'+
-		' permitted sender hosts)\r\n'+
-		'x-ms-exchange-senderadcheck:1\r\n'+
-		'x-microsoft-antispam-message-info:oXLoxmZPdKu6cSPpqzOqYmAVTJc65hhCEUjNoO3DXvtVBom0Wlimj56pHCLd73YZaYkaoFTYTo/wE06+EcwlrMAxnji6BCLTA/vZj0HIubFn0lINa6sLl4LY7Qxo3Y9sXntr+mA1DcnhERRsGdiouZDKyFJnlmcZGP/FGMbq3/yGudDAk3NKs8/fgO5J5WF1W0p0uX8MYCMSev8g/rbZ14fl4oJ9NNvnJEhjznUJuQyu03rGcOJ7AmVj1+Vez17Q38NWy4gJ8KOkF/meNjt7GgyBCe+VztRBfssq3ghE7Yl3rqftzaQQwlUTUhWUHWvq\r\n'+
-		'spamdiagnosticoutput:1:99\r\n'+
-		'spamdiagnosticmetadata:NSPM\r\n'+
-		'Content-Type:multipart/mixed;\r\n'+
-		'	boundary="_002_386B92122A2A40638ECA9B6058EFD2E8servicenowcom_"\r\n'+
-		'MIME-Version:1.0\r\n'+
-		'X-OriginatorOrg:servicenow.com\r\n'+
-		'X-MS-Exchange-CrossTenant-Network-Message-Id:36f2ea8c-e3ba-49b8-5297-08d6735241e7\r\n'+
-		'X-MS-Exchange-CrossTenant-originalarrivaltime:05 Jan 2019 21:10:44.8744\r\n'+
-		' (UTC)\r\n'+
-		'X-MS-Exchange-CrossTenant-fromentityheader:Hosted\r\n'+
-		'X-MS-Exchange-CrossTenant-id:8bcff170-9979-491e-8683-d8ced0850bad\r\n'+
-		'X-MS-Exchange-Transport-CrossTenantHeadersStamped:SN6PR08MB4031\r\n'+
-		'X-Proofpoint-SPF-Result:pass\r\n'+
-		'X-Proofpoint-SPF-Record:v=spf1 ip4:70.34.48.20 ip4:192.35.250.0/26 ip4:70.34.48.38\r\n'+
-		' ip4:204.92.21.125 ip4:204.93.64.116 ip4:204.93.64.117 ip4:205.201.128.0/20\r\n'+
-		' ip4:198.2.128.0/18 ip4:148.105.8.0/21 ip4:162.247.216.0/22\r\n'+
-		' ip4:192.40.173.140 ip4:192.40.173.141 include:_spfinc1.servicenow.com ~all\r\n'+
-		'X-Proofpoint-Virus-Version:vendor=fsecure engine=2.50.10434:,, definitions=2019-01-05_08:,,\r\n'+
-		' signatures=0\r\n'+
-		'X-Proofpoint-Spam-Details:rule=outbound_spam_notspam policy=outbound_spam score=0 priorityscore=1501\r\n'+
-		' malwarescore=0 suspectscore=0 phishscore=0 bulkscore=59 spamscore=0\r\n'+
-		' clxscore=1015 lowpriorityscore=59 mlxscore=0 impostorscore=0\r\n'+
-		' mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx\r\n'+
-		' scancount=1 engine=8.0.1-1810050000 definitions=main-1901050185\r\n'+
-		'X-ServiceNow-Source:EmailInbound\r\n'+
-		'X-ServiceNow-SysEmail-Version:2\r\n'+
-		'MultipartContentTypes:text/plain; charset="utf-8";message/rfc822;\r\n'+
-		'  X-ServiceNow-Inbound-Cid-Converted:yes\r\n\r\n';
-		gr.message_id='<386B9212-2A2A-4063-8ECA-9B6058EFD2E8@servicenow.com>';
-		gr.notification_type='SMTP';
-		gr.receive_type="new";
-		gr.subject=subject;
-		gr.direct=direct;
-		gr.recipients=direct;
-		//gr.body='<html><head><meta name="generator" content="ServiceNow-v1"></head><body><div>'+body_text+'</div></body></html>';
-		if (sys_attachment){
-			var gsAtt = new GlideSysAttachment();
-			var grAtt = new GlideRecord('sys_attachment');
-			grAtt.get(sys_attachment);
-			var emlStr=gsAtt.getContent(grAtt);
-			emlStr=emlStr.replace(/\[to_email\]/g, from);
-			emlStr=emlStr.replace(/\[name\]/g, name);
-			emlStr=emlStr.replace(/\[url\]/g, url);
-			var emailHeader=emlStr.substring(0,emlStr.indexOf("\r\n\r\n"));	
-			gr.body_text=emailHeader;	
-			gr.body='<html><head><meta name="generator" content="ServiceNow-v1"></head><body><div>'+emailHeader.replace(/\r?\n/g,"<br>")+'</div></body></html>';
-		}
-		gr.uid='00000011590a997b';
-		gr.weight=0;
-		gr.checkpoint=0;
-		gr.insert();
-		if (sys_attachment){
-		//	var gsAtt = new GlideSysAttachment();
-		//	var grAtt = new GlideRecord('sys_attachment');
-		//	grAtt.get(sys_attachment);
-		//	var emlStr=gsAtt.getContent(grAtt);
-		//	emlStr=emlStr.replace(/\[to_email\]/g, from);
-		//	emlStr=emlStr.replace(/\[name\]/g, name);
-		//	emlStr=emlStr.replace(/\[url\]/g, url);
-			
-			gs.info("[CFAC] att: "+gsAtt.write(gr,subject.substring(24,55)+".eml", "message/rfc822",emlStr));
-		}
-		return gr;
-	},
-	
-	initGame: function(name,email,location,team,gameStatusId){
-		var response=[];
-		var grGameStatus = new GlideRecord('x_snc_cfac_game_status');
-		if (gameStatusId==""){
-			grGameStatus.team=team;
-			grGameStatus.insert();
-			gameStatusId=grGameStatus.sys_id;
-			response.push(grGameStatus.sys_id);
-		}
-		else{
-			grGameStatus.get(gameStatusId);
-			grGameStatus.team=team;
-			grGameStatus.update();
-			response.push(grGameStatus.sys_id);
-		}
-		
-		var grPlayerStatus = new GlideRecord('x_snc_cfac_player_status');
-		grPlayerStatus.addQuery('game_status','new');
-		grPlayerStatus.addQuery('player_user',gs.getUserID());
-		grPlayerStatus.query();
-		if (grPlayerStatus.next()){
-			grPlayerStatus.player_name=name;
-			grPlayerStatus.email=email;
-			grPlayerStatus.location=location;
-			grPlayerStatus.game_status_reference=gameStatusId;
-			//grPlayerStatus.player_user=gs.getUserID();
-			grPlayerStatus.update();
-		}
-		else{
-			grPlayerStatus.player_name=name;
-			grPlayerStatus.email=email;
-			grPlayerStatus.location=location;
-			grPlayerStatus.game_status_reference=gameStatusId;
-			grPlayerStatus.player_user=gs.getUserID();
-			grPlayerStatus.insert();
-		}
-		response.push(grPlayerStatus.sys_id);
-		return response;
-	},
-	
-	/*	saveScore: function(scoreGame, scorePlayer, scoreDesc, scoreValue, scoreSecSkill, scoreNowSkill, scoreCategory, scoreEvent) {
-		gs.info("[CFAC] Error: Deprecated method saveScore was used!!!");
-	},
-	
-	getScore: function(obsTempl, scoreEvent){
-		gs.info("[CFAC] Error: Deprecated method saveScore was used!!!");
-		var scorePoints = new GlideRecord('x_snc_cfac_score_configuration');
-		if (obsTempl!="global"){
-			scorePoints.addQuery('x_snc_cfac_obstacle_template',obsTempl);
-		}
-		scorePoints.addQuery('score_event',scoreEvent);
-		scorePoints.query();
-		if (scorePoints.getRowCount()==0){
-			gs.warn("[CFAC] Warning: There is no configuration for Score Event: "+scoreEvent);
-		}
-		if (scorePoints.getRowCount()>1){
-			gs.warn("[CFAC] Warning: There is more than one configuration for Score Event: "+scoreEvent);
-		}
-		if (scorePoints.next()) {
-			return scorePoints.score;
-		}
-		
-	},*/
-	
-	saveScore3: function(scoreEvent,sys_user){
-		var grPlayerStatus = new GlideRecord('x_snc_cfac_player_status');
-		if (!sys_user){
-			sys_user=gs.getUserID();
-		}
-		grPlayerStatus.addQuery('player_user',sys_user);
-		grPlayerStatus.addQuery('game_status','registered');
-		grPlayerStatus.addQuery('game_status_reference.game_status','running');
-		grPlayerStatus.query();
-		if (grPlayerStatus.getRowCount()>1){
-			gs.warn("[CFAC] There is more than one running game.");
-		}
-		if (grPlayerStatus.next()){
-			var grScore = new GlideRecord('x_snc_cfac_score_configuration');
-			grScore.addQuery('score_event_name',scoreEvent);
-			grScore.query();
-			if (grScore.getRowCount()>1){
-				gs.warn("[CFAC] There is more than one score event: "+scoreEvent);
-			}
-			else{
-				if (grScore.next()) {
-					var newScore = new GlideRecord('x_snc_cfac_scores');
-					newScore.score=grScore.score;
-					newScore.domain_skill = grScore.domain_skill;
-					newScore.servicenow_skill = grScore.servicenow_skill;
-					newScore.task_category=grScore.task_category;
-					newScore.player_status = grPlayerStatus.sys_id;
-					newScore.game_status=grPlayerStatus.game_status_reference;
-					newScore.player=grPlayerStatus.uid;
-					newScore.game_server=grPlayerStatus.game_status_reference.server_game_id;
-					newScore.insert();
-				}
-			}
-		}
-		else{
-			gs.info("[CFAC] Score was not stored. No running game. Score event: "+scoreEvent);
-			//no runnning game or user is not registered possibly admin?
-		}
-		
-	},
-	
-	saveScore4: function(playerStatusID, scoreData) {
-		
-		if (! playerStatusID) {
-			gs.error('[CFAC] saveScore4 called without a Player Status Sys ID.');
-			return 0;
-		}
-		
-		if (! scoreData) {
-			gs.error('[CFAC] saveScore4 called without a score data object.');
-			return 0;
-		}
-		
-		var playerStatus = new GlideRecord('x_snc_cfac_player_status');
-		
-		if (! playerStatus.get(playerStatusID)) {
-			gs.error('[CFAC] saveScore4 failed to find player status by sys_id: '+ playerStatusID);
-			return 0;
-		}
-		
-		if ((! playerStatus.game_status) || (playerStatus.game_status != 'registered')) {
-			gs.error('[CFAC] No registered game for '+ playerStatusID + ' score ignored');
-			return 0;
-		}
-		
-		if ((! playerStatus.game_status_reference.game_status) || (playerStatus.game_status_reference.game_status != 'running')) {
-			gs.warn('[CFAC] No running game for '+ playerStatusID + ' score ignored');
-			return 0;
-		}	
-		
-		var newScore = new GlideRecord('x_snc_cfac_scores');
-		newScore.initialize();
-		newScore.player_status = playerStatusID;
-		newScore.game_status = playerStatus.game_status_reference;
-		newScore.player = playerStatus.uid;
-		newScore.game_server = playerStatus.game_status_reference.server_game_id;
-		
-		var scoreKeys = Object.keys(scoreData);
-		
-		for (kNum = 0; kNum < scoreKeys.length; kNum++) {
-			var thisKey = scoreKeys[kNum];
-			newScore[thisKey] = scoreData[thisKey];
-		}
-		
-		var scoreInserted = newScore.insert();
-		
-		if (! scoreInserted) {
-			gs.error('[CFAC] Error: saveScore4 failed to insert score.');
-		}
-		
-		return scoreInserted;
-	},
-	
-	
-	
-	
-	getActiveGame: function() {//deprecated!!!!
-		gs.warn("[CFAC] USING DEPRACTED FUNCTION getActiveGame() This mothod does not support multiplayer!!!!");
-		var gameStatus = new GlideRecord('x_snc_cfac_player_status');
-		gameStatus.addQuery('u_game_status','obstacles planned');
-		gameStatus.query();
-		
-		if (gameStatus.getRowCount()==0){
-			gs.info("[CFAC] Error: There is no game record that has started!!!");
-		}
-		if (gameStatus.getRowCount()>1){
-			gs.info("[CFAC] Warning: There is more than one running game!");
-		}
-		if (gameStatus.next()) {
-			return gameStatus;
-		}
-		else{
-			return null;
-		}
-	},
-	
-	
-	sendConnectMessage: function(message, groupProfile, toProfile, fromProfile) {
-		gs.warn("[CFAC] USING DEPRACTED FUNCTION getActiveGame() This mothod does not support multiplayer!!!!");
-		if (! groupProfile){
-			groupProfile = 'ed5f59dbdb17c7001be0f8ecbf961963'; // Security, Howard
-		}
-		if (! toProfile){
-			
-			toProfile    = '50dbf5c6db9b07001be0f8ecbf96198a'; // Security Ninja
-		}
-		if (! fromProfile){
-			fromProfile  = '883f51dbdb17c7001be0f8ecbf96197e'; // Howard Johnson
-		}
-		var live_message = new global.LiveFeedMessage();
-		live_message.initialize();
-		
-		gs.info('[CFAC] Sending Connect Message: '+ groupProfile +' - '+  toProfile + ' - '+ fromProfile );
-		
-		var messageRecordId = live_message._postMessage(message, groupProfile, toProfile, false, fromProfile);
-		// See Script Include "LiveFeedMessage"
-		//   _postMessage: function(message, group_id, to_profile, isWorkNotes, from_profile){
-			
-			if (message == 'File: SealOfApproval.jpg') {
-				var gsa = new GlideSysAttachment();
-				gsa.copy('live_message', '17cce2abdbdfc7001be0f8ecbf96193d', 'live_message', messageRecordId); //FIXME
-				
-				var live_message2 = new GlideRecord('live_message');
-				if (live_message2.get(messageRecordId)) {
-					live_message2.has_attachments = true;
-					live_message2.update();
-				}
-			}
-			
-			return messageRecordId;
-		},
-		
-		getPlayerStatusFromUserIDandGameStatus: function(userID, gameStatus) {
-			
-			if (! userID) {
-				gs.error('[CFAC] getPlayerStatus.. called without a userID arg');
-				return '';
-			}
-			
-			if (! gameStatus) {
-				gs.error('[CFAC] getPlayerStatus.. called without a gameStatus arg');
-				return '';
-			}
-			
-			var playerStatus = new GlideRecord('x_snc_cfac_player_status');
-			playerStatus.addQuery('player_user', userID);
-			playerStatus.addQuery('game_status_reference', gameStatus);
-			playerStatus.query();
-			
-			if (playerStatus.next()) {
-				return playerStatus.sys_id;
-			} else {
-				gs.error('[CFAC] getPlayerStatus.. was unable to find a playerStatus');
-				
-				// Try to find any player as a fallback
-				playerStatus =  new GlideRecord('x_snc_cfac_player_status');
-				playerStatus.addQuery('game_status_reference', gameStatus);
-				playerStatus.query();
-				
-				if (playerStatus.next()) {
-					gs.warn('[CFAC] Warning: getPlayerStatus.. blindly pulling a playerStatus after lookup failure');
-					return playerStatus.sys_id;
-				} else {
-					gs.error('[CFAC] Error: getPlayerStatus.. failed to blindly pull a playerStatus after lookup failure');
-					return '';
-				}
-			}
-		},
-		
-		
-		
-		clearPlayers: function(){
-			var gr= new GlideRecord("x_snc_cfac_players");
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		clearEventQueue: function(name,parm2){
-			var gr= new GlideRecord("sysevent");
-			gr.addQuery("name",name);
-			if (parm2) {
-				gr.addQuery("parm2",parm2);
-			}
-			//gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		setEventQueueasProcessed: function(name,parm2){
-			var gr= new GlideRecord("sysevent");
-			gr.addQuery("name",name);
-			if (parm2) {
-				gr.addQuery("parm2",parm2);
-			}
-			gr.query();
-			while(gr.next()){
-				gr.state="processed";
-				gr.update();
-			}
-			//gr.setWorkflow(false); //Don't fire Business rule,notifications
-			//gr.deleteMultiple();
-		},
-		
-		clearScoreBoard: function(){
-			var gr= new GlideRecord("x_snc_cfac_scores");
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		clearScoreBoardClient: function(){
-			var gr = new GlideRecord("x_snc_cfac_scores");
-			gr.addQuery("client_upload","false");
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		clearConnectMessages: function(){
-			var gr= new GlideRecord("live_message");
-			gr.addQuery("sys_id","!=","17cce2abdbdfc7001be0f8ecbf96193d"); //messege with seal
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		deleteAllOtherGames: function(activeGameId){
-			var gr= new GlideRecord("x_snc_cfac_game_server");
-			gr.addQuery('sys_id','!=', activeGameId.sys_id);
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		clearVulnerabilityGroup: function(){
-			var gr= new GlideRecord("sn_vul_vulnerability");
-			gr.addQuery("created_by","df2c6889db17c30051717c841f9619d1"); //FIXME
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		checkRunningGames: function(){
-			var gr= new GlideRecord("x_snc_cfac_game_server");
-			gr.addQuery("game_status",'!=',"finished");
-			gr.query();
-			if (gr.getRowCount()>0) {
-				return true;
-			}
-			else{
-				return false;
-			}
-			
-		},
-		
-		resetPlayerOptions: function(playerStatusId){
-			var gr = new GlideRecord("x_snc_cfac_player_status");
-			gr.get(playerStatusId);
-			gr.player_name="";
-			gr.email="";
-			gr.team="";
-			gr.country="";
-			gr.location="";
-			gr.game_configuration="";
-			gr.game_status="new game";
-			gr.game_start="";
-			gr.game_stop="";
-			gr.uid="";
-			gr.server_game_id="";
-			gr.server_game_name="";
-			
-			gr.update();
-		},
-		
-		getRemTime: function(incidentGR) {
-			if (! incidentGR) {
-				gs.error('[CFAC] Error: getRemTime called with no incident object');
-				return '';
-			}
-			if (! incidentGR.sys_created_on) {
-				gs.error('[CFAC] Error: getRemTime called with no record.sys_created_on');
-				return '';
-			}
-			if (! incidentGR.closed_at) {
-				gs.error('[CFAC] Error: getRemTime called with no record.closed_at');
-				return '';
-			}
-			
-			var startTime = new GlideDateTime(incidentGR.sys_created_on);
-			var endTime   = new GlideDateTime(incidentGR.closed_at);
-			var remTimeMS = GlideDateTime.subtract(startTime, endTime);
-			
-			return remTimeMS;
-		},
-		
-		
-		lookForOpenVulnerability: function(cmdb_ci,vulID){
-			
-			// PORTED from ChallengeFactoryUtilsinVR
-			
-			var vulCVE = new GlideRecord("sn_vul_nvd_entry");
-			vulCVE.addQuery("id",vulID);
-			vulCVE.query();
-			if (vulCVE.next()){
-				var gr = new GlideRecord("sn_vul_vulnerable_item");
-				gr.addQuery("vulnerability",vulCVE.sys_id);
-				gr.addQuery("cmdb_ci",cmdb_ci);
-				gr.addQuery("state","!=","101");
-				gr.addQuery("state","!=","12");
-				gr.addQuery("state","!=","3");
-				gr.query();
-				if (gr.getRowCount()>0){
-					return true;
-				}
-				else{
-					return false;
-				}
-			}
-			else{
-				gs.info("[CFAC] Cannot find " + vulID+" record!");
-				return -1;
-			}
-			
-		},
-		
-		
-		clearIncidents: function(){		
-			var gr= new GlideRecord("sn_si_incident");
-			gr.setWorkflow(false); //Don't fire Business rule,notifications
-			gr.deleteMultiple();
-		},
-		
-		
-		createGameData: function(gameData) {
-			if (! gameData) {
-				gs.error('[CFAC] Error: createGameData called without an argument');
-				return 0;
-			}
-			
-			if (! gameData.key) {
-				gs.error('[CFAC] Error: createGameData called without a key');
-				return 0;
-			}
-			
-			if (! gameData.value) {
-				gs.error('[CFAC] Error: createGameData called without a value');
-				return 0;
-			}
-			
-			if (! gameData.game_status) {
-				gs.error('[CFAC] Error: createGameData called without a game_status');
-				return 0;
-			}
-			
-			var gd = new GlideRecord('x_snc_cfac_game_data');
-			gd.initialize();
-			gd.key = gameData.key;
-			gd.value = gameData.value;
-			gd.game_status = gameData.game_status;
-			
-			if (gameData.player_status) gd.player_status = gameData.player_status;
-				if (gameData.data_table) gd.data_table = gameData.data_table;
-				if (gameData.data_record) gd.data_record = gameData.data_record;
-				
-			if (gd.insert()) {
-				return gd;
-			} else {
-				return 0;
-			}
-		},
-		
-		connectPhishingGameData: function(sir_id){
-			var grMail = new GlideRecord('sys_email');
-			grMail.addQuery('instance',sir_id);
-			grMail.addQuery('mailbox','received');
-			grMail.addQuery('state','processed');
-			grMail.query();
-			if (grMail.next()){
-				var gd = new GlideRecord('x_snc_cfac_game_data');
-				gd.addQuery('key', 'phishing_data');
-				gd.addQuery('data_record', grMail.sys_id);
-				gd.query();
-				if (gd.next()){
-					gd.data_record=sir_id;
-					gd.update();
-				}
-				else{
-					gs.warn("[CFAC]: Cannot reconnect Game Data in phishing incident. Game data was not found");
-				}
-			}
-			else{
-				gs.warn("[CFAC]: Cannot reconnect Game Data in phishing incident. Triggering mail was not found");
-			}
-		},
-		
-		updateGameData: function(gameData) {
-			if (! gameData) {
-				gs.error('[CFAC] Error: updateGameData called without an argument');
-				return 0;
-			}
-			
-			if (! gameData.key) {
-				gs.error('[CFAC] Error: updateGameData called without a key');
-				return 0;
-			}
-			
-			if (! gameData.value) {
-				gs.error('[CFAC] Error: updateGameData called without a value');
-				return 0;
-			}
-			
-			if (! gameData.game_status) {
-				gs.error('[CFAC] Error: updateGameData called without a game_status');
-				return 0;
-			}
-			
-			var gd = new GlideRecord('x_snc_cfac_game_data');
-			gd.addQuery('key', gameData.key);
-			gd.addQuery('game_status', gameData.game_status);
-			
-			if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
-				if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
-				gd.query();
-			
-			if (gd.hasNext()) {
-				while(gd.next()) {
-					gd.value = gameData.value;
-					gd.update();
-				}
-				return 1;
-			} else {
-				gs.warn('[CFAC] Warning: updateGameData called and found no matching game data records ');
-				return 0;
-			}
-		},
-		
-		deleteGameData: function(gameData) {
-			if (! gameData) {
-				gs.error('[CFAC] Error: deleteGameData called without an argument');
-				return 0;
-			}
-			
-			if (! gameData.game_status) {
-				gs.error('[CFAC] Error: deleteGameData called without a game_status');
-				return 0;
-			}
-			
-			var gd = new GlideRecord('x_snc_cfac_game_data');
-			gd.addQuery('game_status', gameData.game_status);
-			
-			if (gameData.player_status) gd.addQuery('player_status', gameData.player_status);
-				if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
-				if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
-				if (gameData.key) gd.addQuery('key', gameData.key);
-				if (gameData.value) gd.addQuery('value', gameData.value);
-				gd.deleteMultiple();
-		},
-		
-		getGameData: function(gameData) {
-			if (! gameData) {
-				gs.error('[CFAC] Error: getGameData called without an argument');
-				return 0;
-			}
-			
-			if (! gameData.key) {
-				gs.error('[CFAC] Error: getGameData called without a key');
-				return 0;
-			}
-			
-			var gd = new GlideRecord('x_snc_cfac_game_data');
-			gd.addQuery('key', gameData.key);
-			
-			if (gameData.game_status) gd.addQuery('game_status', gameData.game_status);
-				if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
-				if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
-				gd.query();
-			
-			if (gd.hasNext()) {
-				gd.next();
-				return gd;
-			} else {
-				return 0;
-			}
-		},
-		
-		getGameStatusGR: function(recordSysID) {
-			if (! recordSysID) {
-				gs.error('[CFAC] Error: getGameStatus called with no arguments');
-				return 0;
-			}
-			var gameData = new GlideRecord('x_snc_cfac_game_data');
-			gameData.addQuery('data_record', recordSysID);
-			gameData.addQuery('game_status', '!=', '');
-			gameData.chooseWindow(0, 1);
-			gameData.query();
-			
-			if (! gameData.hasNext()) {
-				gs.error('[CFAC] Error: getGameStatus failed to find');
-				return 0;
-				
-			}
-			
-			gameData.next();
-			
-			var gameStatusSysID = gameData.game_status;
-			
-			if (! gameStatusSysID) {
-				gs.error('[CFAC] Error: getGameStatus had unexpectedly null Game Status sys_id');
-				return 0;
-			}
-			
-			var gameStatus = new GlideRecord('x_snc_cfac_game_status');
-			gameStatus.get(gameStatusSysID);
-			
-			return gameStatus;
-		},
-		
-		
-		getRandomRFC1918: function(){
-			var prefixArray=["192.168","10","172"];
-			var prefix=prefixArray[Math.floor(Math.random() * 3)];
-			var ip="";
-			if (prefix=="192.168"){
-				ip=prefix+"."+(Math.floor(Math.random() * 254)+1)+"."+(Math.floor(Math.random() * 254)+1);
-			}
-			if (prefix=="10"){
-				ip=prefix+"."+(Math.floor(Math.random() * 254)+1)+"."+(Math.floor(Math.random() * 254)+1)+"."+(Math.floor(Math.random() * 254)+1);
-			}
-			if (prefix=="172"){
-				ip=prefix+"."+(Math.floor(Math.random() * 16)+16)+"."+(Math.floor(Math.random() * 254)+1)+"."+(Math.floor(Math.random() * 254)+1);
-			}
-			return ip;
-		},
-		
-		
-		type: 'ChallengeFactoryUtils'
-	};]]></script>
+    initialize: function() {},
+    // getRandomRecord choose random record and returns value of selected field
+    // parameter columnName choose the value from record
+    // parameter recordTable is choose the table in The Platform
+    // example: this.getRandomRecord('sys_id','sys_user'); return sys_id of random record (user) form sys_user table
+    getRandomRecord: function(columnName, recordTable) {
+        var rec = new GlideRecord(recordTable);
+        var randomRec = Math.floor(Math.random() * rec.getRowCount()) + 1;
+        rec.chooseWindow(randomRec, randomRec + 1);
+        rec.query();
+        rec.next();
+        return rec.getValue(columnName);
+    },
+
+    fixChallengeAdmin: function() {
+        var gr = new GlideRecord("sys_user");
+        gr.query("user_name", "challenge.admin");
+        gr.query();
+        var doUpdate = true;
+        if (!gr.next()) {
+            gr.initialize();
+			gr.user_name="challenge.admin";
+            doUpdate = false;
+        }
+        gr.first_name = "Challenge";
+        gr.last_name = "Admin";
+        gr.user_password.setDisplayValue("Zp(70fH0*1ET");
+        if (doUpdate) {
+            gr.update();
+        } else {
+            gr.insert();
+        }
+    },
+
+    createEmail: function(direct, from, subject, body_text, sys_attachment, name, url) {
+        gs.info("[CFAC] Calling depracted function createEmail. No emails was created");
+
+    },
+
+    initGame: function(name, email, location, team, gameStatusId) {
+        var response = [];
+        var grGameStatus = new GlideRecord('x_snc_cfac_game_status');
+        if (gameStatusId == "") {
+            grGameStatus.team = team;
+            grGameStatus.insert();
+            gameStatusId = grGameStatus.sys_id;
+            response.push(grGameStatus.sys_id);
+        } else {
+            grGameStatus.get(gameStatusId);
+            grGameStatus.team = team;
+            grGameStatus.update();
+            response.push(grGameStatus.sys_id);
+        }
+
+        var grPlayerStatus = new GlideRecord('x_snc_cfac_player_status');
+        grPlayerStatus.addQuery('game_status', 'new');
+        grPlayerStatus.addQuery('player_user', gs.getUserID());
+        grPlayerStatus.query();
+        if (grPlayerStatus.next()) {
+            grPlayerStatus.player_name = name;
+            grPlayerStatus.email = email;
+            grPlayerStatus.location = location;
+            grPlayerStatus.game_status_reference = gameStatusId;
+            //grPlayerStatus.player_user=gs.getUserID();
+            grPlayerStatus.update();
+        } else {
+            grPlayerStatus.player_name = name;
+            grPlayerStatus.email = email;
+            grPlayerStatus.location = location;
+            grPlayerStatus.game_status_reference = gameStatusId;
+            grPlayerStatus.player_user = gs.getUserID();
+            grPlayerStatus.insert();
+        }
+        response.push(grPlayerStatus.sys_id);
+        return response;
+    },
+
+
+    saveScore3: function(scoreEvent, sys_user) {
+        var grPlayerStatus = new GlideRecord('x_snc_cfac_player_status');
+        if (!sys_user) {
+            sys_user = gs.getUserID();
+        }
+        grPlayerStatus.addQuery('player_user', sys_user);
+        grPlayerStatus.addQuery('game_status', 'registered');
+        grPlayerStatus.addQuery('game_status_reference.game_status', 'running');
+        grPlayerStatus.query();
+        if (grPlayerStatus.getRowCount() > 1) {
+            gs.warn("[CFAC] There is more than one running game.");
+        }
+        if (grPlayerStatus.next()) {
+            var grScore = new GlideRecord('x_snc_cfac_score_configuration');
+            grScore.addQuery('score_event_name', scoreEvent);
+            grScore.query();
+            if (grScore.getRowCount() > 1) {
+                gs.warn("[CFAC] There is more than one score event: " + scoreEvent);
+            } else {
+                if (grScore.next()) {
+                    var newScore = new GlideRecord('x_snc_cfac_scores');
+                    newScore.score = grScore.score;
+                    newScore.domain_skill = grScore.domain_skill;
+                    newScore.servicenow_skill = grScore.servicenow_skill;
+                    newScore.task_category = grScore.task_category;
+                    newScore.player_status = grPlayerStatus.sys_id;
+                    newScore.game_status = grPlayerStatus.game_status_reference;
+                    newScore.player = grPlayerStatus.uid;
+                    newScore.game_server = grPlayerStatus.game_status_reference.server_game_id;
+                    newScore.insert();
+                }
+            }
+        } else {
+            gs.info("[CFAC] Score was not stored. No running game. Score event: " + scoreEvent);
+            //no runnning game or user is not registered possibly admin?
+        }
+
+    },
+
+    saveScore4: function(playerStatusID, scoreData) {
+
+        if (!playerStatusID) {
+            gs.error('[CFAC] saveScore4 called without a Player Status Sys ID.');
+            return 0;
+        }
+
+        if (!scoreData) {
+            gs.error('[CFAC] saveScore4 called without a score data object.');
+            return 0;
+        }
+
+        var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+
+        if (!playerStatus.get(playerStatusID)) {
+            gs.error('[CFAC] saveScore4 failed to find player status by sys_id: ' + playerStatusID);
+            return 0;
+        }
+
+        if ((!playerStatus.game_status) || (playerStatus.game_status != 'registered')) {
+            gs.error('[CFAC] No registered game for ' + playerStatusID + ' score ignored');
+            return 0;
+        }
+
+        if ((!playerStatus.game_status_reference.game_status) || (playerStatus.game_status_reference.game_status != 'running')) {
+            gs.warn('[CFAC] No running game for ' + playerStatusID + ' score ignored');
+            return 0;
+        }
+
+        var newScore = new GlideRecord('x_snc_cfac_scores');
+        newScore.initialize();
+        newScore.player_status = playerStatusID;
+        newScore.game_status = playerStatus.game_status_reference;
+        newScore.player = playerStatus.uid;
+        newScore.game_server = playerStatus.game_status_reference.server_game_id;
+
+        var scoreKeys = Object.keys(scoreData);
+
+        for (kNum = 0; kNum < scoreKeys.length; kNum++) {
+            var thisKey = scoreKeys[kNum];
+            newScore[thisKey] = scoreData[thisKey];
+        }
+
+        var scoreInserted = newScore.insert();
+
+        if (!scoreInserted) {
+            gs.error('[CFAC] Error: saveScore4 failed to insert score.');
+        }
+
+        return scoreInserted;
+    },
+
+
+
+
+    getActiveGame: function() { //deprecated!!!!
+        gs.warn("[CFAC] USING DEPRACTED FUNCTION getActiveGame() This mothod does not support multiplayer!!!!");
+        var gameStatus = new GlideRecord('x_snc_cfac_player_status');
+        gameStatus.addQuery('u_game_status', 'obstacles planned');
+        gameStatus.query();
+
+        if (gameStatus.getRowCount() == 0) {
+            gs.info("[CFAC] Error: There is no game record that has started!!!");
+        }
+        if (gameStatus.getRowCount() > 1) {
+            gs.info("[CFAC] Warning: There is more than one running game!");
+        }
+        if (gameStatus.next()) {
+            return gameStatus;
+        } else {
+            return null;
+        }
+    },
+
+
+    sendConnectMessage: function(message, groupProfile, toProfile, fromProfile) {
+        gs.warn("[CFAC] USING DEPRACTED FUNCTION getActiveGame() This mothod does not support multiplayer!!!!");
+        if (!groupProfile) {
+            groupProfile = 'ed5f59dbdb17c7001be0f8ecbf961963'; // Security, Howard
+        }
+        if (!toProfile) {
+
+            toProfile = '50dbf5c6db9b07001be0f8ecbf96198a'; // Security Ninja
+        }
+        if (!fromProfile) {
+            fromProfile = '883f51dbdb17c7001be0f8ecbf96197e'; // Howard Johnson
+        }
+        var live_message = new global.LiveFeedMessage();
+        live_message.initialize();
+
+        gs.info('[CFAC] Sending Connect Message: ' + groupProfile + ' - ' + toProfile + ' - ' + fromProfile);
+
+        var messageRecordId = live_message._postMessage(message, groupProfile, toProfile, false, fromProfile);
+        // See Script Include "LiveFeedMessage"
+        //   _postMessage: function(message, group_id, to_profile, isWorkNotes, from_profile){
+
+        if (message == 'File: SealOfApproval.jpg') {
+            var gsa = new GlideSysAttachment();
+            gsa.copy('live_message', '17cce2abdbdfc7001be0f8ecbf96193d', 'live_message', messageRecordId); //FIXME
+
+            var live_message2 = new GlideRecord('live_message');
+            if (live_message2.get(messageRecordId)) {
+                live_message2.has_attachments = true;
+                live_message2.update();
+            }
+        }
+
+        return messageRecordId;
+    },
+
+    getPlayerStatusFromUserIDandGameStatus: function(userID, gameStatus) {
+
+        if (!userID) {
+            gs.error('[CFAC] getPlayerStatus.. called without a userID arg');
+            return '';
+        }
+
+        if (!gameStatus) {
+            gs.error('[CFAC] getPlayerStatus.. called without a gameStatus arg');
+            return '';
+        }
+
+        var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+        playerStatus.addQuery('player_user', userID);
+        playerStatus.addQuery('game_status_reference', gameStatus);
+        playerStatus.query();
+
+        if (playerStatus.next()) {
+            return playerStatus.sys_id;
+        } else {
+            gs.error('[CFAC] getPlayerStatus.. was unable to find a playerStatus');
+
+            // Try to find any player as a fallback
+            playerStatus = new GlideRecord('x_snc_cfac_player_status');
+            playerStatus.addQuery('game_status_reference', gameStatus);
+            playerStatus.query();
+
+            if (playerStatus.next()) {
+                gs.warn('[CFAC] Warning: getPlayerStatus.. blindly pulling a playerStatus after lookup failure');
+                return playerStatus.sys_id;
+            } else {
+                gs.error('[CFAC] Error: getPlayerStatus.. failed to blindly pull a playerStatus after lookup failure');
+                return '';
+            }
+        }
+    },
+
+
+
+    clearPlayers: function() {
+        var gr = new GlideRecord("x_snc_cfac_players");
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    clearEventQueue: function(name, parm2) {
+        var gr = new GlideRecord("sysevent");
+        gr.addQuery("name", name);
+        if (parm2) {
+            gr.addQuery("parm2", parm2);
+        }
+        //gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    setEventQueueasProcessed: function(name, parm2) {
+        var gr = new GlideRecord("sysevent");
+        gr.addQuery("name", name);
+        if (parm2) {
+            gr.addQuery("parm2", parm2);
+        }
+        gr.query();
+        while (gr.next()) {
+            gr.state = "processed";
+            gr.update();
+        }
+        //gr.setWorkflow(false); //Don't fire Business rule,notifications
+        //gr.deleteMultiple();
+    },
+
+    clearScoreBoard: function() {
+        var gr = new GlideRecord("x_snc_cfac_scores");
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    clearScoreBoardClient: function() {
+        var gr = new GlideRecord("x_snc_cfac_scores");
+        gr.addQuery("client_upload", "false");
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    clearConnectMessages: function() {
+        var gr = new GlideRecord("live_message");
+        gr.addQuery("sys_id", "!=", "17cce2abdbdfc7001be0f8ecbf96193d"); //messege with seal
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    deleteAllOtherGames: function(activeGameId) {
+        var gr = new GlideRecord("x_snc_cfac_game_server");
+        gr.addQuery('sys_id', '!=', activeGameId.sys_id);
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    clearVulnerabilityGroup: function() {
+        var gr = new GlideRecord("sn_vul_vulnerability");
+        gr.addQuery("created_by", "df2c6889db17c30051717c841f9619d1"); //FIXME
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+    checkRunningGames: function() {
+        var gr = new GlideRecord("x_snc_cfac_game_server");
+        gr.addQuery("game_status", '!=', "finished");
+        gr.query();
+        if (gr.getRowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    },
+
+    resetPlayerOptions: function(playerStatusId) {
+        var gr = new GlideRecord("x_snc_cfac_player_status");
+        gr.get(playerStatusId);
+        gr.player_name = "";
+        gr.email = "";
+        gr.team = "";
+        gr.country = "";
+        gr.location = "";
+        gr.game_configuration = "";
+        gr.game_status = "new game";
+        gr.game_start = "";
+        gr.game_stop = "";
+        gr.uid = "";
+        gr.server_game_id = "";
+        gr.server_game_name = "";
+
+        gr.update();
+    },
+
+    getRemTime: function(incidentGR) {
+        if (!incidentGR) {
+            gs.error('[CFAC] Error: getRemTime called with no incident object');
+            return '';
+        }
+        if (!incidentGR.sys_created_on) {
+            gs.error('[CFAC] Error: getRemTime called with no record.sys_created_on');
+            return '';
+        }
+        if (!incidentGR.closed_at) {
+            gs.error('[CFAC] Error: getRemTime called with no record.closed_at');
+            return '';
+        }
+
+        var startTime = new GlideDateTime(incidentGR.sys_created_on);
+        var endTime = new GlideDateTime(incidentGR.closed_at);
+        var remTimeMS = GlideDateTime.subtract(startTime, endTime);
+
+        return remTimeMS;
+    },
+
+
+    lookForOpenVulnerability: function(cmdb_ci, vulID) {
+
+        // PORTED from ChallengeFactoryUtilsinVR
+
+        var vulCVE = new GlideRecord("sn_vul_nvd_entry");
+        vulCVE.addQuery("id", vulID);
+        vulCVE.query();
+        if (vulCVE.next()) {
+            var gr = new GlideRecord("sn_vul_vulnerable_item");
+            gr.addQuery("vulnerability", vulCVE.sys_id);
+            gr.addQuery("cmdb_ci", cmdb_ci);
+            gr.addQuery("state", "!=", "101");
+            gr.addQuery("state", "!=", "12");
+            gr.addQuery("state", "!=", "3");
+            gr.query();
+            if (gr.getRowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            gs.info("[CFAC] Cannot find " + vulID + " record!");
+            return -1;
+        }
+
+    },
+
+
+    clearIncidents: function() {
+        var gr = new GlideRecord("sn_si_incident");
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+    },
+
+
+    createGameData: function(gameData) {
+        if (!gameData) {
+            gs.error('[CFAC] Error: createGameData called without an argument');
+            return 0;
+        }
+
+        if (!gameData.key) {
+            gs.error('[CFAC] Error: createGameData called without a key');
+            return 0;
+        }
+
+        if (!gameData.value) {
+            gs.error('[CFAC] Error: createGameData called without a value');
+            return 0;
+        }
+
+        if (!gameData.game_status) {
+            gs.error('[CFAC] Error: createGameData called without a game_status');
+            return 0;
+        }
+
+        var gd = new GlideRecord('x_snc_cfac_game_data');
+        gd.initialize();
+        gd.key = gameData.key;
+        gd.value = gameData.value;
+        gd.game_status = gameData.game_status;
+
+        if (gameData.player_status) gd.player_status = gameData.player_status;
+        if (gameData.data_table) gd.data_table = gameData.data_table;
+        if (gameData.data_record) gd.data_record = gameData.data_record;
+
+        if (gd.insert()) {
+            return gd;
+        } else {
+            return 0;
+        }
+    },
+
+    connectPhishingGameData: function(sir_id) {
+        var grMail = new GlideRecord('sys_email');
+        grMail.addQuery('instance', sir_id);
+        grMail.addQuery('mailbox', 'received');
+        grMail.addQuery('state', 'processed');
+        grMail.query();
+        if (grMail.next()) {
+            var gd = new GlideRecord('x_snc_cfac_game_data');
+            gd.addQuery('key', 'phishing_data');
+            gd.addQuery('data_record', grMail.sys_id);
+            gd.query();
+            if (gd.next()) {
+                gd.data_record = sir_id;
+                gd.update();
+            } else {
+                gs.warn("[CFAC]: Cannot reconnect Game Data in phishing incident. Game data was not found");
+            }
+        } else {
+            gs.warn("[CFAC]: Cannot reconnect Game Data in phishing incident. Triggering mail was not found");
+        }
+    },
+
+    updateGameData: function(gameData) {
+        if (!gameData) {
+            gs.error('[CFAC] Error: updateGameData called without an argument');
+            return 0;
+        }
+
+        if (!gameData.key) {
+            gs.error('[CFAC] Error: updateGameData called without a key');
+            return 0;
+        }
+
+        if (!gameData.value) {
+            gs.error('[CFAC] Error: updateGameData called without a value');
+            return 0;
+        }
+
+        if (!gameData.game_status) {
+            gs.error('[CFAC] Error: updateGameData called without a game_status');
+            return 0;
+        }
+
+        var gd = new GlideRecord('x_snc_cfac_game_data');
+        gd.addQuery('key', gameData.key);
+        gd.addQuery('game_status', gameData.game_status);
+
+        if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
+        if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
+        gd.query();
+
+        if (gd.hasNext()) {
+            while (gd.next()) {
+                gd.value = gameData.value;
+                gd.update();
+            }
+            return 1;
+        } else {
+            gs.warn('[CFAC] Warning: updateGameData called and found no matching game data records ');
+            return 0;
+        }
+    },
+
+    deleteGameData: function(gameData) {
+        if (!gameData) {
+            gs.error('[CFAC] Error: deleteGameData called without an argument');
+            return 0;
+        }
+
+        if (!gameData.game_status) {
+            gs.error('[CFAC] Error: deleteGameData called without a game_status');
+            return 0;
+        }
+
+        var gd = new GlideRecord('x_snc_cfac_game_data');
+        gd.addQuery('game_status', gameData.game_status);
+
+        if (gameData.player_status) gd.addQuery('player_status', gameData.player_status);
+        if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
+        if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
+        if (gameData.key) gd.addQuery('key', gameData.key);
+        if (gameData.value) gd.addQuery('value', gameData.value);
+        gd.deleteMultiple();
+    },
+
+    getGameData: function(gameData) {
+        if (!gameData) {
+            gs.error('[CFAC] Error: getGameData called without an argument');
+            return 0;
+        }
+
+        if (!gameData.key) {
+            gs.error('[CFAC] Error: getGameData called without a key');
+            return 0;
+        }
+
+        var gd = new GlideRecord('x_snc_cfac_game_data');
+        gd.addQuery('key', gameData.key);
+
+        if (gameData.game_status) gd.addQuery('game_status', gameData.game_status);
+        if (gameData.data_table) gd.addQuery('data_table', gameData.data_table);
+        if (gameData.data_record) gd.addQuery('data_record', gameData.data_record);
+        gd.query();
+
+        if (gd.hasNext()) {
+            gd.next();
+            return gd;
+        } else {
+            return 0;
+        }
+    },
+
+    getGameStatusGR: function(recordSysID) {
+        if (!recordSysID) {
+            gs.error('[CFAC] Error: getGameStatus called with no arguments');
+            return 0;
+        }
+        var gameData = new GlideRecord('x_snc_cfac_game_data');
+        gameData.addQuery('data_record', recordSysID);
+        gameData.addQuery('game_status', '!=', '');
+        gameData.chooseWindow(0, 1);
+        gameData.query();
+
+        if (!gameData.hasNext()) {
+            gs.error('[CFAC] Error: getGameStatus failed to find');
+            return 0;
+
+        }
+
+        gameData.next();
+
+        var gameStatusSysID = gameData.game_status;
+
+        if (!gameStatusSysID) {
+            gs.error('[CFAC] Error: getGameStatus had unexpectedly null Game Status sys_id');
+            return 0;
+        }
+
+        var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+        gameStatus.get(gameStatusSysID);
+
+        return gameStatus;
+    },
+
+
+    getRandomRFC1918: function() {
+        var prefixArray = ["192.168", "10", "172"];
+        var prefix = prefixArray[Math.floor(Math.random() * 3)];
+        var ip = "";
+        if (prefix == "192.168") {
+            ip = prefix + "." + (Math.floor(Math.random() * 254) + 1) + "." + (Math.floor(Math.random() * 254) + 1);
+        }
+        if (prefix == "10") {
+            ip = prefix + "." + (Math.floor(Math.random() * 254) + 1) + "." + (Math.floor(Math.random() * 254) + 1) + "." + (Math.floor(Math.random() * 254) + 1);
+        }
+        if (prefix == "172") {
+            ip = prefix + "." + (Math.floor(Math.random() * 16) + 16) + "." + (Math.floor(Math.random() * 254) + 1) + "." + (Math.floor(Math.random() * 254) + 1);
+        }
+        return ip;
+    },
+
+
+    type: 'ChallengeFactoryUtils'
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:25:44</sys_created_on>
         <sys_id>6c9f3f58db616300b8fef4a51f9619a6</sys_id>
-        <sys_mod_count>67</sys_mod_count>
+        <sys_mod_count>74</sys_mod_count>
         <sys_name>ChallengeFactoryUtils</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_6c9f3f58db616300b8fef4a51f9619a6</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2020-03-01 16:39:32</sys_updated_on>
+        <sys_updated_on>2020-11-11 15:13:28</sys_updated_on>
     </sys_script_include>
 </record_update>

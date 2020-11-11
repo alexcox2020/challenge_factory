@@ -34,13 +34,13 @@
         <image_width>590</image_width>
         <size_bytes>24056</size_bytes>
         <size_compressed>22477</size_compressed>
-        <state/>
+        <state>available</state>
         <sys_created_by>martin.meduna</sys_created_by>
         <sys_created_on>2018-12-29 10:41:56</sys_created_on>
         <sys_id>2fab22e3dbeeeb405cde7b7e0f9619ec</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2018-12-29 10:41:57</sys_updated_on>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>guest</sys_updated_by>
+        <sys_updated_on>2020-11-11 13:28:16</sys_updated_on>
         <table_name>ZZ_YYdb_image</table_name>
         <table_sys_id>8b9beea3dbeeeb405cde7b7e0f9619df</table_sys_id>
     </sys_attachment>

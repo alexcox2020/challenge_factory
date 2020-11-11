@@ -9,446 +9,433 @@
         <name>ChallengeFactoryClientServer</name>
         <script><![CDATA[var ChallengeFactoryClientServer = Class.create();
 ChallengeFactoryClientServer.prototype = {
-	initialize: function(server,username,password) {
-		var regex = /[a-fA-F0-9]{32}/gm;
-			if (regex.exec(server)!== null)
-				{
-				this.getServerDetails(server);
-			}
-			else{
-				this.server=server;
-				this.username=username;
-				this.password=password;
-			}
-		},
-		
-		uploadScoreToServer: function(scoreRecord){
-			var postScore = new sn_ws.RESTMessageV2();
-			postScore.setEndpoint(this.server+'/api/now/table/x_snc_cfac_scores');
-			postScore.setHttpMethod('POST');
-			postScore.setBasicAuth(this.username,this.password);
-			postScore.setRequestHeader("Accept","application/json");
-			postScore.setRequestHeader("Content-Type","application/json");
-			
-			var fields = new GlideRecord('sys_dictionary');	fields.addEncodedQuery('name=x_snc_cfac_scores^internal_type!=collection^element!=sys_created_by^element!=sys_created_on^element!=sys_id^element!=sys_mod_count^element!=sys_updated_by^element!=sys_updated_on^element!=number^ORelement=NULL^element!=client_upload^ORelement=NULL');
-			fields.query();
-			var jSonBody={
-				'client_upload':true
-			};
-			while(fields.next()){
-				jSonBody[fields.element+""]=scoreRecord[fields.element+""]+"";
-			}
-			//gs.info("[CFAC] Debug -  Sync score jSon: "+JSON.stringify(jSonBody,"",4));
-			postScore.setRequestBody(JSON.stringify(jSonBody));
-			var response = postScore.execute();
-			var httpStatus = response.getStatusCode();
-			if (httpStatus == '201') {
-				var jSonResponse=JSON.parse(response.getBody());
-				if (jSonResponse.result.length>0){
-					gs.info("[CFAC] Score was successfuly stored to server!");
-				}
-			}
-			else {
-				gs.warn("[CFAC] Score was not stored to server! HTTP code: "+httpStatus);
-			}
-			
-		},
-		
-		checkGameStart: function(gameStatus){
-			var request = new sn_ws.RESTMessageV2();
-			request.setEndpoint(this.server+'/api/now/table/x_snc_cfac_game_server?sysparm_limit=100&game_status=started&sys_id='+gameStatus.server_game_id);
-			request.setHttpMethod('GET');
-			request.setBasicAuth(this.username,this.password);
-			request.setRequestHeader("Accept","application/json");
-			var response = request.execute();
-			var httpStatus = response.getStatusCode();
-			if (httpStatus == '200') {
-				var jSonResponse=JSON.parse(response.getBody());
-				if (jSonResponse.result.length>0){
-					gs.info("[CFAC] Info: Server controlled game started.");
-					gs.addInfoMessage("Starting your Challenge - Good luck! :-)");
-					var gdt = new GlideDateTime();
-					gdt.setValue(jSonResponse.result[0].game_stop);	
-					gameStatus.game_stop=gdt;
-					gs.eventQueueScheduled("x_snc_cfac.endGame",gameStatus,gameStatus.sys_id, "Client", gdt);
-					//create reset event
-					if (jSonResponse.result[0].reset_player_options=="true"){
-						gdt.add(60000*jSonResponse.result[0].reset_after);
-						gs.eventQueueScheduled("SecurityChallenge.resetOptions",gameStatus,gameStatus.sys_id, "Client", gdt);
-					}
-					var gdtCur = new GlideDateTime();
-					gdtCur.setValue(jSonResponse.result[0].game_start);
-					gameStatus.game_start=gdtCur;
-					gameStatus.game_status="started";
-					gameStatus.update();
-					this.updatePlayerStatusBulk(gameStatus,"started");
-				}
-			}
-			else {
-				gs.error("[CFAC] Fialed to check 'start' status at server!!! HTTP: "+httpStatus);
-			}
-		},
-		
-		checkGameEnd: function(gameStatus){
-			var request = new sn_ws.RESTMessageV2();
-			request.setEndpoint(this.server+'/api/now/table/x_snc_cfac_game_server?sysparm_limit=100&game_status=finished&sys_id='+gameStatus.server_game_id);
-			request.setHttpMethod('GET');
-			request.setBasicAuth(this.username,this.password);
-			request.setRequestHeader("Accept","application/json");
-			var response = request.execute();
-			var httpStatus = response.getStatusCode();
-			if (httpStatus == '200') {
-				var jSonResponse=JSON.parse(response.getBody());
-				if (jSonResponse.result.length>0){
-					gs.info("[CFAC] Info: Server controled game ended.");
-					var gdt = new GlideDateTime();
-					//gameStatus.game_stop=gdt;
-					gameStatus.game_status="finished";
-					gameStatus.update();
-					this.updatePlayerStatusBulk(gameStatus,"finished");
-				}
-			}
-			else {
-				gs.info("[CFAC] Warning: Fialed to check 'Finished' status at server!!! HTTP: "+httpStatus);
-			}
-		},
-		
-		updatePlayerStatusBulk: function(gameStatus,status){
-			var gr = new GlideRecord('x_snc_cfac_player_status');
-			gr.addQuery('game_status_reference',gameStatus.sys_id);
-			gr.query();
-			while(gr.next()){
-				this.updatePlayerStatus(gr.uid,status);
-			}
-		},
-		
-		updatePlayerStatus: function(playerId, status){
-			
-			var updatePlayer = new sn_ws.RESTMessageV2();
-			updatePlayer.setEndpoint(this.server+'/api/now/table/x_snc_cfac_players/'+playerId);
-			updatePlayer.setHttpMethod('PUT');
-			updatePlayer.setBasicAuth(this.username,this.password);
-			updatePlayer.setRequestHeader("Accept","application/json");
-			updatePlayer.setRequestHeader("Content-Type","application/json");
-			var stringBody='{'+
-				'"game_status":"'+status+'"'+
-				'}';
-				updatePlayer.setRequestBody(stringBody);
-				var responsePlayer = updatePlayer.execute();
-				httpStatus = responsePlayer.getStatusCode();
-				if (httpStatus == '200') {
-					gs.info("[CFAC] Info:  Player record updated 'Game "+status+"'. HTTP: "+httpStatus);
-				}
-				else {
-					gs.warn("[CFAC] Unable to update Player record 'Game "+status+"'. HTTP: "+httpStatus);
-				}
-			},
-			
-			
-			getServerDetails: function(gameStatusId){
-				var gr = new GlideRecord('x_snc_cfac_game_status');
-				gr.get(gameStatusId);
-				this.server=gr.server_url;
-				this.username=gr.server_user;
-				this.password=gr.server_pass.getDecryptedValue()+"";
-			},
-			
-			getListofActiveGames: function(){
-				var request = new sn_ws.RESTMessageV2();
-				request.setEndpoint(this.server+'/api/now/table/x_snc_cfac_game_server?sysparm_query=game_status%3Dready%5EORgame_status%3Dstarted&sysparm_limit=10');
-				request.setHttpMethod('GET');
-				request.setBasicAuth(this.username,this.password);
-				request.setRequestHeader("Accept","application/json");
-				
-				var response = request.execute();
-				var httpStatus = response.getStatusCode();
-				
-				if (httpStatus == '200') {
-					gs.info("[CFAC] Connection ok! ");
-					return this.buildConnectionOffer(JSON.parse(response.getBody()+""));
-				}
-				else{
-					gs.error("[CFAC] Cannot connect to the server! HTTP: "+httpStatus);
-					gs.addErrorMessage("[CFAC] Cannot connect to the server! HTTP: "+httpStatus);
-					return this.buildConnectionError(httpStatus);
-				}
-			},
-			
-			buildConnectionOffer: function(jSonData){
-				var html='';
-				jSonData=jSonData.result;
-				for (var i in jSonData){
-					jSonData[i].name=this.escapeQuotes(jSonData[i].name);
-					html+='<div class="row form-group">';
-					html+='<input type="hidden" id="srvData-'+jSonData[i].sys_id+'" name="player_data" value=\''+JSON.stringify(jSonData[i]) +'\'/>';
-					html+='<label class="col-sm-3 section-title control-label" style="margin-top:6px;font-weight: bold;"> '+jSonData[i].name+' </label>';
-					html+='<div class="col-sm-7 form-field"><button class="btn btn-primary ng-scope" name="submit" id="submit" onclick="return onSubmit(\''+jSonData[i].sys_id+'\');"> &#160;&#160; Connect &#160;&#160;</button></div>';
-					html+='</div>';
-				}
-				return html;
-			},
-			
-			escapeQuotes: function(string){
-				var response=string.replace("'","&#39;");
-				response=response.replace('"','&#34;');
-				return response;
-			},
-			
-			buildConnectionError: function(status){
-				var html='';
-				html+='<div class="row form-group">';
-				html+='<label class="col-sm-3 section-title control-label" style="margin-top:6px;font-weight: bold;"> Cannot connect to the server. Server returns: '+status+'.</label>';
-				html+='</div>';
-				html+='<div class="row form-group">';
-				html+='<button class="btn-default btn" style="min-width: 5em" onclick="return onCancel();" name="cancel" id="cancel">OK</button>';
-				html+='</div>';
-				return html;
-			},
-			
-			registerGametoServer: function (playerStatusId,gameStatusId,gameData){
-				var gameDatajSon=JSON.parse(gameData);
-				var playerStatus = new GlideRecord('x_snc_cfac_player_status');
-				playerStatus.get(playerStatusId);
-				
-				var gameStatus = new GlideRecord('x_snc_cfac_game_status');
-				gameStatus.get(gameStatusId);
-				var ret;
-				if (gameStatus.game_status=="new"){
-					ret=this.downloadGameConfig(gameDatajSon.game_configuration.value);
-					gs.info("[CFAC] game config: "+ret);
-					if (ret==-1){
-						gs.addErrorMessage("Failed to download game configuration.");
-						return -1;
-					}
-					else{
-						gameStatus.game_configuration=ret;
-						gameStatus.server_game_id=gameDatajSon.sys_id;
-						gameStatus.server_game_name=gameDatajSon.name;
-						gameStatus.update();
-						//gs.addInfoMessage("Game configuration successfuly downloaded");
-					}
-				}
-				
-				ret=this.registerPlayer(playerStatusId);
-				if (ret==-1){
-					gs.error("[CFAC] Failed to register player.");
-					gs.addErrorMessage("Failed to register player.");
-				}
-				else{
-					//  updating sys_user with player name
-					this.updateUserName(playerStatus.player_name,'',playerStatus.player_user);
-					//this.updateUserName(playerStatus.player_name,'','3646fb2fdbb2a7005cde7b7e0f96197b');
-					gs.info("[CFAC] Player was successfully registered.");
-					
-					//gs.addInfoMessage("Player was successfully registered.");
-				}
-				
-			},
-			
-			registerPlayer: function (playerStatusId){
-				var playerStatus = new GlideRecord('x_snc_cfac_player_status');
-				playerStatus.get(playerStatusId);
-				var postPlayer = new sn_ws.RESTMessageV2();
-				postPlayer.setEndpoint(this.server+'/api/now/table/x_snc_cfac_players');
-				postPlayer.setHttpMethod('POST');
-				var instanceName=gs.getProperty('glide.servlet.uri');
-				instanceName=instanceName.substring(8,instanceName.indexOf("."));
-				var stringBody='{'+
-					'"name":"'+playerStatus.player_name+'", '+
-					//'"uid":"'+playerStatus.player_user+'", '+
-					'"team":"'+playerStatus.game_status_reference.team+'", '+
-					//	'"country":"'+playerStatus.country+'", '+
-					'"location":"'+playerStatus.location+'", '+
-					'"instance_name":"'+instanceName+'", '+
-					'"game_status":"registered", '+
-					'"player_status":"registered", '+
-					'"game_server":"'+playerStatus.game_status_reference.server_game_id+'", '+
-					'"email":"'+playerStatus.email+'" '+
-					'}';
-					
-					postPlayer.setRequestBody(stringBody);
-					postPlayer.setBasicAuth(this.username,this.password);
-					postPlayer.setRequestHeader("Accept","application/json");
-					
-					var responsePlayer = postPlayer.execute();
-					var httpStatusPlayer = responsePlayer.getStatusCode();
-					
-					if (httpStatusPlayer == '201') {
-						var jSonResponse=JSON.parse(responsePlayer.getBody());
-						playerStatus.uid=jSonResponse.result.sys_id;
-						playerStatus.game_status="registered";
-						playerStatus.update();
-						
-						var gameStatus = new GlideRecord('x_snc_cfac_game_status');
-						gameStatus.get(playerStatus.game_status_reference);
-						gameStatus.game_status="registered";
-						gameStatus.update();
-						
-						gs.info("[CFAC] Info: Game registered!!! HTTP: "+httpStatusPlayer);
-						return 1;
-					}
-					else{
-						gs.error("[CFAC] Failed to register to server!!! HTTP: "+httpStatusPlayer);
-						return -1;
-					}
-				},
-				
-				updateUserName: function(first_name,last_name,sys_user){
-					gs.info("[CFAC] Updating user name");
-					var gr = new GlideRecord('sys_user');
-					gr.get(sys_user);
-					gr.first_name=first_name;
-					gr.last_name=last_name;
-					gr.update();	
-				},
-				
-				downloadGameConfig: function (gameConfigId){
-					var requestGame = new sn_ws.RESTMessageV2();
-					requestGame.setEndpoint(this.server+'/api/now/table/x_snc_cfac_game_configuration/'+gameConfigId);
-					requestGame.setHttpMethod('GET');
-					requestGame.setBasicAuth(this.username,this.password);
-					requestGame.setRequestHeader("Accept","application/json");
-					var responseGame = requestGame.execute();
-					var httpStatusGame = responseGame.getStatusCode();
-					
-					if (httpStatusGame == '200'){
-						var jSonResponseGame=JSON.parse(responseGame.getBody());
-						var lastUpdate=new GlideDateTime(jSonResponseGame.result.cfac_updated_on);
-						var needUpdate=this.isCurrentGameConfigDownloaded(gameConfigId,lastUpdate);
-						
-						if (needUpdate!=0 && needUpdate!=1){
-							this.deleteGameConfig(needUpdate);
-						}
-						if (needUpdate!=1){//download game config
-							var grGame = new GlideRecord("x_snc_cfac_game_configuration");
-							grGame.initialize();
-							grGame.name=jSonResponseGame.result.name+" (server)";
-							grGame.game_duration=jSonResponseGame.result.game_duration;
-							grGame.short_description=jSonResponseGame.result.short_description+" - downloaded from server.";
-							grGame.client_download=true;
-							grGame.server_sys_id=gameConfigId;
-							grGame.server_last_update= new GlideDateTime(jSonResponseGame.result.sys_updated_on);
-							grGame.insert();
-							var request = new sn_ws.RESTMessageV2();
-							request.setEndpoint(this.server+'/api/now/table/x_snc_cfac_m2m_obstacle_game_config?sysparm_limit=100&game_configuration='+gameConfigId);
-							request.setHttpMethod('GET');
-							request.setBasicAuth(this.username,this.password);
-							request.setRequestHeader("Accept","application/json");
-							var response = request.execute();
-							var httpStatus = response.getStatusCode();
-							var jSonResponse=JSON.parse(response.getBody());
-							if (httpStatus == '200'){
-								var gr = new GlideRecord("x_snc_cfac_m2m_obstacle_game_config");
-								for (var i in jSonResponse.result){
-									gr.initialize();
-									gr.game_configuration=grGame.sys_id;
-									gr.obstacle_template=jSonResponse.result[i].obstacle_template.value;
-									gr.starting_minute=jSonResponse.result[i].starting_minute;
-									gr.insert();
-								}//after download return sys_id
-								return grGame.sys_id;
-							}
-							else {
-								gs.error("[CFAC] Failed to check 'game configuration details' at server!!! HTTP: "+httpStatus);
-								return -1;
-							}
-						}
-						else {//config is downloaded return local sys_id
-							var grGame = new GlideRecord("x_snc_cfac_game_configuration");
-							grGame.addQuery("server_sys_id",gameConfigId);
-							grGame.query();
-							grGame.next();
-							return grGame.sys_id;
-						}
-					}
-					else{
-						gs.error("[CFAC] Failed to check 'game configuration' at server!!! HTTP: "+httpStatusGame);
-						return -1;
-					}
-				},
-				
-				deleteGameConfig: function(gameConfigId){
-					var gr = new GlideRecord("x_snc_cfac_m2m_obstacle_game_config");
-					gr.addQuery("game_configuration",gameConfigId);
-					gr.setWorkflow(false); //Don't fire Business rule,notifications
-					gr.deleteMultiple();
-					var grGame = new GlideRecord("x_snc_cfac_game_configuration");
-					grGame.get(gameConfigId);
-					grGame.deleteRecord();
-				},
-				
-				isCurrentGameConfigDownloaded: function(gameConfigId,lastUpdate){
-					var grGame = new GlideRecord("x_snc_cfac_game_configuration");
-					grGame.addQuery("server_sys_id",gameConfigId);
-					grGame.query();
-					
-					if (grGame.getRowCount()>0){//we have local record
-						grGame.next();
-						//		gs.info("[CFAC] comparing: "+grGame.server_last_update+" and "+lastUpdate);
-						var gd = new GlideDateTime(grGame.server_last_update);
-						if (lastUpdate.compareTo(gd)==0){//local record is identical
-							return 1;
-						}
-						else{// record is different
-							return grGame.sys_id;
-						}
-					}
-					else{//no local record
-						return 0;
-					}
-					
-					
-				},
-				
-				checkjSonCommandPool: function(){
-					var request = new sn_ws.RESTMessageV2();
-					request.setEndpoint(game.server_url+'/api/now/table/x_snc_cfac_players/'+game.uid);
-					request.setHttpMethod('GET');
-					request.setBasicAuth(this.username,this.password);
-					request.setRequestHeader("Accept","application/json");
-					var response = request.execute();
-					var httpStatus = response.getStatusCode();
-					if (httpStatus == '200') {
-						var jSonResponse=JSON.parse(response.getBody());
-						if (jSonResponse.result.length>0){
-							this.deletejSonCommandPool();
-							return jSonResponse.result[0].json_command_pool;
-						}
-					}
-					else {
-						gs.info("[CFAC] Error: Failed to check jSon Command Pool!!! HTTP: "+httpStatus);
-					}
-				},
-				deletejSonCommandPool: function(){
-					var request = new sn_ws.RESTMessageV2();
-					request.setEndpoint(game.server_url+'/api/now/table/x_snc_cfac_players/'+game.uid);
-					request.setHttpMethod('PUT');
-					request.setBasicAuth(this.username,this.password);
-					request.setRequestHeader("Accept","application/json");
-					request.setRequestHeader('Content-Type','application/json');
-					request.setRequestBody("{\"json_command_pool\":\"\"}");
-						var response = request.execute();
-						var httpStatus = response.getStatusCode();
-						if (httpStatus == '200') {
-							return 0;
-						}
-						else {
-							gs.info("[CFAC] Error: Failed to reset jSon Command Pool!!! HTTP: "+httpStatus);
-						}
-					},
-					type: 'ChallengeFactoryClientServer'
-				};]]></script>
+    initialize: function(server, username, password) {
+        var regex = /[a-fA-F0-9]{32}/gm;
+        if (regex.exec(server) !== null) {
+            this.getServerDetails(server);
+            gs.info("[CFAC] Debug: " + this.server + " ::: " + this.username + " ::: " + this.password);
+        } else {
+            this.server = server;
+            this.username = username;
+            this.password = password;
+
+        }
+    },
+
+    uploadScoreToServer: function(scoreRecord) {
+        var postScore = new sn_ws.RESTMessageV2();
+        postScore.setEndpoint(this.server + '/api/now/table/x_snc_cfac_scores');
+        postScore.setHttpMethod('POST');
+        postScore.setBasicAuth(this.username, this.password);
+        postScore.setRequestHeader("Accept", "application/json");
+        postScore.setRequestHeader("Content-Type", "application/json");
+
+        var fields = new GlideRecord('sys_dictionary');
+        fields.addEncodedQuery('name=x_snc_cfac_scores^internal_type!=collection^element!=sys_created_by^element!=sys_created_on^element!=sys_id^element!=sys_mod_count^element!=sys_updated_by^element!=sys_updated_on^element!=number^ORelement=NULL^element!=client_upload^ORelement=NULL');
+        fields.query();
+        var jSonBody = {
+            'client_upload': true
+        };
+        while (fields.next()) {
+            jSonBody[fields.element + ""] = scoreRecord[fields.element + ""] + "";
+        }
+        //gs.info("[CFAC] Debug -  Sync score jSon: "+JSON.stringify(jSonBody,"",4));
+        postScore.setRequestBody(JSON.stringify(jSonBody));
+        var response = postScore.execute();
+        var httpStatus = response.getStatusCode();
+        if (httpStatus == '201') {
+            var jSonResponse = JSON.parse(response.getBody());
+            if (jSonResponse.result.length > 0) {
+                gs.info("[CFAC] Score was successfuly stored to server!");
+            }
+        } else {
+            gs.warn("[CFAC] Score was not stored to server! HTTP code: " + httpStatus);
+        }
+
+    },
+
+    checkGameStart: function(gameStatus) {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(this.server + '/api/now/table/x_snc_cfac_game_server?sysparm_limit=100&game_status=started&sys_id=' + gameStatus.server_game_id);
+        request.setHttpMethod('GET');
+        request.setBasicAuth(this.username, this.password);
+        request.setRequestHeader("Accept", "application/json");
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
+        if (httpStatus == '200') {
+            var jSonResponse = JSON.parse(response.getBody());
+            if (jSonResponse.result.length > 0) {
+                gs.info("[CFAC] Info: Server controlled game started.");
+                gs.addInfoMessage("Starting your Challenge - Good luck! :-)");
+                var gdt = new GlideDateTime();
+                gdt.setValue(jSonResponse.result[0].game_stop);
+                gameStatus.game_stop = gdt;
+                gs.eventQueueScheduled("x_snc_cfac.endGame", gameStatus, gameStatus.sys_id, "Client", gdt);
+                //create reset event
+                if (jSonResponse.result[0].reset_player_options == "true") {
+                    gdt.add(60000 * jSonResponse.result[0].reset_after);
+                    gs.eventQueueScheduled("SecurityChallenge.resetOptions", gameStatus, gameStatus.sys_id, "Client", gdt);
+                }
+                var gdtCur = new GlideDateTime();
+                gdtCur.setValue(jSonResponse.result[0].game_start);
+                gameStatus.game_start = gdtCur;
+                gameStatus.game_status = "started";
+                gameStatus.update();
+                this.updatePlayerStatusBulk(gameStatus, "started");
+            }
+        } else {
+            gs.error("[CFAC] Fialed to check 'start' status at server!!! HTTP: " + httpStatus);
+        }
+    },
+
+    checkGameEnd: function(gameStatus) {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(this.server + '/api/now/table/x_snc_cfac_game_server?sysparm_limit=100&game_status=finished&sys_id=' + gameStatus.server_game_id);
+        request.setHttpMethod('GET');
+        request.setBasicAuth(this.username, this.password);
+        request.setRequestHeader("Accept", "application/json");
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
+        if (httpStatus == '200') {
+            var jSonResponse = JSON.parse(response.getBody());
+            if (jSonResponse.result.length > 0) {
+                gs.info("[CFAC] Info: Server controled game ended.");
+                var gdt = new GlideDateTime();
+                //gameStatus.game_stop=gdt;
+                gameStatus.game_status = "finished";
+                gameStatus.update();
+                this.updatePlayerStatusBulk(gameStatus, "finished");
+            }
+        } else {
+            gs.info("[CFAC] Warning: Fialed to check 'Finished' status at server!!! HTTP: " + httpStatus);
+        }
+    },
+
+    updatePlayerStatusBulk: function(gameStatus, status) {
+        var gr = new GlideRecord('x_snc_cfac_player_status');
+        gr.addQuery('game_status_reference', gameStatus.sys_id);
+        gr.query();
+        while (gr.next()) {
+            this.updatePlayerStatus(gr.uid, status);
+        }
+    },
+
+    updatePlayerStatus: function(playerId, status) {
+
+        var updatePlayer = new sn_ws.RESTMessageV2();
+        updatePlayer.setEndpoint(this.server + '/api/now/table/x_snc_cfac_players/' + playerId);
+        updatePlayer.setHttpMethod('PUT');
+        updatePlayer.setBasicAuth(this.username, this.password);
+        updatePlayer.setRequestHeader("Accept", "application/json");
+        updatePlayer.setRequestHeader("Content-Type", "application/json");
+        var stringBody = '{' +
+            '"game_status":"' + status + '"' +
+            '}';
+        updatePlayer.setRequestBody(stringBody);
+        var responsePlayer = updatePlayer.execute();
+        httpStatus = responsePlayer.getStatusCode();
+        if (httpStatus == '200') {
+            gs.info("[CFAC] Info:  Player record updated 'Game " + status + "'. HTTP: " + httpStatus);
+        } else {
+            gs.warn("[CFAC] Unable to update Player record 'Game " + status + "'. HTTP: " + httpStatus);
+        }
+    },
+
+
+    getServerDetails: function(gameStatusId) {
+        var gr = new GlideRecord('x_snc_cfac_game_status');
+        gr.get(gameStatusId);
+        this.server = gr.server_url;
+        this.username = gr.server_user;
+        this.password = gr.server_pass.getDecryptedValue() + "";
+    },
+
+    getListofActiveGames: function() {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(this.server + '/api/now/table/x_snc_cfac_game_server?sysparm_query=game_status%3Dready%5EORgame_status%3Dstarted&sysparm_limit=10');
+        request.setHttpMethod('GET');
+        request.setBasicAuth(this.username, this.password);
+        request.setRequestHeader("Accept", "application/json");
+
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
+
+        if (httpStatus == '200') {
+            gs.info("[CFAC] Connection ok! ");
+            return this.buildConnectionOffer(JSON.parse(response.getBody() + ""));
+        } else {
+            gs.error("[CFAC] Cannot connect to the server! HTTP: " + httpStatus);
+            gs.addErrorMessage("[CFAC] Cannot connect to the server! HTTP: " + httpStatus);
+            return this.buildConnectionError(httpStatus);
+        }
+    },
+
+    buildConnectionOffer: function(jSonData) {
+        var html = '';
+        jSonData = jSonData.result;
+        for (var i in jSonData) {
+            jSonData[i].name = this.escapeQuotes(jSonData[i].name);
+            html += '<div class="row form-group">';
+            html += '<input type="hidden" id="srvData-' + jSonData[i].sys_id + '" name="player_data" value=\'' + JSON.stringify(jSonData[i]) + '\'/>';
+            html += '<label class="col-sm-3 section-title control-label" style="margin-top:6px;font-weight: bold;"> ' + jSonData[i].name + ' </label>';
+            html += '<div class="col-sm-7 form-field"><button class="btn btn-primary ng-scope" name="submit" id="submit" onclick="return onSubmit(\'' + jSonData[i].sys_id + '\');"> &#160;&#160; Connect &#160;&#160;</button></div>';
+            html += '</div>';
+        }
+        return html;
+    },
+
+    escapeQuotes: function(string) {
+        var response = string.replace("'", "&#39;");
+        response = response.replace('"', '&#34;');
+        return response;
+    },
+
+    buildConnectionError: function(status) {
+        var html = '';
+        html += '<div class="row form-group">';
+        html += '<label class="col-sm-3 section-title control-label" style="margin-top:6px;font-weight: bold;"> Cannot connect to the server. Server returns: ' + status + '.</label>';
+        html += '</div>';
+        html += '<div class="row form-group">';
+        html += '<button class="btn-default btn" style="min-width: 5em" onclick="return onCancel();" name="cancel" id="cancel">OK</button>';
+        html += '</div>';
+        return html;
+    },
+
+    registerGametoServer: function(playerStatusId, gameStatusId, gameData) {
+        var gameDatajSon = JSON.parse(gameData);
+        var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+        playerStatus.get(playerStatusId);
+
+        var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+        gameStatus.get(gameStatusId);
+        var ret;
+        if (gameStatus.game_status == "new") {
+            ret = this.downloadGameConfig(gameDatajSon.game_configuration.value);
+            gs.info("[CFAC] game config: " + ret);
+            if (ret == -1) {
+                gs.addErrorMessage("Failed to download game configuration.");
+                return -1;
+            } else {
+                gameStatus.game_configuration = ret;
+                gameStatus.server_game_id = gameDatajSon.sys_id;
+                gameStatus.server_game_name = gameDatajSon.name;
+                gameStatus.update();
+                //gs.addInfoMessage("Game configuration successfuly downloaded");
+            }
+        }
+
+        ret = this.registerPlayer(playerStatusId);
+        if (ret == -1) {
+            gs.error("[CFAC] Failed to register player.");
+            gs.addErrorMessage("Failed to register player.");
+        } else {
+            //  updating sys_user with player name
+            this.updateUserName(playerStatus.player_name, '', playerStatus.player_user);
+            //this.updateUserName(playerStatus.player_name,'','3646fb2fdbb2a7005cde7b7e0f96197b');
+            gs.info("[CFAC] Player was successfully registered.");
+
+            //gs.addInfoMessage("Player was successfully registered.");
+        }
+
+    },
+
+    registerPlayer: function(playerStatusId) {
+        var playerStatus = new GlideRecord('x_snc_cfac_player_status');
+        playerStatus.get(playerStatusId);
+        var postPlayer = new sn_ws.RESTMessageV2();
+        postPlayer.setEndpoint(this.server + '/api/now/table/x_snc_cfac_players');
+        postPlayer.setHttpMethod('POST');
+        var instanceName = gs.getProperty('glide.servlet.uri');
+        instanceName = instanceName.substring(8, instanceName.indexOf("."));
+        var stringBody = '{' +
+            '"name":"' + playerStatus.player_name + '", ' +
+            //'"uid":"'+playerStatus.player_user+'", '+
+            '"team":"' + playerStatus.game_status_reference.team + '", ' +
+            //	'"country":"'+playerStatus.country+'", '+
+            '"location":"' + playerStatus.location + '", ' +
+            '"instance_name":"' + instanceName + '", ' +
+            '"game_status":"registered", ' +
+            '"player_status":"registered", ' +
+            '"game_server":"' + playerStatus.game_status_reference.server_game_id + '", ' +
+            '"email":"' + playerStatus.email + '" ' +
+            '}';
+
+        postPlayer.setRequestBody(stringBody);
+        postPlayer.setBasicAuth(this.username, this.password);
+        postPlayer.setRequestHeader("Accept", "application/json");
+
+        var responsePlayer = postPlayer.execute();
+        var httpStatusPlayer = responsePlayer.getStatusCode();
+
+        if (httpStatusPlayer == '201') {
+            var jSonResponse = JSON.parse(responsePlayer.getBody());
+            playerStatus.uid = jSonResponse.result.sys_id;
+            playerStatus.game_status = "registered";
+            playerStatus.update();
+
+            var gameStatus = new GlideRecord('x_snc_cfac_game_status');
+            gameStatus.get(playerStatus.game_status_reference);
+            gameStatus.game_status = "registered";
+            gameStatus.update();
+
+            gs.info("[CFAC] Info: Game registered!!! HTTP: " + httpStatusPlayer);
+            return 1;
+        } else {
+            gs.error("[CFAC] Failed to register to server!!! HTTP: " + httpStatusPlayer);
+            return -1;
+        }
+    },
+
+    updateUserName: function(first_name, last_name, sys_user) {
+        gs.info("[CFAC] Updating user name");
+        var gr = new GlideRecord('sys_user');
+        gr.get(sys_user);
+        gr.first_name = first_name;
+        gr.last_name = last_name;
+        gr.update();
+    },
+
+    downloadGameConfig: function(gameConfigId) {
+        gs.info("[CFAC] Debug - Master server: " + this.server);
+        var requestGame = new sn_ws.RESTMessageV2();
+        requestGame.setEndpoint(this.server + '/api/now/table/x_snc_cfac_game_configuration/' + gameConfigId);
+        requestGame.setHttpMethod('GET');
+        requestGame.setBasicAuth(this.username, this.password);
+        requestGame.setRequestHeader("Accept", "application/json");
+        var responseGame = requestGame.execute();
+        var httpStatusGame = responseGame.getStatusCode();
+
+        if (httpStatusGame == '200') {
+            var jSonResponseGame = JSON.parse(responseGame.getBody());
+            var lastUpdate = new GlideDateTime(jSonResponseGame.result.cfac_updated_on);
+            var needUpdate = this.isCurrentGameConfigDownloaded(gameConfigId, lastUpdate);
+
+            if (needUpdate != 0 && needUpdate != 1) {
+                this.deleteGameConfig(needUpdate);
+            }
+            if (needUpdate != 1) { //download game config
+                var grGame = new GlideRecord("x_snc_cfac_game_configuration");
+                grGame.initialize();
+                grGame.name = jSonResponseGame.result.name + " (server)";
+                grGame.game_duration = jSonResponseGame.result.game_duration;
+                grGame.short_description = jSonResponseGame.result.short_description + " - downloaded from server.";
+                grGame.client_download = true;
+                grGame.server_sys_id = gameConfigId;
+                grGame.server_last_update = new GlideDateTime(jSonResponseGame.result.sys_updated_on);
+                grGame.insert();
+                var request = new sn_ws.RESTMessageV2();
+                request.setEndpoint(this.server + '/api/now/table/x_snc_cfac_m2m_obstacle_game_config?sysparm_limit=100&game_configuration=' + gameConfigId);
+                request.setHttpMethod('GET');
+                request.setBasicAuth(this.username, this.password);
+                request.setRequestHeader("Accept", "application/json");
+                var response = request.execute();
+                var httpStatus = response.getStatusCode();
+                var jSonResponse = JSON.parse(response.getBody());
+                if (httpStatus == '200') {
+                    var gr = new GlideRecord("x_snc_cfac_m2m_obstacle_game_config");
+                    for (var i in jSonResponse.result) {
+                        gr.initialize();
+                        gr.game_configuration = grGame.sys_id;
+                        gr.obstacle_template = jSonResponse.result[i].obstacle_template.value;
+                        gr.starting_minute = jSonResponse.result[i].starting_minute;
+                        gr.insert();
+                    } //after download return sys_id
+                    return grGame.sys_id;
+                } else {
+                    gs.error("[CFAC] Failed to check 'game configuration details' at server!!! HTTP: " + httpStatus);
+                    return -1;
+                }
+            } else { //config is downloaded return local sys_id
+                var grGame = new GlideRecord("x_snc_cfac_game_configuration");
+                grGame.addQuery("server_sys_id", gameConfigId);
+                grGame.query();
+                grGame.next();
+                return grGame.sys_id;
+            }
+        } else {
+            gs.error("[CFAC] Failed to check 'game configuration' at server!!! HTTP: " + httpStatusGame);
+            return -1;
+        }
+    },
+
+    deleteGameConfig: function(gameConfigId) {
+        var gr = new GlideRecord("x_snc_cfac_m2m_obstacle_game_config");
+        gr.addQuery("game_configuration", gameConfigId);
+        gr.setWorkflow(false); //Don't fire Business rule,notifications
+        gr.deleteMultiple();
+        var grGame = new GlideRecord("x_snc_cfac_game_configuration");
+        grGame.get(gameConfigId);
+        grGame.deleteRecord();
+    },
+
+    isCurrentGameConfigDownloaded: function(gameConfigId, lastUpdate) {
+        var grGame = new GlideRecord("x_snc_cfac_game_configuration");
+        grGame.addQuery("server_sys_id", gameConfigId);
+        grGame.query();
+
+        if (grGame.getRowCount() > 0) { //we have local record
+            grGame.next();
+            //		gs.info("[CFAC] comparing: "+grGame.server_last_update+" and "+lastUpdate);
+            var gd = new GlideDateTime(grGame.server_last_update);
+            if (lastUpdate.compareTo(gd) == 0) { //local record is identical
+                return 1;
+            } else { // record is different
+                return grGame.sys_id;
+            }
+        } else { //no local record
+            return 0;
+        }
+
+
+    },
+
+    checkjSonCommandPool: function() {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(game.server_url + '/api/now/table/x_snc_cfac_players/' + game.uid);
+        request.setHttpMethod('GET');
+        request.setBasicAuth(this.username, this.password);
+        request.setRequestHeader("Accept", "application/json");
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
+        if (httpStatus == '200') {
+            var jSonResponse = JSON.parse(response.getBody());
+            if (jSonResponse.result.length > 0) {
+                this.deletejSonCommandPool();
+                return jSonResponse.result[0].json_command_pool;
+            }
+        } else {
+            gs.info("[CFAC] Error: Failed to check jSon Command Pool!!! HTTP: " + httpStatus);
+        }
+    },
+    deletejSonCommandPool: function() {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint(game.server_url + '/api/now/table/x_snc_cfac_players/' + game.uid);
+        request.setHttpMethod('PUT');
+        request.setBasicAuth(this.username, this.password);
+        request.setRequestHeader("Accept", "application/json");
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestBody("{\"json_command_pool\":\"\"}");
+        var response = request.execute();
+        var httpStatus = response.getStatusCode();
+        if (httpStatus == '200') {
+            return 0;
+        } else {
+            gs.info("[CFAC] Error: Failed to reset jSon Command Pool!!! HTTP: " + httpStatus);
+        }
+    },
+    type: 'ChallengeFactoryClientServer'
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:23:17</sys_created_on>
         <sys_id>bdeeb758db616300b8fef4a51f9619e6</sys_id>
-        <sys_mod_count>143</sys_mod_count>
+        <sys_mod_count>146</sys_mod_count>
         <sys_name>ChallengeFactoryClientServer</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_bdeeb758db616300b8fef4a51f9619e6</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2019-04-01 19:59:04</sys_updated_on>
+        <sys_updated_on>2020-11-11 13:16:21</sys_updated_on>
     </sys_script_include>
 </record_update>
