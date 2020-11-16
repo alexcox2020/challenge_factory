@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Game Status" max_length="40" name="x_snc_cfac_game_status" sizeclass="0" type="collection">
+    <element label="Game Status" max_length="40" name="x_snc_cfac_game_status" sizeclass="1" type="collection">
         <element label="Game Configuration" max_length="32" name="game_configuration" read_only="true" reference="x_snc_cfac_game_configuration" type="reference"/>
         <element label="Game Duration" max_length="40" name="game_duration" type="integer"/>
         <element label="Game Name" max_length="40" name="game_name" type="string"/>
