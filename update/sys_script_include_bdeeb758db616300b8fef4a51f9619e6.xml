@@ -13,7 +13,7 @@ ChallengeFactoryClientServer.prototype = {
         var regex = /[a-fA-F0-9]{32}/gm;
         if (regex.exec(server) !== null) {
             this.getServerDetails(server);
-            gs.info("[CFAC] Debug: " + this.server + " ::: " + this.username + " ::: " + this.password);
+            gs.info("[CFAC] Debug: " + this.server + " ::: " + this.username + " ::: " /*+ this.password*/);
         } else {
             this.server = server;
             this.username = username;
@@ -429,13 +429,13 @@ ChallengeFactoryClientServer.prototype = {
         <sys_created_by>alex.cox</sys_created_by>
         <sys_created_on>2018-10-30 21:23:17</sys_created_on>
         <sys_id>bdeeb758db616300b8fef4a51f9619e6</sys_id>
-        <sys_mod_count>146</sys_mod_count>
+        <sys_mod_count>147</sys_mod_count>
         <sys_name>ChallengeFactoryClientServer</sys_name>
         <sys_package display_value="Challenge Factory" source="x_snc_cfac">23163d33db512f4070bc54b4ce96199f</sys_package>
         <sys_policy/>
         <sys_scope display_value="Challenge Factory">23163d33db512f4070bc54b4ce96199f</sys_scope>
         <sys_update_name>sys_script_include_bdeeb758db616300b8fef4a51f9619e6</sys_update_name>
         <sys_updated_by>martin.meduna</sys_updated_by>
-        <sys_updated_on>2020-11-11 13:16:21</sys_updated_on>
+        <sys_updated_on>2020-11-16 10:54:33</sys_updated_on>
     </sys_script_include>
 </record_update>
